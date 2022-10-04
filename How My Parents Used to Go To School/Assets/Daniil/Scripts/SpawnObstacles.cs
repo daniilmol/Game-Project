@@ -8,7 +8,7 @@ public class SpawnObstacles : RandomSpawner
     [SerializeField] GameObject[] obstaceSpawns;
     [SerializeField] GameObject obstacle;
 
-    [Range(0, 5)] [SerializeField] int enemyCount;
+    [Range(0, 2)] [SerializeField] int enemyCount;
 
     void Start()
     {
