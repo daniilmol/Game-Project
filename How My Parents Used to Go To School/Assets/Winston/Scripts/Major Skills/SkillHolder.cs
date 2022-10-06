@@ -26,29 +26,34 @@ public class SkillHolder : MonoBehaviour
             case SkillState.ready:
                 if (Input.GetKeyDown(key))
                 {
-                    skill.Activate(gameObject);
+                   
                     state = SkillState.active;
                     activeTime = skill.activeTime;
+                    Debug.Log(state);
                 }
                 break;
             case SkillState.active:
                 if (activeTime > 0)
                 {
+                    skill.Activate(gameObject);
                     activeTime -= Time.deltaTime;
+                    Debug.Log(activeTime);
                 }
                 else {
                     state = SkillState.cooldown;
                     cooldownTime = skill.cooldownTime;
+                    Debug.Log(state);
                 }
                 break;
             case SkillState.cooldown:
-                if (activeTime > 0)
+                if (cooldownTime > 0)
                 {
                     cooldownTime -= Time.deltaTime;
                 }
                 else
                 {
                     state = SkillState.ready;
+                    Debug.Log(state);
                 }
                 break; 
         }
