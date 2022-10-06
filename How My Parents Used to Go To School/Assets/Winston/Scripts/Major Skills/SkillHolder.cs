@@ -26,7 +26,6 @@ public class SkillHolder : MonoBehaviour
             case SkillState.ready:
                 if (Input.GetKeyDown(key))
                 {
-                   
                     state = SkillState.active;
                     activeTime = skill.activeTime;
                     Debug.Log(state);

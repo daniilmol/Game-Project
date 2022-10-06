@@ -14,7 +14,7 @@ public class WhirlwindSkill : MajorSkill
 
 
     public void whirlwindSpin(GameObject player) {
-        player.transform.Rotate(0f, 1000f, 0f, Space.Self);
+        player.transform.Rotate(0f, 20f, 0f, Space.Self);
         Debug.Log("WWWWWWWWW");
     }
 }
