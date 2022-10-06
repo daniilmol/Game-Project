@@ -348,7 +348,7 @@ PrefabInstance:
     - target: {fileID: 6317727623925793205, guid: 1d86f4c82b426624f873df660328a85e,
         type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8118088714895256955, guid: 1d86f4c82b426624f873df660328a85e,
         type: 3}
@@ -1332,6 +1332,20 @@ FixedJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &1579622657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579622644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59a903795e3e257408f4b8d31c6bac10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: {fileID: 11400000, guid: 5119b703262896740916482af38d8bb0, type: 2}
+  key: 32
 --- !u!1 &1600177031 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8926959095718623169, guid: 1d86f4c82b426624f873df660328a85e,
@@ -1346,7 +1360,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1600177031}
   serializedVersion: 2
-  m_Mass: 0.0000001
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1

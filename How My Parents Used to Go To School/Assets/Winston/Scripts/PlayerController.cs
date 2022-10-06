@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
         transform.Translate(v3);
 
-
+        //transform.Rotate(0f, 20f, 0f);
     }
 
     public void openConsole(InputAction.CallbackContext context)
