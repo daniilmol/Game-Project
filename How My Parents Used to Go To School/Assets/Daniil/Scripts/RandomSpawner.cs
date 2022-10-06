@@ -5,6 +5,9 @@ using System.Linq;
 
 public class RandomSpawner : MonoBehaviour
 {
+    /*
+     * Spawns any prefab object randomly in a list of empty areas
+     */
     protected void Spawn(int count, GameObject prefab, GameObject[] spawns)
     {
         for (int i = 0; i < count; i++)
