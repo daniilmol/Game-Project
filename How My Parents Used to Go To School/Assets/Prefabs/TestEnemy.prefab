@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: -7364494050317580268}
   - component: {fileID: 2660828068993279066}
   - component: {fileID: -7119751164636099238}
+  - component: {fileID: -6126836758811161443}
+  - component: {fileID: 7447775575432617793}
   m_Layer: 0
   m_Name: TestEnemy
   m_TagString: Untagged
@@ -119,4 +121,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a1d15a0ecfdf134e8b97b8f6cb35be8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1907902992049449677, guid: 71166ce995543fe4f965d83a60138578, type: 3}
+  player: {fileID: 7394542228669564406, guid: 60b290fc0c7f69544ba8dad578805a4d, type: 3}
+--- !u!54 &-6126836758811161443
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3732227733825626360}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &7447775575432617793
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3732227733825626360}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
