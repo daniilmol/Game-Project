@@ -5,13 +5,15 @@ using UnityEngine;
 
 public class SpawnObstacles : RandomSpawner 
 {
+    [Tooltip("Add invisible game objects to this array, these objects will represent the different spawnable locations")]
     [SerializeField] GameObject[] obstaceSpawns;
     [SerializeField] GameObject obstacle;
 
-    [Range(0, 2)] [SerializeField] int enemyCount;
+    [Tooltip("How many objects to spawn. Cannot be greater than the array of spawnable locations")]
+    [Range(0, 2)] [SerializeField] int obstacleCount;
 
     void Start()
     {
-        Spawn(enemyCount, obstacle, obstaceSpawns);
+        Spawn(obstacleCount, obstacle, obstaceSpawns);
     }
 }
