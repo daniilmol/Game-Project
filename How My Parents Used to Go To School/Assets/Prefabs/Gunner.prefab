@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: -5494244341898831885}
   - component: {fileID: -7364494050317580268}
   - component: {fileID: 2660828068993279066}
-  - component: {fileID: -7119751164636099238}
+  - component: {fileID: 1372052262510847420}
   m_Layer: 0
-  m_Name: TestEnemy
-  m_TagString: Untagged
+  m_Name: Gunner
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,7 +107,7 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &-7119751164636099238
+--- !u!114 &1372052262510847420
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,7 +116,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 3732227733825626360}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a1d15a0ecfdf134e8b97b8f6cb35be8, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a3659313528577419227bd9d00b68b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1907902992049449677, guid: 71166ce995543fe4f965d83a60138578, type: 3}
+  difficultyScaling: 0
+  range: 5
+  attackSpeed: 5
