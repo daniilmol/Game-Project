@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Winston/Winston_Scene.unity
     guid: 86effebb986985341ba8ed786a171358
+  - enabled: 1
+    path: Assets/Daniil/Daniil.unity
+    guid: 4c1c269dd1ea7ba42a6200bdd72fdb8b
+  - enabled: 1
+    path: Assets/Joshua/Scene/Character.unity
+    guid: 88f01ef017393314294606b6802596cd
+  - enabled: 1
+    path: Assets/Joshua/Scene/MainMenu.unity
+    guid: 60493c22b58a5b2478c460e5e4b501bf
   m_configObjects: {}

@@ -21,6 +21,13 @@ public class CameraController : MonoBehaviour
     private void Update()
     {
         Rotate();
+
+
+        // Press the Escape to apple no locking to the Cursor
+        /*if (Input.GetKey(KeyCode.Escape))
+        {
+            UnlockCursor();
+        }*/
     }
 
     // mouse controlls the camera directin
@@ -30,4 +37,9 @@ public class CameraController : MonoBehaviour
 
         parent.Rotate(Vector3.up, mouseX);
     }
+
+    //private void UnlockCursor()
+    //{
+    //    Cursor.lockState = CursorLockMode.None;
+    //}
 }
