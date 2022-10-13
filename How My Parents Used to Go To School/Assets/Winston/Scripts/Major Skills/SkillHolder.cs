@@ -7,8 +7,8 @@ public class SkillHolder : MonoBehaviour
     public MajorSkill skill;
     float cooldownTime;
     float activeTime;
-    public Collider hitBox;
-
+    public Collider CharacterHitbox;
+    private WhirlwindOnhit WhirlOnhit;
     enum SkillState {
         ready,
         active,
@@ -21,23 +21,29 @@ public class SkillHolder : MonoBehaviour
     public KeyCode key;
 
 
-    void FixedUpdate() {
+    void Update() {
         switch (state) {
             case SkillState.ready:
                 if (Input.GetKeyDown(key))
                 {
+                    Debug.Log("Clicked");
+                    //launchAttack(CharacterHitbox);
+                    skill.Activate(gameObject);
                     state = SkillState.active;
                     activeTime = skill.activeTime;
                     //launchAttck(hitBox);
-                    //Debug.Log(state);
+                    Debug.Log(state);
+
+                    //clearTable();
                 }
                 break;
             case SkillState.active:
                 if (activeTime > 0)
                 {
-                    skill.Activate(gameObject);
+                    
                     activeTime -= Time.deltaTime;
-                    launchAttck(hitBox);
+                    skill.whirlwindSpin(gameObject);
+                   //WhirlOnhit.launchAttack(CharacterHitbox);
                     //OnDrawGizmos(hitBox);
 
                     //Debug.Log(activeTime);
@@ -45,9 +51,10 @@ public class SkillHolder : MonoBehaviour
                 else {
                     state = SkillState.cooldown;
                     cooldownTime = skill.cooldownTime;
-                    //Debug.Log(state);
+                    Debug.Log(state);
                 }
                 break;
+
             case SkillState.cooldown:
                 if (cooldownTime > 0)
                 {
@@ -64,30 +71,17 @@ public class SkillHolder : MonoBehaviour
 
     }
 
-    public void launchAttck(Collider collider)
+    public virtual void launchAttack(Collider collider)
     {
-        Collider[] cal = Physics.OverlapSphere(collider.bounds.center, collider.transform.localScale.x);
-        Hashtable hitList = new Hashtable();
-        bool isHit = false;
-        foreach (Collider c in cal)
-        {
-            if (!hitList.ContainsKey(c.GetInstanceID())) {
-                if (c != collider)
-                {
-                    hitList.Add(c.GetInstanceID(), true);
-                    Debug.Log("Hit!!!!!!");
-                }
-            }
 
-            //OnDrawGizmos(collider);
-            //   Debug.Log(collider.name);
-            Debug.Log(hitList);
-        }
+    }
+
+    public virtual void clearTable() { 
     }
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(hitBox.bounds.center, hitBox.transform.localScale.x);
+        Gizmos.DrawWireSphere(CharacterHitbox.bounds.center, CharacterHitbox.transform.localScale.x*4); //Whirlwind hitbox
     }
 
 }

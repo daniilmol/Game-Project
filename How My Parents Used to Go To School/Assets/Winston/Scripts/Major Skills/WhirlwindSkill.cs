@@ -7,13 +7,20 @@ using UnityEngine;
 public class WhirlwindSkill : MajorSkill
 {
 
-    [SerializeField] float basicDamage = 10f;
+    [SerializeField] 
+    private float basicDamage = 10f;
+    private Hashtable hitList = new Hashtable();
+
+    //public WhirlwindOnhit whirl;
     public override void Activate(GameObject player)
     {
         PlayerController input = player.GetComponent<PlayerController>();
         if (isLearned)
         {
-            whirlwindSpin(player);
+            //whirlwindSpin(player);
+            //clearTable();
+            launchAttack(player.GetComponent<Collider>());
+            hitList.Clear();
         }
         else {
             Debug.Log("Not Learned");
@@ -22,9 +29,12 @@ public class WhirlwindSkill : MajorSkill
     }
 
 
-    public void whirlwindSpin(GameObject player) {
-        player.transform.Rotate(0f, 5f, 0f, Space.Self);
+    public override void whirlwindSpin(GameObject player) {
+
+            player.transform.Rotate(0f, 10f, 0f, Space.Self);
+        
         //Debug.Log("WWWWWWWWW");
+       
     }
 
     public void IsLearned() {
@@ -32,5 +42,34 @@ public class WhirlwindSkill : MajorSkill
         Debug.Log("Learned");
     }
 
-
+    public  void launchAttack(Collider collider)
+    {
+        int layerMask = 1 << 7;
+        Collider[] cal = Physics.OverlapSphere(collider.bounds.center, collider.transform.localScale.x*4, layerMask);
+        
+        //bool isHit = false;
+        int count = 0;
+        foreach (Collider c in cal)
+        {
+            
+            if (!hitList.ContainsKey(c.GetInstanceID()))
+            {
+                hitList.Add(c.GetInstanceID(), true);
+                if (c != collider)
+                {
+                    Debug.Log("Working");
+                    Debug.Log("Hit!!!!!!");
+                    Debug.Log(c.name);
+                    count++;
+                }
+            }
+            //Debug.Log("Length" + count );
+            //OnDrawGizmos(collider);
+            //   Debug.Log(collider.name);
+            //Debug.Log(hitList);
+        }
+    }
+    public void clearTable() {
+        hitList.Clear();
+    }
 }
