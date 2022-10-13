@@ -7,8 +7,8 @@ public class SkillHolder : MonoBehaviour
     public MajorSkill skill;
     float cooldownTime;
     float activeTime;
-
-
+    public Collider CharacterHitbox;
+    private WhirlwindOnhit WhirlOnhit;
     enum SkillState {
         ready,
         active,
@@ -21,22 +21,32 @@ public class SkillHolder : MonoBehaviour
     public KeyCode key;
 
 
-    void FixedUpdate() {
+    void Update() {
         switch (state) {
             case SkillState.ready:
                 if (Input.GetKeyDown(key))
                 {
+                    Debug.Log("Clicked");
+                    //launchAttack(CharacterHitbox);
+                    skill.Activate(gameObject);
                     state = SkillState.active;
                     activeTime = skill.activeTime;
+                    //launchAttck(hitBox);
                     Debug.Log(state);
+
+                    //clearTable();
                 }
                 break;
             case SkillState.active:
                 if (activeTime > 0)
                 {
-                    skill.Activate(gameObject);
+                    
                     activeTime -= Time.deltaTime;
-                    Debug.Log(activeTime);
+                    skill.whirlwindSpin(gameObject);
+                   //WhirlOnhit.launchAttack(CharacterHitbox);
+                    //OnDrawGizmos(hitBox);
+
+                    //Debug.Log(activeTime);
                 }
                 else {
                     state = SkillState.cooldown;
@@ -44,6 +54,7 @@ public class SkillHolder : MonoBehaviour
                     Debug.Log(state);
                 }
                 break;
+
             case SkillState.cooldown:
                 if (cooldownTime > 0)
                 {
@@ -58,6 +69,19 @@ public class SkillHolder : MonoBehaviour
         }
 
 
+    }
+
+    public virtual void launchAttack(Collider collider)
+    {
+
+    }
+
+    public virtual void clearTable() { 
+    }
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(CharacterHitbox.bounds.center, CharacterHitbox.transform.localScale.x*4); //Whirlwind hitbox
     }
 
 }
