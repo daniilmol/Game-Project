@@ -6,9 +6,9 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] float lifetime = 3f;
 
-    private void Start()
+    void Start()
     {
-        StartLifetime();
+        StartCoroutine(StartLifetime());
     }
 
     private void OnTriggerEnter(Collider other)
@@ -21,6 +21,7 @@ public class Bullet : MonoBehaviour
 
     public IEnumerator StartLifetime()
     {
+        Debug.Log("Started lifetime counter");
         yield return new WaitForSeconds(lifetime);
         Destroy(gameObject);
     }
