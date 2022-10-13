@@ -43,6 +43,7 @@ public class SkillHolder : MonoBehaviour
                     
                     activeTime -= Time.deltaTime;
                     skill.whirlwindSpin(gameObject);
+                    skill.MortalStrikeSpin(gameObject);
                    //WhirlOnhit.launchAttack(CharacterHitbox);
                     //OnDrawGizmos(hitBox);
 
@@ -82,6 +83,8 @@ public class SkillHolder : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(CharacterHitbox.bounds.center, CharacterHitbox.transform.localScale.x*4); //Whirlwind hitbox
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(CharacterHitbox.bounds.center, CharacterHitbox.transform.localScale.x);
     }
 
 }

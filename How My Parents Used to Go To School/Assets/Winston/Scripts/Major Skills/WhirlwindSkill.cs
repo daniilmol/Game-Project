@@ -42,7 +42,7 @@ public class WhirlwindSkill : MajorSkill
         Debug.Log("Learned");
     }
 
-    public  void launchAttack(Collider collider)
+    public void launchAttack(Collider collider)
     {
         int layerMask = 1 << 7;
         Collider[] cal = Physics.OverlapSphere(collider.bounds.center, collider.transform.localScale.x*4, layerMask);

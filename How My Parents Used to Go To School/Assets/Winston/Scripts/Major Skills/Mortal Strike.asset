@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Mortal Strike
   m_EditorClassIdentifier: 
   skillName: MortalStrike
-  cooldownTime: 0
-  activeTime: 1
+  cooldownTime: 0.25
+  activeTime: 0.25
   isLearned: 1
+  basicDamage: 10

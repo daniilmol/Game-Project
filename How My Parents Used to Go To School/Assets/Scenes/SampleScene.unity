@@ -716,6 +716,11 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 7394542228613741185, guid: 60b290fc0c7f69544ba8dad578805a4d,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 7394542228613741189, guid: 60b290fc0c7f69544ba8dad578805a4d,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -18,4 +18,10 @@ public class MajorSkill : ScriptableObject
     
     
     }
+
+    public virtual void MortalStrikeSpin(GameObject player)
+    {
+
+
+    }
 }
