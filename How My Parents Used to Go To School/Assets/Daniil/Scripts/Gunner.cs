@@ -33,18 +33,21 @@ public class Gunner : Enemy
 
     private void FaceTarget(Vector3 destination)
     {
-        Vector3 lookPos = destination - transform.position;
-        lookPos.y = 0;
-        Quaternion rotation = Quaternion.LookRotation(lookPos);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 5f);
+        if ((following || shooting) && CheckForPlayerRange()) {
+            Vector3 lookPos = destination - transform.position;
+            lookPos.y = 0;
+            Quaternion rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 5f);
+        }
     }
 
     private void GunnerBehaviour() {
-        if (following)
+        Debug.Log(canSeePlayer);
+        if (following && CheckForPlayerRange())
         {
             agent.SetDestination(player.transform.position); 
         }
-        else if (shooting) {
+        else if (shooting && canSeePlayer) {
             agent.SetDestination(gameObject.transform.position);
             Attack();
         }
@@ -55,7 +58,6 @@ public class Gunner : Enemy
             return;
         }
             GameObject particle = Instantiate(bullet, transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z));
-            particle.AddComponent<Bullet>();
             particle.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * 2f, ForceMode.Impulse);
             StartCoroutine(StartCooldown());
     }
