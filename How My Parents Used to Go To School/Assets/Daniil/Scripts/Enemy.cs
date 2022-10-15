@@ -58,7 +58,7 @@ public class Enemy : MonoBehaviour
         this.player = player;
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, sightRange);
