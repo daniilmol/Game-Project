@@ -17,7 +17,7 @@ public class SceneSpawner : MonoBehaviour
     float zOffset = 3.5f;
     void Start()
     {
-        SpawnPlayer();
+        //SpawnPlayer();
         //SpawnEnemies();
     }
 
