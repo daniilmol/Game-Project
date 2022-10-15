@@ -9,15 +9,43 @@ public class Enemy : MonoBehaviour
     protected GameObject player;
     protected GameObject bullet;
     [SerializeField] float difficultyScaling;
+    [SerializeField] float sightRange;
     protected int health;
-    
-    void Start()
+    protected bool canSeePlayer;
+    protected bool withinPlayerRange;
+
+    void FixedUpdate()
     {
+        CheckForPlayerSight();
     }
 
-    void Update()
-    {
+    protected bool CheckForPlayerRange() {
+        if (Vector3.Distance(transform.position, player.transform.position) > sightRange)
+        {
+            withinPlayerRange = false;
+        }
+        else 
+        {
+            withinPlayerRange = true;
+        }
+        return withinPlayerRange;
+    }
 
+    private void CheckForPlayerSight() {
+        RaycastHit rayHit;
+        Ray ray = new Ray(transform.position, (player.transform.position - transform.position).normalized * 10);
+        Debug.DrawRay(transform.position, (player.transform.position - transform.position).normalized * 10);
+        if (Physics.Raycast(ray, out rayHit, 100))
+        {
+            if (rayHit.transform.gameObject.tag == "Player")
+            {
+                canSeePlayer = true;
+            }
+            else
+            {
+                canSeePlayer = false;
+            }
+        }
     }
 
     protected virtual void Attack() {
@@ -28,6 +56,11 @@ public class Enemy : MonoBehaviour
     {
         this.bullet = bullet;
         this.player = player;
-        bullet.AddComponent<Bullet>();  
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, sightRange);
     }
 }

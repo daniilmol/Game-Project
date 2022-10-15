@@ -13,4 +13,15 @@ public class MajorSkill : ScriptableObject
     {
     
     }
+
+    public virtual void whirlwindSpin(GameObject player) { 
+    
+    
+    }
+
+    public virtual void MortalStrikeSpin(GameObject player)
+    {
+
+
+    }
 }

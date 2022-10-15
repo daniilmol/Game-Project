@@ -35,15 +35,17 @@ public class Swordsman : Enemy
 
     private void FaceTarget(Vector3 destination)
     {
-        Vector3 lookPos = destination - transform.position;
-        lookPos.y = 0;
-        Quaternion rotation = Quaternion.LookRotation(lookPos);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 5f);
+        if (following && CheckForPlayerRange()) {
+            Vector3 lookPos = destination - transform.position;
+            lookPos.y = 0;
+            Quaternion rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 5f);
+        }
     }
 
     private void SwordsmanBehaviour()
     {
-        if (following)
+        if (following && CheckForPlayerRange())
         {
             agent.SetDestination(player.transform.position);
         }
