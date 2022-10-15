@@ -40,27 +40,27 @@ public class PlayerHealth : MonoBehaviour
         health += amount;
 
         if (health > healthMax)
-        {       
+        {
             health = healthMax;
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag != "Projectile")
-        {
-            gameObject.transform.parent = collision.gameobject.transform;
-            Destroy(rigidbody);
-            GetComponent<CircleCollider2D>().enabled = false;
-        }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.tag != "Projectile")
+    //    {
+    //        gameObject.transform.parent = collision.gameobject.transform;
+    //        Destroy(GetComponent<Rigidbody>());
+    //        GetComponent<CircleCollider2D>().enabled = false;
+    //    }
 
-        if (collision.tag == "Player")
-        {
-            var healthComponent = collision.GetComponenet<health>();
-            if (healthComponent != null)
-            {
-                healthComponent.TakeDamage(1);
-            }
-        }
-    }
+    //    if (collision.tag == "Player")
+    //    {
+    //        var healthComponent = collision.GetComponenet<health>();
+    //        if (healthComponent != null)
+    //        {
+    //            healthComponent.TakeDamage(1);
+    //        }
+    //    }
+    //}
 }

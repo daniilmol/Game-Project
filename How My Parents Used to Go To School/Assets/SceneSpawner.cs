@@ -12,23 +12,21 @@ public class SceneSpawner : MonoBehaviour
     [SerializeField] float enemyCount;
     [Header("Stage")]
     [SerializeField] GameObject stage;
+    float xOffset = -28;
+    float yOffset = 8.5f;
+    float zOffset = 3.5f;
     void Start()
     {
-        SpawnStage();
         SpawnPlayer();
-        SpawnEnemies();
+        //SpawnEnemies();
     }
 
     private void SpawnPlayer() {
-        Instantiate(player, new Vector3(1, 0, 1), Quaternion.identity);
-    }
-
-    private void SpawnStage() {
-        Instantiate(stage, new Vector3(0, 0, 0), Quaternion.identity);
+        Instantiate(player, new Vector3(1 + xOffset, yOffset, 1 + zOffset), Quaternion.identity);
     }
 
     private void SpawnEnemies() {
-        Vector3[] positions = {new Vector3(5, 0, 5), new Vector3(-5, 0, -5), new Vector3(10, 0, 10), new Vector3(7, 0, 4), new Vector3(4, 0, 7)};
+        Vector3[] positions = {new Vector3(5 + xOffset, 0 + yOffset, 5 + zOffset), new Vector3(-5 + xOffset, 0 + yOffset, -5 + zOffset), new Vector3(10 + xOffset, 0 + yOffset, 10 + zOffset), new Vector3(7 + xOffset, 0 + yOffset, 4 + zOffset), new Vector3(4 + xOffset, 0 + yOffset, 7 + zOffset)};
         GameObject[] spawnLocations = new GameObject[positions.Length];
         for (int i = 0; i < positions.Length; i++) {
             GameObject spawnLocation = new GameObject();
@@ -42,7 +40,7 @@ public class SceneSpawner : MonoBehaviour
         spawnEnemies.setBulletPrefab(bulletPrefab);
         spawnEnemies.setPlayer(player);
         Instantiate(enemySpawner, new Vector3(0, 0, 0), Quaternion.identity);
-        spawnEnemies.InitializeSpawner();
+        //spawnEnemies.InitializeSpawner();
     }
 
 
