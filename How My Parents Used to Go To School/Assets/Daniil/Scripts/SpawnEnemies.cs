@@ -7,7 +7,6 @@ public class SpawnEnemies : RandomSpawner
 {
     [Tooltip("Add invisible game objects to this array, these objects will represent the different spawnable locations")]
     [SerializeField] GameObject[] enemySpawns;
-    [SerializeField] GameObject enemy;
     [SerializeField] GameObject player;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] GameObject[] enemyTypes;
@@ -15,9 +14,23 @@ public class SpawnEnemies : RandomSpawner
     [Tooltip("How many objects to spawn. Cannot be greater than the array of spawnable locations")]
     [Range(0, 5)] [SerializeField] int enemyCount;
 
-
-    void Start()
-    {
+    public void InitializeSpawner(){
         Spawn(enemyCount, enemyTypes, enemySpawns, player, bulletPrefab);
+    }
+
+    public void setEnemyCount(int enemyCount) {
+        this.enemyCount = enemyCount;
+    }
+
+    public void setEnemySpawns(GameObject[] enemySpawns) {
+        this.enemySpawns = enemySpawns;
+    }
+
+    public void setBulletPrefab(GameObject bulletPrefab) {
+        this.bulletPrefab = bulletPrefab;
+    }
+
+    public void setPlayer(GameObject player) {
+        this.player = player;
     }
 }
