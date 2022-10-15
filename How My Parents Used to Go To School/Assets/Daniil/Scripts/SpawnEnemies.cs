@@ -14,7 +14,7 @@ public class SpawnEnemies : RandomSpawner
     [Tooltip("How many objects to spawn. Cannot be greater than the array of spawnable locations")]
     [Range(0, 5)] [SerializeField] int enemyCount;
 
-    public void InitializeSpawner(){
+    public void Start(){
         Spawn(enemyCount, enemyTypes, enemySpawns, player, bulletPrefab);
     }
 
