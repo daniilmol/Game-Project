@@ -41,7 +41,7 @@ public class MortalStrike : MajorSkill
     {
 
         player.transform.Rotate(0f, 0f, -10f, Space.Self);
-
+        //player.transform.Rotate(0f, 0f, -40f, Space.Self);
         //Debug.Log("WWWWWWWWW");
 
     }
