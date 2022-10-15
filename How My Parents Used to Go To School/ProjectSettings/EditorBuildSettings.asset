@@ -18,9 +18,12 @@ EditorBuildSettings:
     path: Assets/Joshua/Scene/Character.unity
     guid: 88f01ef017393314294606b6802596cd
   - enabled: 1
-    path: Assets/Joshua/Scene/MainMenu.unity
+    path: Assets/Joshua/Scene/Menu.unity
     guid: 60493c22b58a5b2478c460e5e4b501bf
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: e58d3660af2c42844844cc27002cd0b3
+  - enabled: 1
+    path: Assets/Scenes/SpawnerScene.unity
+    guid: 849271cbc79bec14ba32adbb9c690ee0
   m_configObjects: {}
