@@ -44,4 +44,23 @@ public class PlayerHealth : MonoBehaviour
             health = healthMax;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag != "Projectile")
+        {
+            gameObject.transform.parent = collision.gameobject.transform;
+            Destroy(rigidbody);
+            GetComponent<CircleCollider2D>().enabled = false;
+        }
+
+        if (collision.tag == "Player")
+        {
+            var healthComponent = collision.GetComponenet<health>();
+            if (healthComponent != null)
+            {
+                healthComponent.TakeDamage(1);
+            }
+        }
+    }
 }

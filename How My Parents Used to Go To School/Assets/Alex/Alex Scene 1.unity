@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571336, b: 0.3069219, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -790,7 +790,8 @@ MonoBehaviour:
   - {fileID: 1629141396}
   obstacle: {fileID: 5592419456824452718, guid: 2727886152335ad4eb797bc0f8cab414,
     type: 3}
-  enemyCount: 1
+  player: {fileID: 0}
+  obstacleCount: 0
 --- !u!4 &800460294
 Transform:
   m_ObjectHideFlags: 0
@@ -1089,6 +1090,12 @@ MonoBehaviour:
   - {fileID: 50357163}
   - {fileID: 563337391}
   enemy: {fileID: 3732227733825626360, guid: b787143c5b4c6524a9b6f3d51e476bac, type: 3}
+  player: {fileID: 0}
+  bulletPrefab: {fileID: 0}
+  enemyTypes:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   enemyCount: 3
 --- !u!4 &1432580136
 Transform:
