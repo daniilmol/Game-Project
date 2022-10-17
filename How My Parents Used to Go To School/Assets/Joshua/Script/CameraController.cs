@@ -9,25 +9,22 @@ public class CameraController : MonoBehaviour
 
     // REFERENCE
     private Transform parent;
+    public Transform target;
 
     private void Start()
     {
         parent = transform.parent;
 
         // hide the mouse and lock it in the midle of the screen
-        Cursor.lockState = CursorLockMode.Locked;
+        // Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
     {
-        Rotate();
+        //Rotate();
+        // transform.position = new Vector3(0, 0, 0);
 
 
-        // Press the Escape to apple no locking to the Cursor
-        /*if (Input.GetKey(KeyCode.Escape))
-        {
-            UnlockCursor();
-        }*/
     }
 
     // mouse controlls the camera directin
@@ -37,9 +34,4 @@ public class CameraController : MonoBehaviour
 
         parent.Rotate(Vector3.up, mouseX);
     }
-
-    //private void UnlockCursor()
-    //{
-    //    Cursor.lockState = CursorLockMode.None;
-    //}
 }
