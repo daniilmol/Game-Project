@@ -45,22 +45,22 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    //private void OnTriggerEnter2D(Collider2D collision)
+    //private void OnCollisionEnter(Collision collision)
     //{
-    //    if (collision.tag != "Projectile")
+    //    if (collision.gameObject.tag == "Sword")
     //    {
-    //        gameObject.transform.parent = collision.gameobject.transform;
-    //        Destroy(GetComponent<Rigidbody>());
-    //        GetComponent<CircleCollider2D>().enabled = false;
-    //    }
-
-    //    if (collision.tag == "Player")
-    //    {
-    //        var healthComponent = collision.GetComponenet<health>();
-    //        if (healthComponent != null)
-    //        {
-    //            healthComponent.TakeDamage(1);
-    //        }
+    //        Destroy(this.gameObject);
     //    }
     //}
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            takeDamage(1);
+        }
+        if (collision.gameObject.tag == "Bullet")
+        {
+            takeDamage(2);
+        }
+    }
 }
