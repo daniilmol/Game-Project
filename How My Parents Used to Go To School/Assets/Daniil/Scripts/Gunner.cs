@@ -42,7 +42,7 @@ public class Gunner : Enemy
     }
 
     private void GunnerBehaviour() {
-        Debug.Log(canSeePlayer);
+        //Debug.Log(canSeePlayer);
         if (following && CheckForPlayerRange())
         {
             agent.SetDestination(player.transform.position); 
