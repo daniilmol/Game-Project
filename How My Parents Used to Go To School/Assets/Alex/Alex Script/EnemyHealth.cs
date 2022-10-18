@@ -6,6 +6,7 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] float health;
     [SerializeField] float healthMax = 3f;
+    [SerializeField] Enemy enemy;
     public Animator anim;
 
     // Start is called before the first frame update
@@ -30,6 +31,11 @@ public class EnemyHealth : MonoBehaviour
 
         if (health <= 0)
         {
+            if (Random.Range(0, 100) < enemy.GetDropChance())
+            {
+                Powerup powerUp = Instantiate(enemy.GetPowerUp(), gameObject.transform.position, Quaternion.identity).GetComponent<Powerup>();
+                powerUp.Initialize(Random.Range(0, 3));
+            }
             Destroy(this.gameObject);
         }
     }

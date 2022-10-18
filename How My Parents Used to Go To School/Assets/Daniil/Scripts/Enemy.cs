@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     protected NavMeshAgent agent;
     protected GameObject player;
     protected GameObject bullet;
-    protected float dropChance;
+    protected float dropChance = 100;
     protected int health;
     protected bool canSeePlayer;
     protected bool withinPlayerRange;
@@ -64,6 +64,14 @@ public class Enemy : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+    }
+
+    public GameObject GetPowerUp() {
+        return powerUpDrop;
+    }
+
+    public float GetDropChance() {
+        return dropChance;
     }
 
     public void OnDeath() {
