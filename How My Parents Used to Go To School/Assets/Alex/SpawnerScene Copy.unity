@@ -1101,6 +1101,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5910971915677604487, guid: e144eab7d5745984bab4eb66f43fd879,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e144eab7d5745984bab4eb66f43fd879, type: 3}
 --- !u!1 &926606333 stripped
@@ -1175,6 +1180,19 @@ MonoBehaviour:
   skill: {fileID: 11400000, guid: 5119b703262896740916482af38d8bb0, type: 2}
   CharacterHitbox: {fileID: 926606340}
   key: 32
+--- !u!65 &926606349
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 926606333}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &955420761
 GameObject:
   m_ObjectHideFlags: 0
