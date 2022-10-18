@@ -63,7 +63,7 @@ public class WhirlwindSkill : MajorSkill
                     Debug.Log("Working");
                     Debug.Log("Hit!!!!!!");
                     Debug.Log(c.name);
-                    c.GetComponent<EnemyHealth>().takeDamage(10);
+                    c.GetComponent<EnemyHealth>().takeDamage(1);
                                         //  Need a on hit decrese health function here, example: decreaseHealth(Gameobject enemy);
                     count++;
                 }
