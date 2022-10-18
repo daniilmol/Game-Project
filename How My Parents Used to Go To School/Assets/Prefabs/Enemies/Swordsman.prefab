@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6955643654099278886}
   - component: {fileID: 4868584462344630089}
   - component: {fileID: -1672922608144686462}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Swordsman
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -154,6 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   difficultyScaling: 0
   sightRange: 10
+  powerUpDrop: {fileID: 109661819918598396, guid: 0829e679566932643b7a51374fe01813,
+    type: 3}
   range: 0
   attackSpeed: 2
 --- !u!114 &-1672922608144686462
@@ -170,4 +172,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   healthMax: 3
+  enemy: {fileID: 4868584462344630089}
   anim: {fileID: 0}

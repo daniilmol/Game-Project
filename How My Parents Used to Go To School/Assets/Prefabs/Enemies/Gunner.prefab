@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7447775575432617793}
   - component: {fileID: -4346603138488992170}
   - component: {fileID: -8503506788489985883}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gunner
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -154,6 +154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   difficultyScaling: 0
   sightRange: 10
+  powerUpDrop: {fileID: 109661819918598396, guid: 0829e679566932643b7a51374fe01813,
+    type: 3}
   range: 3
   attackSpeed: 2
 --- !u!114 &-8503506788489985883
@@ -170,4 +172,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   healthMax: 3
+  enemy: {fileID: -4346603138488992170}
   anim: {fileID: 0}
