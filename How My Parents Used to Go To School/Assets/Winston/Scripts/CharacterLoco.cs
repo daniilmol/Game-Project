@@ -36,7 +36,7 @@ public class CharacterLoco : MonoBehaviour
     private void roll() {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            Debug.Log("Preeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeees");
+           // Debug.Log("Preeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeees");
             //animator.SetLayerWeight(1, isRoll ? 0 : 1); //lower aiming animation when running. Aimlayer is on layer 1
             isRoll = !isRoll;
             animator.SetBool("isRoll", isRoll);
@@ -44,7 +44,7 @@ public class CharacterLoco : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            Debug.Log("Preeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeees");
+           // Debug.Log("Preeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeees");
             //animator.SetLayerWeight(1, isRoll ? 0 : 1); //lower aiming animation when running. Aimlayer is on layer 1
             isRoll = !isRoll;
             animator.SetBool("isRoll", isRoll);
@@ -54,7 +54,7 @@ public class CharacterLoco : MonoBehaviour
     private void moving() {
         if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.S))
         {
-            Debug.Log("Preeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeees");
+            //Debug.Log("Preeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeees");
             //animator.SetLayerWeight(1, isRoll ? 0 : 1); //lower aiming animation when running. Aimlayer is on layer 1
             isMoving = !isMoving;
             animator.SetBool("isMoving", isMoving);
@@ -62,7 +62,7 @@ public class CharacterLoco : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.S))
         {
-            Debug.Log("Preeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeees");
+            //Debug.Log("Preeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeees");
             //animator.SetLayerWeight(1, isRoll ? 0 : 1); //lower aiming animation when running. Aimlayer is on layer 1
             isMoving = !isMoving;
             animator.SetBool("isMoving", isMoving);

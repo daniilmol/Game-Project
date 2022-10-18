@@ -10,6 +10,7 @@ public class SkillHolder : MonoBehaviour
     public Collider CharacterHitbox;
     private CharacterLoco anima;
     private string activingSkill;
+    public ParticleSystem vfx;
     enum SkillState {
         ready,
         active,
@@ -40,6 +41,7 @@ public class SkillHolder : MonoBehaviour
                     //anima.
                     activingSkill = "is" + skill.skillName;
                     anima.takeActivingSkill(activingSkill);
+                    vfx.Play();
                     Debug.Log(state);
 
                     //clearTable();
