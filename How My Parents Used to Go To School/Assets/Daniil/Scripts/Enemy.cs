@@ -8,11 +8,13 @@ public class Enemy : MonoBehaviour
     protected NavMeshAgent agent;
     protected GameObject player;
     protected GameObject bullet;
-    [SerializeField] float difficultyScaling;
-    [SerializeField] float sightRange;
+    protected float dropChance;
     protected int health;
     protected bool canSeePlayer;
     protected bool withinPlayerRange;
+    [SerializeField] float difficultyScaling;
+    [SerializeField] float sightRange;
+    [SerializeField] GameObject powerUpDrop;
 
     void FixedUpdate()
     {
@@ -62,5 +64,13 @@ public class Enemy : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+    }
+
+    public void OnDeath() {
+        if (Random.Range(0, 100) < dropChance) {
+            Powerup powerUp = Instantiate(powerUpDrop, gameObject.transform.position, Quaternion.identity).GetComponent<Powerup>();
+            powerUp.Initialize(Random.Range(0, 3));
+        }
+        Destroy(gameObject);
     }
 }
