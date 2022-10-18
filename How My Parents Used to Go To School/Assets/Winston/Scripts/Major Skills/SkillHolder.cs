@@ -8,7 +8,8 @@ public class SkillHolder : MonoBehaviour
     float cooldownTime;
     float activeTime;
     public Collider CharacterHitbox;
-    private WhirlwindOnhit WhirlOnhit;
+    private CharacterLoco anima;
+    private string activingSkill;
     enum SkillState {
         ready,
         active,
@@ -19,7 +20,10 @@ public class SkillHolder : MonoBehaviour
     SkillState state = SkillState.ready;
 
     public KeyCode key;
-
+    void Start()
+    {
+        anima = GetComponent<CharacterLoco>();
+    }
 
     void Update() {
         switch (state) {
@@ -31,7 +35,11 @@ public class SkillHolder : MonoBehaviour
                     skill.Activate(gameObject);
                     state = SkillState.active;
                     activeTime = skill.activeTime;
+                    Debug.Log(skill.skillName);
                     //launchAttck(hitBox);
+                    //anima.
+                    activingSkill = "is" + skill.skillName;
+                    anima.takeActivingSkill(activingSkill);
                     Debug.Log(state);
 
                     //clearTable();
@@ -52,6 +60,7 @@ public class SkillHolder : MonoBehaviour
                 else {
                     state = SkillState.cooldown;
                     cooldownTime = skill.cooldownTime;
+                    anima.endActivingSkill(activingSkill);
                     Debug.Log(state);
                 }
                 break;

@@ -25,15 +25,15 @@ public class PlayerController : MonoBehaviour
         panel.GetComponent<CanvasGroup>().alpha = 0;
     }
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        Vector2 v2 = movement.ReadValue<Vector2>();
 
-        Vector3 v3 = new Vector3(0.2f * (v2.x), 0, 0.2f * (v2.y));
+        //Vector2 v2 = movement.ReadValue<Vector2>();
 
-        transform.Translate(v3);
+        //Vector3 v3 = new Vector3(0.2f * (v2.x), 0, 0.2f * (v2.y));
 
-        //transform.Rotate(0f, 20f, 0f);
+        //transform.Translate(v3);
+
     }
 
     public void openConsole(InputAction.CallbackContext context)
@@ -54,4 +54,7 @@ public class PlayerController : MonoBehaviour
             panel.GetComponent<CanvasGroup>().interactable = true;
         }
     }
+
+
+
 }
