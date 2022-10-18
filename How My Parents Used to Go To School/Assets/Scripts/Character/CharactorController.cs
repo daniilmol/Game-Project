@@ -15,15 +15,12 @@ public class CharactorController : MonoBehaviour
     private float mouseXPos;
     private float mouseZPos;
     private Vector3 mousePos;
-    private Vector3 mousePosition;
-    private Vector3 objectPosition;
 
     // References
     private CharacterController controller;
     private Animator anim;
     public Transform target;
     [SerializeField] private Camera mainCamera;
-    private Rigidbody rb;
 
 
     // Start is called before the first frame update
@@ -86,20 +83,22 @@ public class CharactorController : MonoBehaviour
         float z = Input.GetAxis("Vertical");
         float x = Input.GetAxis("Horizontal");
 
+        moveDirection = new Vector3(x, 0, z);
+        moveDirection = Quaternion.Euler(0, mainCamera.transform.eulerAngles.y, 0) * moveDirection;
 
-        //moveDirection = new Vector3(x, 0, z);
-        moveDirection = new Vector3(0.5f * ((1.73205f * z) - x), 0, 0.5f * (-1.73205f * x - z));
+        anim.SetFloat("InputX", moveDirection.x);
+        anim.SetFloat("InputY", moveDirection.z);
 
         // tragger animation
         if (moveDirection != Vector3.zero && !Input.GetKey(KeyCode.LeftShift))
         {
             // Walk
-            Walk();
+           // Walk();
         }
         else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftShift))
         {
             // Run
-            Run();
+           // Run();
         }
         else if (moveDirection == Vector3.zero)
         {
@@ -111,17 +110,17 @@ public class CharactorController : MonoBehaviour
         controller.Move(moveDirection * Time.deltaTime);
     }
 
-    private void Walk()
-    {
-        moveSpeed = walkSpeed;
-        anim.SetFloat("Speed", 0.5f, 0.1f, Time.deltaTime);
-    }
+    //private void Walk()
+    //{
+    //    moveSpeed = walkSpeed;
+    //    anim.SetFloat("Speed", 0.5f, 0.1f, Time.deltaTime);
+    //}
 
-    private void Run()
-    {
-        moveSpeed = runSPeed;
-        anim.SetFloat("Speed", 1, 0.1f, Time.deltaTime);
-    }
+    //private void Run()
+    //{
+    //    moveSpeed = runSPeed;
+    //    anim.SetFloat("Speed", 1, 0.1f, Time.deltaTime);
+    //}
 
     private void Idel()
     {
@@ -164,6 +163,7 @@ public class CharactorController : MonoBehaviour
     private void excuteRolling()
     {
         controller.Move(new Vector3(mouseXPos, 0, mouseZPos) * 2 * Time.deltaTime);
+        Debug.Log("er");
     }
 
     // rotate the model facing the direction of mouse
