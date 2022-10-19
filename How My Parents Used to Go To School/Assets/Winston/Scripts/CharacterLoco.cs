@@ -53,6 +53,7 @@ public class CharacterLoco : MonoBehaviour
     }
     private void moving() {
         if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.S))
+        //if (Input.GetKeyUp(KeyCode.W))
         {
             //Debug.Log("Preeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeees");
             //animator.SetLayerWeight(1, isRoll ? 0 : 1); //lower aiming animation when running. Aimlayer is on layer 1
@@ -61,6 +62,7 @@ public class CharacterLoco : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.S))
+        //if (Input.GetKeyUp(KeyCode.W))
         {
             //Debug.Log("Preeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeees");
             //animator.SetLayerWeight(1, isRoll ? 0 : 1); //lower aiming animation when running. Aimlayer is on layer 1

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1533408053853178249}
   - component: {fileID: 1969183450478846286}
   - component: {fileID: 6264854436504547986}
-  - component: {fileID: 8216581117954495365}
+  - component: {fileID: -7850950273139092266}
   - component: {fileID: 4059874284291583350}
   m_Layer: 7
   m_Name: Gunner 1
@@ -140,7 +140,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8216581117954495365
+--- !u!114 &-7850950273139092266
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -149,15 +149,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 171526967958850859}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a3659313528577419227bd9d00b68b4, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d18d8f91bc176c4799eb21192272dac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   difficultyScaling: 0
-  sightRange: 10
+  sightRange: 15
   powerUpDrop: {fileID: 109661819918598396, guid: 0829e679566932643b7a51374fe01813,
     type: 3}
-  range: 7
-  attackSpeed: 1
+  range: 10
+  attackSpeed: 0.5
 --- !u!114 &4059874284291583350
 MonoBehaviour:
   m_ObjectHideFlags: 0

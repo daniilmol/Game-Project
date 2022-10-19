@@ -57,7 +57,7 @@ public class BigGunner : Enemy
         if (!IsAvailable) {
             return;
         }
-            GameObject particle = Instantiate(bullet, transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z));
+            GameObject particle = Instantiate(bullet, new Vector3 (transform.position.x, transform.position.y -5f, transform.position.z), Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z));
             particle.GetComponent<Rigidbody>().AddForce(transform.forward * particle.GetComponent<Bullet>().GetSpeed(), ForceMode.Impulse);
             StartCoroutine(StartCooldown());
     }
