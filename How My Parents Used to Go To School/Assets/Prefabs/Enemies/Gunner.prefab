@@ -156,8 +156,8 @@ MonoBehaviour:
   sightRange: 10
   powerUpDrop: {fileID: 109661819918598396, guid: 0829e679566932643b7a51374fe01813,
     type: 3}
-  range: 3
-  attackSpeed: 2
+  range: 7
+  attackSpeed: 1
 --- !u!114 &-8503506788489985883
 MonoBehaviour:
   m_ObjectHideFlags: 0

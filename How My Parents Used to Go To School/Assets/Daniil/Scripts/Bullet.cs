@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] float lifetime = 3f;
+    [SerializeField] float speed = 5f;
 
     void Start()
     {
@@ -24,5 +25,9 @@ public class Bullet : MonoBehaviour
         Debug.Log("Started lifetime counter");
         yield return new WaitForSeconds(lifetime);
         Destroy(gameObject);
+    }
+
+    public float GetSpeed(){
+        return speed;
     }
 }

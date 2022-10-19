@@ -723,6 +723,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Spawns
       objectReference: {fileID: 0}
+    - target: {fileID: 1840636830025400436, guid: 6cea5967a6446a6478908bd4dbaf614f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1840636830025400437, guid: 6cea5967a6446a6478908bd4dbaf614f,
         type: 3}
       propertyPath: m_RootOrder
