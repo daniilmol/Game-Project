@@ -58,7 +58,7 @@ public class Gunner : Enemy
             return;
         }
             GameObject particle = Instantiate(bullet, transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z));
-            particle.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * 2f, ForceMode.Impulse);
+            particle.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * particle.GetComponent<Bullet>().GetSpeed(), ForceMode.Impulse);
             StartCoroutine(StartCooldown());
     }
     public IEnumerator StartCooldown()
