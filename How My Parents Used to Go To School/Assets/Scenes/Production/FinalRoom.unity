@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18145567, g: 0.22708659, b: 0.30739406, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -639,7 +639,7 @@ PrefabInstance:
     - target: {fileID: 2452020986280504030, guid: 02bf1f7c7d636224695bb388d4e12fd9,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02bf1f7c7d636224695bb388d4e12fd9, type: 3}
@@ -1010,6 +1010,67 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a81d702e310ba64b99235d96a7c2096, type: 3}
+--- !u!1 &701851090 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 306495982620447684, guid: 5a81d702e310ba64b99235d96a7c2096,
+    type: 3}
+  m_PrefabInstance: {fileID: 701851089}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &701851091 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9009625765950249203, guid: 5a81d702e310ba64b99235d96a7c2096,
+    type: 3}
+  m_PrefabInstance: {fileID: 701851089}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &701851092 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3867540932929161946, guid: 5a81d702e310ba64b99235d96a7c2096,
+    type: 3}
+  m_PrefabInstance: {fileID: 701851089}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &701851093 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6060603483636218362, guid: 5a81d702e310ba64b99235d96a7c2096,
+    type: 3}
+  m_PrefabInstance: {fileID: 701851089}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &701851094 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2650158028289812647, guid: 5a81d702e310ba64b99235d96a7c2096,
+    type: 3}
+  m_PrefabInstance: {fileID: 701851089}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &701851095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701851090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb58660d32744ed4d9dbd842b8f0f9c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableObjects:
+  - {fileID: 701851093}
+  - {fileID: 701851092}
+  - {fileID: 701851091}
+  playAnimations: []
+  enableObjects: []
+--- !u!114 &701851096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701851094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33cd101962d7cc04891ddf0e1de38f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: QuizRoom
 --- !u!1 &870371293
 GameObject:
   m_ObjectHideFlags: 0
@@ -1125,7 +1186,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &933551645
 RectTransform:
@@ -1950,8 +2011,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1950926950}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0.14190823, y: 0.8578864, z: -0.35867912, w: 0.3394735}
+  m_LocalPosition: {x: -18.409294, y: 23.110048, z: 3.3387184}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2001,8 +2062,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1981504980}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -36.959915, y: 7.067596, z: -1.4179214}
+  m_LocalRotation: {x: 0.14190833, y: 0.8578863, z: -0.35867912, w: 0.33947378}
+  m_LocalPosition: {x: -18.409294, y: 23.110048, z: 3.3387184}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
