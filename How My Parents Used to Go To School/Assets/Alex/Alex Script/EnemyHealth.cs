@@ -37,6 +37,7 @@ public class EnemyHealth : MonoBehaviour
                 powerUp.Initialize(Random.Range(0, 3));
             }
             Destroy(this.gameObject);
+            SpawnEnemies.numberOfEnimies--;
         }
     }
 
