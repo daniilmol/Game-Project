@@ -18,6 +18,8 @@ public class WhirlwindOnhit : SkillHolder
                 {
                     hitList.Add(c.GetInstanceID(), true);
                     Debug.Log("Hit!!!!!!");
+                    c.GetComponent<EnemyHealth>().takeDamage(1);
+
                 }
             }
 
