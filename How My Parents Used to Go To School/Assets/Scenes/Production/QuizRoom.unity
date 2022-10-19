@@ -916,7 +916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b21d6657bc2f42c79b19834e7a86469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 7394542228193394612}
+  playerHealth: {fileID: 0}
   fillImage: {fileID: 17316547}
 --- !u!114 &403410882
 MonoBehaviour:
@@ -3190,6 +3190,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2452020986280504030, guid: 02bf1f7c7d636224695bb388d4e12fd9,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02bf1f7c7d636224695bb388d4e12fd9, type: 3}
 --- !u!1 &2056341277 stripped
@@ -3267,6 +3272,21 @@ MonoBehaviour:
   care: {fileID: 1598463676}
   horizontalSpeed: 2
   verticalSpeed: 2
+--- !u!114 &114100004222028717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253088776951317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a433b38188a4e21a9e11acc71a463f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  healthMax: 10
+  anim: {fileID: 0}
 --- !u!1001 &2631329139537832448
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3417,7 +3437,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7394542228193394608}
   - component: {fileID: 7394542228193394609}
-  - component: {fileID: 7394542228193394612}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -3425,18 +3444,3 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &7394542228193394612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7394542228193394611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18a433b38188a4e21a9e11acc71a463f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 10
-  healthMax: 10
-  anim: {fileID: 0}
