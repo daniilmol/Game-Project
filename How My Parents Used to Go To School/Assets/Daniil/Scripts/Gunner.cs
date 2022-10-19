@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class Gunner : Enemy
 {
-    [SerializeField] float range = 3f;
-    [SerializeField] float attackSpeed = 2f;
+    [SerializeField] float range = 7f;
+    [SerializeField] float attackSpeed = 1f;
     private bool shooting;
     private bool following;
     private bool IsAvailable = true;
@@ -58,7 +58,7 @@ public class Gunner : Enemy
             return;
         }
             GameObject particle = Instantiate(bullet, transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z));
-            particle.GetComponent<Rigidbody>().AddForce(gameObject.transform.forward * particle.GetComponent<Bullet>().GetSpeed(), ForceMode.Impulse);
+            particle.GetComponent<Rigidbody>().AddForce(transform.forward * particle.GetComponent<Bullet>().GetSpeed(), ForceMode.Impulse);
             StartCoroutine(StartCooldown());
     }
     public IEnumerator StartCooldown()

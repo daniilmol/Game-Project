@@ -31,7 +31,7 @@ public class Powerup : MonoBehaviour
         float[] stats = {healthBoost, damageBoost, speedBoost };
         return stats;
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player"){
             collision.gameObject.GetComponent<PlayerHealth>().IncreaseStats(this);

@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     protected float damage;
     protected bool canSeePlayer;
     protected bool withinPlayerRange;
+    protected RaycastHit rayHit;
     [SerializeField] float difficultyScaling;
     [SerializeField] float sightRange;
     [SerializeField] GameObject powerUpDrop;
@@ -35,7 +36,6 @@ public class Enemy : MonoBehaviour
     }
 
     private void CheckForPlayerSight() {
-        RaycastHit rayHit;
         Ray ray = new Ray(transform.position, (player.transform.position - transform.position).normalized * 10);
         Debug.DrawRay(transform.position, (player.transform.position - transform.position).normalized * 10);
         if (Physics.Raycast(ray, out rayHit, 100))
