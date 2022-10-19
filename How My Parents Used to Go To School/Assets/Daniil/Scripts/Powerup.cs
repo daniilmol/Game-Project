@@ -27,11 +27,17 @@ public class Powerup : MonoBehaviour
             speedBoost = 10;
         }
     }
-
-   // public float[] IncreaseStats() { 
-        
-       // return 
-    ////}
+    public float[] getStats() {
+        float[] stats = {healthBoost, damageBoost, speedBoost };
+        return stats;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player"){
+            collision.gameObject.GetComponent<PlayerHealth>().IncreaseStats(this);
+            Destroy(gameObject);
+        }
+    }
 
     public string getName() 
     { 

@@ -56,9 +56,9 @@ public class EnemyHealth : MonoBehaviour
         {
             takeDamage(1);
         }
-        if (collision.gameObject.tag == "Bullet")
-        {
-            takeDamage(2);
-        }
+        //if (collision.gameObject.tag == "Bullet")
+        //{
+        //    takeDamage(2);
+        //}
     }
 }

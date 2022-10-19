@@ -63,4 +63,10 @@ public class PlayerHealth : MonoBehaviour
             takeDamage(2);
         }
     }
+
+    public void IncreaseStats(Powerup powerup) {
+        health += powerup.getStats()[0];
+       // damage += powerup.getStats()[1];
+        //speed += powerup.getStats()[2];
+    }
 }

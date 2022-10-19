@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -578,7 +578,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 900, y: -464}
+  m_AnchoredPosition: {x: 529, y: -306}
   m_SizeDelta: {x: 125.0784, y: 24.086}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &403410881
@@ -1149,6 +1149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skill: {fileID: 11400000, guid: 077ce73202193a047a7e349ed6711362, type: 2}
   CharacterHitbox: {fileID: 926606340}
+  vfx: {fileID: 0}
   key: 0
 --- !u!114 &926606344
 MonoBehaviour:
@@ -1164,6 +1165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skill: {fileID: 11400000, guid: db047f140f5304141945940c5d7ce9a6, type: 2}
   CharacterHitbox: {fileID: 926606340}
+  vfx: {fileID: 0}
   key: 114
 --- !u!114 &926606345
 MonoBehaviour:
@@ -1179,6 +1181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skill: {fileID: 11400000, guid: 5119b703262896740916482af38d8bb0, type: 2}
   CharacterHitbox: {fileID: 926606340}
+  vfx: {fileID: 0}
   key: 32
 --- !u!65 &926606349
 BoxCollider:
@@ -1391,7 +1394,7 @@ Transform:
   - {fileID: 2131202596}
   - {fileID: 833503953}
   m_Father: {fileID: 580865674}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1185938252
 PrefabInstance:

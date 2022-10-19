@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     protected GameObject bullet;
     protected float dropChance = 100;
     protected int health;
+    protected float damage;
     protected bool canSeePlayer;
     protected bool withinPlayerRange;
     [SerializeField] float difficultyScaling;
