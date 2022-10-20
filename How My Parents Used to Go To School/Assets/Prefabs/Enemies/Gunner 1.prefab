@@ -172,5 +172,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   healthMax: 10
-  enemy: {fileID: 0}
+  enemy: {fileID: -7850950273139092266}
   anim: {fileID: 0}
