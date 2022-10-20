@@ -8,7 +8,7 @@ public class WhirlwindSkill : MajorSkill
 {
 
     [SerializeField] 
-    private float basicDamage = 10f;
+    public float basicDamage = 1.0f;
     private Hashtable hitList = new Hashtable();
     
 
@@ -48,7 +48,7 @@ public class WhirlwindSkill : MajorSkill
     {
         int layerMask = 1 << 7;
         Collider[] cal = Physics.OverlapSphere(collider.bounds.center, collider.transform.localScale.x*4, layerMask);
-        Debug.Log(collider.transform.localScale.x * 10);
+        Debug.Log(collider.transform.localScale.x * 4);
         //bool isHit = false;
         int count = 0;
         foreach (Collider c in cal)
@@ -63,7 +63,7 @@ public class WhirlwindSkill : MajorSkill
                     Debug.Log("Working");
                     Debug.Log("Hit!!!!!!");
                     Debug.Log(c.name);
-                    c.GetComponent<EnemyHealth>().takeDamage(1);
+                    c.GetComponent<EnemyHealth>().takeDamage(basicDamage);
                                         //  Need a on hit decrese health function here, example: decreaseHealth(Gameobject enemy);
                     count++;
                 }

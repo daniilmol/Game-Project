@@ -16,4 +16,4 @@ MonoBehaviour:
   cooldownTime: 0.25
   activeTime: 0.25
   isLearned: 1
-  basicDamage: 10
+  basicDamage: 1
