@@ -82,6 +82,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpawns: []
   enemy: {fileID: 3732227733825626360, guid: b787143c5b4c6524a9b6f3d51e476bac, type: 3}
+  player: {fileID: 0}
+  bulletPrefab: {fileID: 0}
+  enemyTypes:
+  - {fileID: 8905634646024945879, guid: e190e6d9eedb41c43abc69c98894b3ae, type: 3}
+  - {fileID: 3732227733825626360, guid: b787143c5b4c6524a9b6f3d51e476bac, type: 3}
   enemyCount: 0
 --- !u!1 &5710230867274099816
 GameObject:

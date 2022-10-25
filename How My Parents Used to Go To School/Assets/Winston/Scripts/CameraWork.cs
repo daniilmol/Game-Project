@@ -18,7 +18,7 @@ public class CameraWork : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 playerInfo = player.transform.transform.position;
-        mainCamera.transform.position = new Vector3(playerInfo.x, playerInfo.y, playerInfo.z - cameraDistOffset);
+        //Vector3 playerInfo = player.transform.transform.position;
+       // mainCamera.transform.position = new Vector3(playerInfo.x, playerInfo.y + 10f, playerInfo.z - cameraDistOffset);
     }
 }
