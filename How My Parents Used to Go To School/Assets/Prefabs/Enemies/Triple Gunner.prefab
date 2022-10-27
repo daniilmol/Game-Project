@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &640899133263499273
+--- !u!1 &3495559628825089393
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,50 +8,51 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 115598968911366444}
-  - component: {fileID: 8783307613118104081}
-  - component: {fileID: 3217824317765217019}
-  - component: {fileID: 5703354231339192971}
-  - component: {fileID: -5670445948698790383}
-  - component: {fileID: 1553098283761269380}
-  - component: {fileID: 1969357180981501920}
-  m_Layer: 0
-  m_Name: Projectile
-  m_TagString: Bullet
+  - component: {fileID: 3495559628825089398}
+  - component: {fileID: 3495559628825089397}
+  - component: {fileID: 3495559628825089396}
+  - component: {fileID: 3495559628825089394}
+  - component: {fileID: 3495559628825089395}
+  - component: {fileID: -1049250029645126604}
+  - component: {fileID: 3035713440874051233}
+  - component: {fileID: 851965452359905343}
+  m_Layer: 7
+  m_Name: Triple Gunner
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &115598968911366444
+--- !u!4 &3495559628825089398
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 640899133263499273}
+  m_GameObject: {fileID: 3495559628825089393}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.3, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8783307613118104081
+--- !u!33 &3495559628825089397
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 640899133263499273}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &3217824317765217019
+  m_GameObject: {fileID: 3495559628825089393}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &3495559628825089396
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 640899133263499273}
+  m_GameObject: {fileID: 3495559628825089393}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -65,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 17e2ba978178f704597b179d71eaa406, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -87,59 +88,89 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &5703354231339192971
-SphereCollider:
+--- !u!195 &3495559628825089394
+NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 640899133263499273}
-  m_Material: {fileID: 0}
+  m_GameObject: {fileID: 3495559628825089393}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!136 &3495559628825089395
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3495559628825089393}
+  m_Material: {fileID: 13400000, guid: 727d4b1a614912645b67bf3ca2454571, type: 2}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
   m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &-5670445948698790383
+--- !u!54 &-1049250029645126604
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 640899133263499273}
+  m_GameObject: {fileID: 3495559628825089393}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 2
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
-  m_CollisionDetection: 1
---- !u!114 &1553098283761269380
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &3035713440874051233
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 640899133263499273}
+  m_GameObject: {fileID: 3495559628825089393}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f48e607ba35c8ee4bbc1aae6a93ef46f, type: 3}
+  m_Script: {fileID: 11500000, guid: e41667161e2fc854ea468695db5c242c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifetime: 3
-  speed: 8
---- !u!114 &1969357180981501920
+  difficultyScaling: 0
+  sightRange: 10
+  powerUpDrop: {fileID: 109661819918598396, guid: 0829e679566932643b7a51374fe01813,
+    type: 3}
+  range: 7
+  attackSpeed: 1
+--- !u!114 &851965452359905343
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 640899133263499273}
+  m_GameObject: {fileID: 3495559628825089393}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fda12a05cb5f4684aa95a42a0c12fc59, type: 3}
+  m_Script: {fileID: 11500000, guid: 644d35d5eb781bf46b7eae5cc8ee6f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  r: {fileID: 0}
+  health: 3
+  healthMax: 3
+  enemy: {fileID: 3035713440874051233}
+  anim: {fileID: 0}
