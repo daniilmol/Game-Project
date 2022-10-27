@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 //using UnityEngine.Physics;
+using UnityEngine.AI;
 
 [CreateAssetMenu]
 public class WhirlwindSkill : MajorSkill
@@ -10,12 +11,14 @@ public class WhirlwindSkill : MajorSkill
     [SerializeField] 
     public float basicDamage = 1.0f;
     private Hashtable hitList = new Hashtable();
+    GameObject globalPlayer;
     
 
 
     //public WhirlwindOnhit whirl;
     public override void Activate(GameObject player)
     {
+        globalPlayer = player;
         PlayerController input = player.GetComponent<PlayerController>();
         if (isLearned)
         {
@@ -62,9 +65,18 @@ public class WhirlwindSkill : MajorSkill
                 {
                     Debug.Log("Working");
                     Debug.Log("Hit!!!!!!");
+                    Debug.Log("PUSHING ENEMY BACK");
                     Debug.Log(c.name);
+<<<<<<< Updated upstream
                     c.GetComponent<EnemyHealth>().takeDamage(basicDamage);
                                         //  Need a on hit decrese health function here, example: decreaseHealth(Gameobject enemy);
+=======
+                    c.GetComponent<EnemyHealth>().takeDamage(1);
+                    float force = 4;
+                    Vector3 vectorForce = Vector3.Normalize(globalPlayer.transform.position - c.transform.position);
+                    //c.GetComponent<NavMeshAgent>().isStopped = true;
+                    c.GetComponent<Rigidbody>().AddForce(force * -c.transform.forward, ForceMode.VelocityChange);                    //  Need a on hit decrese health function here, example: decreaseHealth(Gameobject enemy);
+>>>>>>> Stashed changes
                     count++;
                 }
             }

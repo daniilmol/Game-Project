@@ -23,6 +23,10 @@ public class Enemy : MonoBehaviour
         CheckForPlayerSight();
     }
 
+    void Update(){
+        CheckSpeed();
+    }
+
     protected bool CheckForPlayerRange() {
         if (Vector3.Distance(transform.position, player.transform.position) > sightRange)
         {
@@ -82,4 +86,12 @@ public class Enemy : MonoBehaviour
         }
         Destroy(gameObject);
     }
+
+    private void CheckSpeed(){
+        if(GetComponent<Rigidbody>().velocity == Vector3.zero){
+            agent.isStopped = false;
+        }
+    }
+
+
 }

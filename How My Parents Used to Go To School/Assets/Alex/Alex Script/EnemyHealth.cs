@@ -28,7 +28,7 @@ public class EnemyHealth : MonoBehaviour
     public void takeDamage(float amount)
     {
         health -= amount;
-
+        
         if (health <= 0)
         {
             if (Random.Range(0, 100) < enemy.GetDropChance())
