@@ -67,16 +67,12 @@ public class WhirlwindSkill : MajorSkill
                     Debug.Log("Hit!!!!!!");
                     Debug.Log("PUSHING ENEMY BACK");
                     Debug.Log(c.name);
-<<<<<<< Updated upstream
                     c.GetComponent<EnemyHealth>().takeDamage(basicDamage);
                                         //  Need a on hit decrese health function here, example: decreaseHealth(Gameobject enemy);
-=======
-                    c.GetComponent<EnemyHealth>().takeDamage(1);
                     float force = 4;
                     Vector3 vectorForce = Vector3.Normalize(globalPlayer.transform.position - c.transform.position);
                     //c.GetComponent<NavMeshAgent>().isStopped = true;
                     c.GetComponent<Rigidbody>().AddForce(force * -c.transform.forward, ForceMode.VelocityChange);                    //  Need a on hit decrese health function here, example: decreaseHealth(Gameobject enemy);
->>>>>>> Stashed changes
                     count++;
                 }
             }
