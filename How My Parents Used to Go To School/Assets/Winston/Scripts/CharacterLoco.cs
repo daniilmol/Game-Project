@@ -8,7 +8,7 @@ using UnityEngine;
 //POLYGON starter pack https://assetstore.unity.com/packages/3d/props/polygon-starter-pack-low-poly-3d-art-by-synty-156819?aid=1011ljjCh&utm_campaign=unity_affiliate&utm_medium=affiliate&utm_source=partnerize-linkmaker
 public class CharacterLoco : MonoBehaviour
 {
-    Animator animator;
+    public Animator animator;
     Vector2 input;
     bool isRoll = false;
     bool isMoving = false;
@@ -16,7 +16,7 @@ public class CharacterLoco : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
+        //animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame

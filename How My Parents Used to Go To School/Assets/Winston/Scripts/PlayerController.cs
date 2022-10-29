@@ -20,20 +20,22 @@ public class PlayerController : MonoBehaviour
         inputActions = new UserInputs();
         inputActions.Player.Enable();
         movement = inputActions.Player.Movement;
-        //movement.Enable();
+        movement.Enable();
         inputActions.Player.CallOutPanel.performed += openConsole;
         panel.GetComponent<CanvasGroup>().alpha = 0;
     }
     // Update is called once per frame
     void Update()
     {
+        Vector2 v2 = movement.ReadValue<Vector2>();
 
-        //Vector2 v2 = movement.ReadValue<Vector2>();
+        //Vector2 v2;
+        //v2.x = Input.GetAxis("Horizontal");
+        //v2.y = Input.GetAxis("Vertical");
 
-        //Vector3 v3 = new Vector3(0.2f * (v2.x), 0, 0.2f * (v2.y));
-
-        //transform.Translate(v3);
-
+        Debug.Log(v2.x + " " + v2.y);
+        Vector3 v3 = new Vector3(0.08f * (v2.x), 0, 0.08f * (v2.y));
+        transform.Translate(Quaternion.Euler(0, -45, 0)*v3);
     }
 
     public void openConsole(InputAction.CallbackContext context)

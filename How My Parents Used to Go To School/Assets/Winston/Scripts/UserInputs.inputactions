@@ -28,7 +28,7 @@
                 {
                     "name": "WASD",
                     "id": "ad1ef571-ce51-4dda-885d-fe8eb59c6fb2",
-                    "path": "2DVector",
+                    "path": "2DVector(mode=1)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -37,9 +37,9 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
+                    "name": "Up",
                     "id": "97b68031-4dd6-4dc7-b68d-c286319817dd",
-                    "path": "<Keyboard>/r",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -48,9 +48,9 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "down",
+                    "name": "Down",
                     "id": "4fc304fc-98a5-425e-b264-ac0190c76e42",
-                    "path": "<Keyboard>/i",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -59,9 +59,9 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "left",
-                    "id": "bee0cf56-135f-403e-9269-d6115c463dae",
-                    "path": "<Keyboard>/o",
+                    "name": "Left",
+                    "id": "c59ed4a3-577c-4974-a31f-48a8860031f4",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -70,9 +70,9 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "right",
-                    "id": "bc5541a8-0012-4590-af29-aab19d6a7263",
-                    "path": "<Keyboard>/p",
+                    "name": "Right",
+                    "id": "daee5c89-625e-493c-a213-59ec2c3daef7",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
