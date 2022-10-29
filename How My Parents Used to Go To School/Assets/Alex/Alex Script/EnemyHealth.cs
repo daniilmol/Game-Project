@@ -28,7 +28,8 @@ public class EnemyHealth : MonoBehaviour
     public void takeDamage(float amount)
     {
         health -= amount;
-
+        enemy.GetComponent<MeshRenderer>().material = enemy.getFlashColor();;
+        Invoke("ResetColor", 0.2f);
         if (health <= 0)
         {
             if (Random.Range(0, 100) < enemy.GetDropChance())
@@ -39,6 +40,10 @@ public class EnemyHealth : MonoBehaviour
             Destroy(this.gameObject);
             SpawnEnemies.numberOfEnimies--;
         }
+    }
+
+    private void ResetColor(){
+        enemy.GetComponent<MeshRenderer>().material = enemy.getOriginalColor();
     }
 
     public void heal(float amount)

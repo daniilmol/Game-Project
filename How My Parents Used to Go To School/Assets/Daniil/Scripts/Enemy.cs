@@ -17,10 +17,16 @@ public class Enemy : MonoBehaviour
     [SerializeField] float difficultyScaling;
     [SerializeField] float sightRange;
     [SerializeField] GameObject powerUpDrop;
+    [SerializeField] Material originalColor;
+    [SerializeField] Material flashColor;
 
     void FixedUpdate()
     {
         CheckForPlayerSight();
+    }
+
+    void Update(){
+        CheckSpeed();
     }
 
     protected bool CheckForPlayerRange() {
@@ -82,4 +88,20 @@ public class Enemy : MonoBehaviour
         }
         Destroy(gameObject);
     }
+
+    private void CheckSpeed(){
+        if(GetComponent<Rigidbody>().velocity == Vector3.zero){
+            agent.isStopped = false;
+        }
+    }
+
+    public Material getOriginalColor(){
+        return originalColor;
+    }
+
+    public Material getFlashColor(){
+        return flashColor;
+    }
+
+
 }
