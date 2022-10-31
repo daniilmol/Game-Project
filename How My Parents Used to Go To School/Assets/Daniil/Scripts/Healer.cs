@@ -7,8 +7,7 @@ public class Healer : Enemy
 {
     [SerializeField] float range = 4f;
     [SerializeField] float attackSpeed = 1f;
-    private bool shooting;
-    private bool following;
+    private bool running;
     private bool IsAvailable = true;
     private GameObject[] otherEnemies;
     private GameObject healingTarget;
