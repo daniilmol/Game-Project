@@ -36,16 +36,18 @@ public class CharacterLoco : MonoBehaviour
     private void roll() {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-           // Debug.Log("Preeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeees");
+            // Debug.Log("Preeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeees");
             //animator.SetLayerWeight(1, isRoll ? 0 : 1); //lower aiming animation when running. Aimlayer is on layer 1
+            animator.applyRootMotion = true;
             isRoll = !isRoll;
             animator.SetBool("isRoll", isRoll);
         }
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-           // Debug.Log("Preeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeees");
+            // Debug.Log("Preeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeees");
             //animator.SetLayerWeight(1, isRoll ? 0 : 1); //lower aiming animation when running. Aimlayer is on layer 1
+            animator.applyRootMotion = false;
             isRoll = !isRoll;
             animator.SetBool("isRoll", isRoll);
         }
