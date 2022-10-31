@@ -12,6 +12,7 @@ public class Healer : Enemy
     private bool IsAvailable = true;
     private GameObject[] otherEnemies;
     private GameObject healingTarget;
+    private Transform startTransform;
 
     private Hashtable hitList = new Hashtable();
 
@@ -74,19 +75,35 @@ public class Healer : Enemy
                 && Vector3.Distance(otherEnemies[i].transform.position, transform.position) < currentLowest){
                 agent.destination = otherEnemies[i].transform.position;
                 healingTarget = otherEnemies[i];
+                currentLowest = Vector3.Distance(otherEnemies[i].transform.position, transform.position);
             }
         }
-        if(healingTarget != null && Vector3.Distance(healingTarget.transform.position, transform.position) < range){
+        if(healingTarget != null && Vector3.Distance(healingTarget.transform.position, transform.position) < range && currentLowest < playerDistance){
             agent.destination = transform.position;
             Heal();
+        }else if((healingTarget != null && Vector3.Distance(healingTarget.transform.position, transform.position) > playerDistance)){
+            RunAway();
+        }else if(healingTarget == null && 4 > playerDistance){
+            RunAway();
         }
-        if (following && CheckForPlayerRange())
-        {
-            agent.SetDestination(player.transform.position); 
-        }
-        else if (shooting && canSeePlayer) {
-            agent.SetDestination(gameObject.transform.position);
-            Attack();
-        }
+    }
+
+    private void RunAway(){
+         startTransform = transform;
+         
+         transform.rotation = Quaternion.LookRotation(transform.position - player.transform.position);
+ 
+        
+         Vector3 runTo = transform.position + transform.forward * 3;
+         
+         
+         NavMeshHit hit;    
+ 
+         NavMesh.SamplePosition(runTo, out hit, 5, 1 << NavMesh.GetNavMeshLayerFromName("Walkable")); 
+
+         transform.position = startTransform.position;
+         transform.rotation = startTransform.rotation;
+ 
+         agent.SetDestination(hit.position);
     }
 }

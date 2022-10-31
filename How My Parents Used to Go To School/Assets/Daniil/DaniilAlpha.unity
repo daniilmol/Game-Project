@@ -3010,7 +3010,7 @@ PrefabInstance:
     - target: {fileID: 7672704725407681490, guid: 7e16ffff8ead77943b3a3a95919d2f68,
         type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7672704725407681491, guid: 7e16ffff8ead77943b3a3a95919d2f68,
         type: 3}
@@ -3036,7 +3036,7 @@ PrefabInstance:
     - target: {fileID: 7672704725407681491, guid: 7e16ffff8ead77943b3a3a95919d2f68,
         type: 3}
       propertyPath: enemyTypes.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7672704725407681491, guid: 7e16ffff8ead77943b3a3a95919d2f68,
         type: 3}
@@ -3060,6 +3060,12 @@ PrefabInstance:
       propertyPath: enemyTypes.Array.data[2]
       value: 
       objectReference: {fileID: 3495559628825089393, guid: 073f598a69d046345b832f3d09b00e01,
+        type: 3}
+    - target: {fileID: 7672704725407681491, guid: 7e16ffff8ead77943b3a3a95919d2f68,
+        type: 3}
+      propertyPath: enemyTypes.Array.data[3]
+      value: 
+      objectReference: {fileID: 8366109158623594809, guid: 7ef6f793b192c764ea1fb1b837b91088,
         type: 3}
     - target: {fileID: 7672704725407681491, guid: 7e16ffff8ead77943b3a3a95919d2f68,
         type: 3}
