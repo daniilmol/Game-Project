@@ -108,7 +108,7 @@ public class Enemy : MonoBehaviour
     }
 
     public void ScaleDamage(float scale){
-        damage *= scale;
+        damage += damage * scale;
         difficultyScaling = scale;
     }
 

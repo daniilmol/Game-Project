@@ -12,7 +12,6 @@ public class EnemyHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        healthMax *= enemy.GetScale();
         health = healthMax;
     }
 
@@ -24,6 +23,11 @@ public class EnemyHealth : MonoBehaviour
     public float getHealthMax()
     {
         return healthMax;
+    }
+
+    public void ScaleHealth(float scale){
+        healthMax += healthMax * enemy.GetScale();
+        health = healthMax;
     }
 
     public void takeDamage(float amount)

@@ -14,10 +14,11 @@ public class RandomSpawner : MonoBehaviour
         {
             int indexRemove = Random.Range(0, spawns.Length);
             int enemyIndex = Random.Range(0, prefab.Length);
-            GameObject instantiated = (GameObject)Instantiate(prefab[2], spawns[indexRemove].transform);
+            GameObject instantiated = (GameObject)Instantiate(prefab[enemyIndex], spawns[indexRemove].transform);
             if (instantiated.tag == "Enemy") {
                 instantiated.GetComponent<Enemy>().SetTarget(player, bulletPrefab);
                 instantiated.GetComponent<Enemy>().ScaleDamage(scale);
+                instantiated.GetComponent<EnemyHealth>().ScaleHealth(scale);
             }
             spawns = spawns.Where((source, index) => index != indexRemove).ToArray();
         }
