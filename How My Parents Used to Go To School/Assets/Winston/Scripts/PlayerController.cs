@@ -35,7 +35,12 @@ public class PlayerController : MonoBehaviour
 
         Debug.Log(v2.x + " " + v2.y);
         Vector3 v3 = new Vector3(0.08f * (v2.x), 0, 0.08f * (v2.y));
-        transform.Translate(Quaternion.Euler(0, -45, 0)*v3);
+
+        //v3.x = Mathf.Clamp(v3.x, 0, 0.08f);
+        //v3.z = Mathf.Clamp(v3.z, 0, 0.08f);
+        //v3.y = Mathf.Clamp(v3.y, 0, 0.08f);
+        Vector3 finsihedVol = Quaternion.Euler(0, -45, 0) * v3.normalized * 0.08f;
+        transform.Translate(finsihedVol);
     }
 
     public void openConsole(InputAction.CallbackContext context)
