@@ -10,13 +10,15 @@ public class SpawnEnemies : RandomSpawner
     [SerializeField] GameObject player;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] GameObject[] enemyTypes;
+    [SerializeField] float difficultyScaling;
 
     [Tooltip("How many objects to spawn. Cannot be greater than the array of spawnable locations")]
     [Range(0, 5)] [SerializeField] int enemyCount;
     public static int numberOfEnimies;
 
     public void Start(){
-        Spawn(enemyCount, enemyTypes, enemySpawns, player, bulletPrefab);
+        difficultyScaling = PlayerPrefs.GetFloat("Scale");
+        Spawn(enemyCount, enemyTypes, enemySpawns, player, bulletPrefab, difficultyScaling);
         numberOfEnimies = enemyCount;
     }
 
@@ -34,5 +36,13 @@ public class SpawnEnemies : RandomSpawner
 
     public void setPlayer(GameObject player) {
         this.player = player;
+    }
+
+    public float GetScale(){
+        return difficultyScaling;
+    }
+
+    public void SetScale(float scale){
+        difficultyScaling = scale;
     }
 }

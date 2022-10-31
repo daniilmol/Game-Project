@@ -14,6 +14,7 @@ public class BigGunner : Enemy
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        damage = 3f;
     }
     void Update()
     {

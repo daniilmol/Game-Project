@@ -103,5 +103,16 @@ public class Enemy : MonoBehaviour
         return flashColor;
     }
 
+    public float GetDamage(){
+        return damage;
+    }
 
+    public void ScaleDamage(float scale){
+        damage *= scale;
+        difficultyScaling = scale;
+    }
+
+    public float GetScale(){
+        return difficultyScaling;
+    }
 }

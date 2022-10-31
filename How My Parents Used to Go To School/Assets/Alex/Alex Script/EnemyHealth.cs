@@ -12,6 +12,7 @@ public class EnemyHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        healthMax *= enemy.GetScale();
         health = healthMax;
     }
 

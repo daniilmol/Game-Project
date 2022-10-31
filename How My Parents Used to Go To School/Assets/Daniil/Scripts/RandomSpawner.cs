@@ -8,7 +8,7 @@ public class RandomSpawner : MonoBehaviour
     /*
      * Spawns any prefab object randomly in a list of empty areas
      */
-    protected void Spawn(int count, GameObject[] prefab, GameObject[] spawns, GameObject player, GameObject bulletPrefab)
+    protected void Spawn(int count, GameObject[] prefab, GameObject[] spawns, GameObject player, GameObject bulletPrefab, float scale)
     {
         for (int i = 0; i < count; i++)
         {
@@ -17,6 +17,7 @@ public class RandomSpawner : MonoBehaviour
             GameObject instantiated = (GameObject)Instantiate(prefab[2], spawns[indexRemove].transform);
             if (instantiated.tag == "Enemy") {
                 instantiated.GetComponent<Enemy>().SetTarget(player, bulletPrefab);
+                instantiated.GetComponent<Enemy>().ScaleDamage(scale);
             }
             spawns = spawns.Where((source, index) => index != indexRemove).ToArray();
         }

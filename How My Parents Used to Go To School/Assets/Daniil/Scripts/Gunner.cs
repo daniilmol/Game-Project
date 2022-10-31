@@ -14,7 +14,9 @@ public class Gunner : Enemy
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        damage = 1f;
     }
+
     void Update()
     {
         agent.updateRotation = false;
