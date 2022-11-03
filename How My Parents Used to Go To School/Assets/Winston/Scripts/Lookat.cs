@@ -18,7 +18,10 @@ public class Lookat : MonoBehaviour
     private Vector3 mousePos;
     //Vector3 object_pos;
     //float angle;
-
+    private void Awake()
+    {
+        target = GetComponent<Transform>();
+    }
     void Update()
     {
         Ray ray = care.ScreenPointToRay(Input.mousePosition);

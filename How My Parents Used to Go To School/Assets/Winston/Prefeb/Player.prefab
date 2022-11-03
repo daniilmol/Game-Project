@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3412379148497975997}
-  m_LocalRotation: {x: -0, y: 0.9999866, z: -0, w: 0.005181595}
+  m_LocalRotation: {x: 0, y: 0.9999866, z: 0, w: 0.005183528}
   m_LocalPosition: {x: -19.76, y: -0.96, z: 5.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -566,17 +566,17 @@ PrefabInstance:
     - target: {fileID: 2635804144769944573, guid: a926c5e7aff146b4ab41c48a5e53ceaa,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 4.22
       objectReference: {fileID: 0}
     - target: {fileID: 2635804144769944573, guid: a926c5e7aff146b4ab41c48a5e53ceaa,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -4.55
       objectReference: {fileID: 0}
     - target: {fileID: 2635804144769944573, guid: a926c5e7aff146b4ab41c48a5e53ceaa,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.96
       objectReference: {fileID: 0}
     - target: {fileID: 2635804144769944573, guid: a926c5e7aff146b4ab41c48a5e53ceaa,
         type: 3}
@@ -663,7 +663,7 @@ Rigidbody:
   m_GameObject: {fileID: 5314801260943135515}
   serializedVersion: 2
   m_Mass: 1000
-  m_Drag: 0
+  m_Drag: 3
   m_AngularDrag: 1000
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -726,6 +726,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5230452462673746261}
+--- !u!114 &134812438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5314801260943135515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a433b38188a4e21a9e11acc71a463f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  healthMax: 10
+  anim: {fileID: 0}
 --- !u!4 &5320332488079762675 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2635804144769944573, guid: a926c5e7aff146b4ab41c48a5e53ceaa,
