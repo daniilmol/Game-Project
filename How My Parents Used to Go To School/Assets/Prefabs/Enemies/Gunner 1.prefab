@@ -98,7 +98,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 10
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -119,7 +119,7 @@ Rigidbody:
   m_GameObject: {fileID: 171526967958850859}
   serializedVersion: 2
   m_Mass: 1000000
-  m_Drag: 0
+  m_Drag: 2
   m_AngularDrag: 10000
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -156,6 +156,8 @@ MonoBehaviour:
   sightRange: 15
   powerUpDrop: {fileID: 109661819918598396, guid: 0829e679566932643b7a51374fe01813,
     type: 3}
+  originalColor: {fileID: 2100000, guid: 17e2ba978178f704597b179d71eaa406, type: 2}
+  flashColor: {fileID: 2100000, guid: 2f3f6b45693e03d4dac03ea894a0dd78, type: 2}
   range: 10
   attackSpeed: 0.5
 --- !u!114 &4059874284291583350

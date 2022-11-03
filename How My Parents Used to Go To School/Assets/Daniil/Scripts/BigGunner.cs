@@ -10,57 +10,92 @@ public class BigGunner : Enemy
     private bool shooting;
     private bool following;
     private bool IsAvailable = true;
+    private bool IsResting;
+    private bool finishedAbility = false;
+    private int abilityTimer;
+    private int restTimer;
+    private int angleScale;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         damage = 3f;
+        abilityTimer = 5;
+        restTimer = 2;
+        IsResting = false;
+        shooting = true;
+        angleScale = 0;
     }
     void Update()
     {
         agent.updateRotation = false;
         FaceTarget(player.transform.position);
-        if (Vector3.Distance(gameObject.transform.position, player.transform.position) > range)
-        {
-            following = true;
-            shooting = false;
-        }
-        else if (Vector3.Distance(gameObject.transform.position, player.transform.position) <= range) {
-            shooting = true;
-            following = false;
-        }
-        GunnerBehaviour();
+        
+        FirstBossBehaviour();
     }
 
     private void FaceTarget(Vector3 destination)
     {
-        if ((following || shooting) && CheckForPlayerRange()) {
-            Vector3 lookPos = destination - transform.position;
-            lookPos.y = 0;
-            Quaternion rotation = Quaternion.LookRotation(lookPos);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 5f);
-        }
+        Vector3 lookPos = destination - transform.position;
+        lookPos.y = 0;
+        Quaternion rotation = Quaternion.LookRotation(lookPos);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 5f);
     }
 
-    private void GunnerBehaviour() {
-        //Debug.Log(canSeePlayer);
-        if (following && CheckForPlayerRange())
-        {
-            agent.SetDestination(player.transform.position); 
-        }
-        else if (shooting && canSeePlayer) {
-            agent.SetDestination(gameObject.transform.position);
+    private void FirstBossBehaviour() {
+        if(!IsResting){
             Attack();
         }
     }
 
-    protected override void Attack() {
-        if (!IsAvailable) {
+    private void Shoot(){
+        if(!IsAvailable){
             return;
         }
-            GameObject particle = Instantiate(bullet, new Vector3 (transform.position.x, transform.position.y -5f, transform.position.z), Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z));
-            particle.GetComponent<Rigidbody>().AddForce(transform.forward * particle.GetComponent<Bullet>().GetSpeed(), ForceMode.Impulse);
-            StartCoroutine(StartCooldown());
+        if(angleScale == 360){
+            angleScale = 0;
+        }
+        for(int i = 0; i < 10; i++){
+            GameObject particle = Instantiate(bullet, transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z));
+            particle.GetComponent<Rigidbody>().AddForce(Quaternion.Euler(angleScale, angleScale, 0) * transform.forward * particle.GetComponent<Bullet>().GetSpeed(), ForceMode.Impulse);
+            angleScale += 36;
+        }
+        StartCoroutine(StartCooldown());
+    }
+
+    private void Charge(){
+        if(!IsAvailable){
+            return;
+        }
+        agent.destination = player.transform.position;
+        StartCoroutine(StartCooldown());
+    }
+
+    protected override void Attack() {
+        if(shooting){
+            Shoot();
+            if(!finishedAbility){
+                StartCoroutine(StartAbilityCooldown());
+            }
+        }else{
+            Charge();
+            if(!finishedAbility){
+                StartCoroutine(StartAbilityCooldown());
+            }
+        }
+    }
+
+    public IEnumerator StartAbilityCooldown(){
+        finishedAbility = true;
+        yield return new WaitForSeconds(abilityTimer);
+        StartCoroutine(StartRestCooldown());
+        shooting = !shooting;
+        finishedAbility = false;
+    }
+    public IEnumerator StartRestCooldown(){
+        IsResting = true;
+        yield return new WaitForSeconds(restTimer);
+        IsResting = false;
     }
     public IEnumerator StartCooldown()
     {
