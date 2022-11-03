@@ -6,7 +6,7 @@ public class PlayerAbilityManager : MonoBehaviour
 {
     private bool shieldFlag;
     [SerializeField] private GameObject shield;
-    [SerializeField] private int shieldReactTime = 10;
+    [SerializeField] private int shieldReactTime = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -17,17 +17,20 @@ public class PlayerAbilityManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        shieldFlag = FindObjectOfType<Shield>().shieldFlag;
+        ShieldAbility(FindObjectOfType<Shield>().shieldFlag);
+    }
 
-        // If shieldFlag is false, disable shield and wait for a for a movment. Then enable shield gameobject
-        if (shieldFlag == false)
+    // enable generate shield. When shield touch enemy or bullet, shield disappear and recover after a period of time
+    private void ShieldAbility(bool flag)
+    {
+        if(flag == false)
         {
             CloseShield();
             StartCoroutine(ReactShield());
         }
     }
 
-    // close shield
+    // close shield if it is hitted by enemy or bullet
     private void CloseShield()
     {
         shield.SetActive(false);

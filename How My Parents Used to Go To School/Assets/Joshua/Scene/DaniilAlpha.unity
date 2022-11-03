@@ -3331,7 +3331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shield: {fileID: 6052989771977000182}
-  shieldReactTime: 10
+  shieldReactTime: 5
 --- !u!114 &5210903785571032488
 MonoBehaviour:
   m_ObjectHideFlags: 0

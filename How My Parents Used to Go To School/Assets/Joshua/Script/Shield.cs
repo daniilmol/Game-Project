@@ -19,7 +19,6 @@ public class Shield : MonoBehaviour
     void Update()
     {
         FollowPlayer();
-
     }
 
     // if shiled is hitted by enemy or bullet, set shieldFlag to false
