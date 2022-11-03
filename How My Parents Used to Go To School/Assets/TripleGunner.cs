@@ -61,13 +61,13 @@ public class TripleGunner : Enemy
             GameObject particle = Instantiate(bullet, transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z));
             GameObject particle2 = Instantiate(bullet, transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z));
             GameObject particle3 = Instantiate(bullet, transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z));
-            particle.GetComponent<Rigidbody>().AddForce(transform.forward * particle.GetComponent<Bullet>().GetSpeed(), ForceMode.Impulse);
+            particle.GetComponent<Rigidbody>().AddForce(transform.forward * particle.GetComponent<Bullet>().GetSpeed()  * Time.deltaTime, ForceMode.Impulse);
             
             //Vector3 angled = Quaternion.Euler(45f, 45f, 0) * transform.forward;
             //Vector3 angle2 = Quaternion.Euler(-45f, -45f, 0) * transform.forward;
 
-            particle2.GetComponent<Rigidbody>().AddForce(Quaternion.Euler(-45, -45, 0) * transform.forward * particle.GetComponent<Bullet>().GetSpeed(), ForceMode.Impulse);
-            particle3.GetComponent<Rigidbody>().AddForce(Quaternion.Euler(45, 45, 0) * transform.forward * particle.GetComponent<Bullet>().GetSpeed(), ForceMode.Impulse);
+            particle2.GetComponent<Rigidbody>().AddForce(Quaternion.Euler(-45, -45, 0) * transform.forward * particle.GetComponent<Bullet>().GetSpeed() * Time.deltaTime, ForceMode.Impulse);
+            particle3.GetComponent<Rigidbody>().AddForce(Quaternion.Euler(45, 45, 0) * transform.forward * particle.GetComponent<Bullet>().GetSpeed() * Time.deltaTime, ForceMode.Impulse);
             StartCoroutine(StartCooldown());
     }
     public IEnumerator StartCooldown()

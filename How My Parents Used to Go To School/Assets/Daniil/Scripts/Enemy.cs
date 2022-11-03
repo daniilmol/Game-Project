@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject powerUpDrop;
     [SerializeField] Material originalColor;
     [SerializeField] Material flashColor;
+    protected int spawnWeight;
 
     void FixedUpdate()
     {
@@ -105,6 +106,14 @@ public class Enemy : MonoBehaviour
 
     public float GetDamage(){
         return damage;
+    }
+
+    public int GetSpawnWeight(){
+        return spawnWeight;
+    }
+
+    public void SetSpawnWeight(int spawnWeight){
+        this.spawnWeight = spawnWeight;
     }
 
     public void ScaleDamage(float scale){

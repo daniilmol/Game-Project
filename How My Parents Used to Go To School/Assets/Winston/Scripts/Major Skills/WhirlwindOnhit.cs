@@ -21,10 +21,10 @@ public class WhirlwindOnhit : SkillHolder
                     Debug.Log("Hit!!!!!!");
                     Debug.Log("PUSHING PLAYER BACK IN ON HIT");
                     c.GetComponent<EnemyHealth>().takeDamage(1);
-                    float force = 1;
+                    float force = 50;
                     Vector3 vectorForce = Vector3.Normalize(gameObject.transform.position - c.transform.position);
                     //c.GetComponent<NavMeshAgent>().isStopped = true;
-                    c.GetComponent<Rigidbody>().AddForce(force * -transform.forward, ForceMode.Impulse);
+                    c.GetComponent<Rigidbody>().AddForce(force * -transform.forward * Time.deltaTime, ForceMode.Impulse);
                 }
             }
 

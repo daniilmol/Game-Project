@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Gunner : Enemy
+public class Tank : Enemy
 {
-    [SerializeField] float range = 7f;
-    [SerializeField] float attackSpeed = 1f;
-    private bool shooting;
+    [SerializeField] float range = 1f;
+    [SerializeField] float attackSpeed = 3f;
+    private float lastShotTime;
+    private bool attacking;
     private bool following;
     private bool IsAvailable = true;
 
@@ -16,7 +17,6 @@ public class Gunner : Enemy
         agent = GetComponent<NavMeshAgent>();
         damage = 1f;
     }
-
     void Update()
     {
         agent.updateRotation = false;
@@ -24,18 +24,19 @@ public class Gunner : Enemy
         if (Vector3.Distance(gameObject.transform.position, player.transform.position) > range)
         {
             following = true;
-            shooting = false;
+            attacking = false;
         }
-        else if (Vector3.Distance(gameObject.transform.position, player.transform.position) <= range) {
-            shooting = true;
+        else if (Vector3.Distance(gameObject.transform.position, player.transform.position) <= range)
+        {
+            attacking = true;
             following = false;
         }
-        GunnerBehaviour();
+        SwordsmanBehaviour();
     }
 
     private void FaceTarget(Vector3 destination)
     {
-        if ((following || shooting) && CheckForPlayerRange()) {
+        if (following && CheckForPlayerRange()) {
             Vector3 lookPos = destination - transform.position;
             lookPos.y = 0;
             Quaternion rotation = Quaternion.LookRotation(lookPos);
@@ -43,25 +44,26 @@ public class Gunner : Enemy
         }
     }
 
-    private void GunnerBehaviour() {
-        //Debug.Log(canSeePlayer);
+    private void SwordsmanBehaviour()
+    {
         if (following && CheckForPlayerRange())
         {
-            agent.SetDestination(player.transform.position); 
+            agent.SetDestination(player.transform.position);
         }
-        else if (shooting && canSeePlayer) {
-            agent.SetDestination(gameObject.transform.position);
+        else if (attacking)
+        {
             Attack();
         }
     }
 
-    protected override void Attack() {
-        if (!IsAvailable) {
+    protected override void Attack()
+    {
+        if (!IsAvailable)
+        {
             return;
         }
-            GameObject particle = Instantiate(bullet, transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z));
-            particle.GetComponent<Rigidbody>().AddForce(transform.forward * particle.GetComponent<Bullet>().GetSpeed() * Time.deltaTime, ForceMode.Impulse);
-            StartCoroutine(StartCooldown());
+
+        StartCoroutine(StartCooldown());
     }
     public IEnumerator StartCooldown()
     {
