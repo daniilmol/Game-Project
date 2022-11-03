@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
+using UnityEngine.Experimental.VFX;
 
 public class SkillHolder : MonoBehaviour
 {
@@ -10,7 +12,8 @@ public class SkillHolder : MonoBehaviour
     public Collider CharacterHitbox;
     private CharacterLoco anima;
     private string activingSkill;
-    public ParticleSystem vfx;
+    //public ParticleSystem vfx;
+    public VisualEffect vfx;
     enum SkillState {
         ready,
         active,
@@ -41,9 +44,9 @@ public class SkillHolder : MonoBehaviour
                     //anima.
                     activingSkill = "is" + skill.skillName;
                     anima.takeActivingSkill(activingSkill);
-                    vfx.Play();
+                    vfx.SendEvent("OnPlay");
                     Debug.Log(state);
-
+                    
                     //clearTable();
                 }
                 break;
