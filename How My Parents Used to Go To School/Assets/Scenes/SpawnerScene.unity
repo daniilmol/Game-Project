@@ -2215,6 +2215,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2631329139537832448}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &1794977560 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 8298243108281048351, guid: a926c5e7aff146b4ab41c48a5e53ceaa,
+    type: 3}
+  m_PrefabInstance: {fileID: 2631329139537832448}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1813868368 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7672704724598396799, guid: 7e16ffff8ead77943b3a3a95919d2f68,
@@ -3140,10 +3146,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.6287895
+  m_Radius: 0.19522779
   m_Height: 1.678726
   m_Direction: 1
-  m_Center: {x: 0.46925718, y: 0.95078117, z: -0.0032303394}
+  m_Center: {x: -0.02406085, y: 0.95078117, z: -0.003230336}
 --- !u!54 &114100004222028713
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3228,6 +3234,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2631329139776517760, guid: a926c5e7aff146b4ab41c48a5e53ceaa,
         type: 3}
+      propertyPath: sword
+      value: 
+      objectReference: {fileID: 1794977560}
+    - target: {fileID: 2631329139776517760, guid: a926c5e7aff146b4ab41c48a5e53ceaa,
+        type: 3}
       propertyPath: CharacterHitbox
       value: 
       objectReference: {fileID: 114100004222028712}
@@ -3243,9 +3254,19 @@ PrefabInstance:
       objectReference: {fileID: 832035594}
     - target: {fileID: 2631329139776517761, guid: a926c5e7aff146b4ab41c48a5e53ceaa,
         type: 3}
+      propertyPath: sword
+      value: 
+      objectReference: {fileID: 1794977560}
+    - target: {fileID: 2631329139776517761, guid: a926c5e7aff146b4ab41c48a5e53ceaa,
+        type: 3}
       propertyPath: CharacterHitbox
       value: 
       objectReference: {fileID: 114100004222028712}
+    - target: {fileID: 2631329139776517762, guid: a926c5e7aff146b4ab41c48a5e53ceaa,
+        type: 3}
+      propertyPath: sword
+      value: 
+      objectReference: {fileID: 1794977560}
     - target: {fileID: 2631329139776517762, guid: a926c5e7aff146b4ab41c48a5e53ceaa,
         type: 3}
       propertyPath: CharacterHitbox

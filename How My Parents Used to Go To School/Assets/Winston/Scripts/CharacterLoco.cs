@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 //Based on code from TheKiwiCoder: https://www.youtube.com/watch?v=_I8HsTfKep8&t=1s
 //Standard assets for animation
@@ -8,6 +9,8 @@ using UnityEngine;
 //POLYGON starter pack https://assetstore.unity.com/packages/3d/props/polygon-starter-pack-low-poly-3d-art-by-synty-156819?aid=1011ljjCh&utm_campaign=unity_affiliate&utm_medium=affiliate&utm_source=partnerize-linkmaker
 public class CharacterLoco : MonoBehaviour
 {
+    private UserInputs inputActions;
+    private InputAction movement;
     public Animator animator;
     Vector2 input;
     bool isRoll = false;
@@ -17,6 +20,8 @@ public class CharacterLoco : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        inputActions = new UserInputs();
+        movement = inputActions.Player.Movement;
     }
 
     // Update is called once per frame
@@ -60,7 +65,7 @@ public class CharacterLoco : MonoBehaviour
                     state = SkillState.active;
                     activeTime = 0.3f;
                     Debug.Log(state);
-
+                    movement.Disable();
                     //clearTable();
                 }
                 break;
@@ -72,6 +77,7 @@ public class CharacterLoco : MonoBehaviour
                     animator.applyRootMotion = true;
                     isRoll = true;
                     animator.SetBool("isRoll", isRoll);
+                    movement.Disable();
                     //skill.whirlwindSpin(gameObject);
                     //skill.MortalStrikeSpin(gameObject);
                     //WhirlOnhit.launchAttack(CharacterHitbox);
@@ -86,7 +92,9 @@ public class CharacterLoco : MonoBehaviour
                     isRoll = false;
                     animator.SetBool("isRoll", isRoll);
                     animator.applyRootMotion = false;
+                    movement.Enable();
                     Debug.Log(state);
+
                 }
                 break;
 
@@ -100,6 +108,7 @@ public class CharacterLoco : MonoBehaviour
                     state = SkillState.ready;
                     Debug.Log(state);
                     isRoll = false;
+                    movement.Enable();
                     animator.SetBool("isRoll", isRoll);
                 }
                 break;
