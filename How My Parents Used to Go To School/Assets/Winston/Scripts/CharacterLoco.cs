@@ -29,30 +29,105 @@ public class CharacterLoco : MonoBehaviour
         animator.SetFloat("InputX", input.x);
         animator.SetFloat("InputY", input.y);
 
-        roll();
+        Rolll();
         moving();
 
     }
-    private void roll() {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            // Debug.Log("Preeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeees");
-            //animator.SetLayerWeight(1, isRoll ? 0 : 1); //lower aiming animation when running. Aimlayer is on layer 1
-            animator.applyRootMotion = true;
-            isRoll = !isRoll;
-            animator.SetBool("isRoll", isRoll);
-        }
 
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            // Debug.Log("Preeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeees");
-            //animator.SetLayerWeight(1, isRoll ? 0 : 1); //lower aiming animation when running. Aimlayer is on layer 1
-            animator.applyRootMotion = false;
-            isRoll = !isRoll;
-            animator.SetBool("isRoll", isRoll);
-        }
+    enum SkillState
+    {
+        ready,
+        active,
+        cooldown
 
     }
+
+    SkillState state = SkillState.ready;
+
+    public KeyCode key;
+    float cooldownTime;
+    float activeTime;
+    void Rolll()
+    {
+        switch (state)
+        {
+            case SkillState.ready:
+                if (Input.GetKeyDown(KeyCode.LeftShift))
+                {
+                    Debug.Log("Clicked");
+                    //launchAttack(CharacterHitbox);
+
+                    state = SkillState.active;
+                    activeTime = 0.3f;
+                    Debug.Log(state);
+
+                    //clearTable();
+                }
+                break;
+            case SkillState.active:
+                if (activeTime > 0)
+                {
+
+                    activeTime -= Time.deltaTime;
+                    animator.applyRootMotion = true;
+                    isRoll = true;
+                    animator.SetBool("isRoll", isRoll);
+                    //skill.whirlwindSpin(gameObject);
+                    //skill.MortalStrikeSpin(gameObject);
+                    //WhirlOnhit.launchAttack(CharacterHitbox);
+                    //OnDrawGizmos(hitBox);
+
+                    //Debug.Log(activeTime);
+                }
+                else
+                {
+                    state = SkillState.cooldown;
+                    cooldownTime = 0.5f;
+                    isRoll = false;
+                    animator.SetBool("isRoll", isRoll);
+                    animator.applyRootMotion = false;
+                    Debug.Log(state);
+                }
+                break;
+
+            case SkillState.cooldown:
+                if (cooldownTime > 0)
+                {
+                    cooldownTime -= Time.deltaTime;
+                }
+                else
+                {
+                    state = SkillState.ready;
+                    Debug.Log(state);
+                    isRoll = false;
+                    animator.SetBool("isRoll", isRoll);
+                }
+                break;
+        }
+
+
+    }
+
+    //private void roll() {
+    //    if (Input.GetKeyDown(KeyCode.LeftShift))
+    //    {
+    //        // Debug.Log("Preeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeees");
+    //        //animator.SetLayerWeight(1, isRoll ? 0 : 1); //lower aiming animation when running. Aimlayer is on layer 1
+    //        animator.applyRootMotion = true;
+    //        isRoll = !isRoll;
+    //        animator.SetBool("isRoll", isRoll);
+    //    }
+
+    //    if (Input.GetKeyUp(KeyCode.LeftShift))
+    //    {
+    //        // Debug.Log("Preeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeees");
+    //        //animator.SetLayerWeight(1, isRoll ? 0 : 1); //lower aiming animation when running. Aimlayer is on layer 1
+    //        animator.applyRootMotion = false;
+    //        isRoll = !isRoll;
+    //        animator.SetBool("isRoll", isRoll);
+    //    }
+
+    //}
     private void moving() {
         if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.S))
         //if (Input.GetKeyUp(KeyCode.W))
@@ -81,4 +156,10 @@ public class CharacterLoco : MonoBehaviour
     {
         animator.SetBool(skillName, false);
     }
+
+
+
+
+
+
 }
