@@ -1467,6 +1467,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2000633949}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &912336933 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5314801260943135515, guid: ad8092053a142d54cb4e251fa925aa08,
+    type: 3}
+  m_PrefabInstance: {fileID: 1852279450}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &915762570
 GameObject:
   m_ObjectHideFlags: 0
@@ -1496,7 +1502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8aa3b9548ccb0d4396d7dac18874b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1907902992049449677, guid: 71166ce995543fe4f965d83a60138578, type: 3}
+  player: {fileID: 1514417227}
   enemySpawner: {fileID: 5710230867117313503, guid: 9d833eb79b5e13d4b8c330c2c1496b07,
     type: 3}
   bulletPrefab: {fileID: 640899133263499273, guid: 12e5a5b78f70f4f46a6625e175756f36,
@@ -2001,6 +2007,12 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1514417227 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3412379148497975997, guid: ad8092053a142d54cb4e251fa925aa08,
+    type: 3}
+  m_PrefabInstance: {fileID: 1852279450}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1625503446 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7672704724415020735, guid: 7e16ffff8ead77943b3a3a95919d2f68,
@@ -2487,7 +2499,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 912336933}
     - target: {fileID: 7672704725407681491, guid: 7e16ffff8ead77943b3a3a95919d2f68,
         type: 3}
       propertyPath: enemyCount
