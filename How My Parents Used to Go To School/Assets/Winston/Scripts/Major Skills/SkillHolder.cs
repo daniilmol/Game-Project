@@ -14,6 +14,7 @@ public class SkillHolder : MonoBehaviour
     private string activingSkill;
     //public ParticleSystem vfx;
     public VisualEffect vfx;
+    public Collider sword;
     enum SkillState {
         ready,
         active,
@@ -83,7 +84,6 @@ public class SkillHolder : MonoBehaviour
                 break; 
         }
 
-
     }
 
     public virtual void launchAttack(Collider collider)
@@ -95,10 +95,25 @@ public class SkillHolder : MonoBehaviour
     }
     void OnDrawGizmos()
     {
+        Vector3 mortal = sword.bounds.center;
+        //Ray ray = care.ScreenPointToRay(Input.mousePosition);
+        //RaycastHit hit;
+        //if (Physics.Raycast(ray, out hit))
+        //{
+        //    Vector3 targetVec = hit.point;
+        //    targetVec.y = mortal.y;
+        //    transform.LookAt(targetVec);
+        //    
+        //}
+
+            
+        //mortal.z = mortal.z -1f ;
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(CharacterHitbox.bounds.center, CharacterHitbox.transform.localScale.x*4); //Whirlwind hitbox
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(CharacterHitbox.bounds.center, CharacterHitbox.transform.localScale.x);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(mortal, new Vector3(CharacterHitbox.transform.localScale.x, CharacterHitbox.transform.localScale.y, CharacterHitbox.transform.localScale.z) );
     }
 
 }

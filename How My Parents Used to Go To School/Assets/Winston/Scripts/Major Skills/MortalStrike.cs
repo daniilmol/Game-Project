@@ -30,10 +30,10 @@ public class MortalStrike : MajorSkill
     {
         //Mortal Strike!!!!
         //GameObject fixedd = player.GetComponentInChildren<FixedJoint>();
-        Rigidbody rb = player.GetComponent<Rigidbody>();
-        rb.AddForce(0f, 100f, 0f);
-        rb.AddForce(Physics.gravity * 3);
-        Debug.Log(Physics.gravity * 3);
+        //Rigidbody rb = player.GetComponent<Rigidbody>();
+        //rb.AddForce(0f, 100f, 0f);
+        //rb.AddForce(Physics.gravity * 3);
+        //Debug.Log(Physics.gravity * 3);
         Debug.Log("MMMMMMMMMMMM");
     }
 
@@ -56,7 +56,7 @@ public class MortalStrike : MajorSkill
     public void launchAttack(Collider collider)
     {
         int layerMask = 1 << 7;
-        Collider[] cal = Physics.OverlapSphere(collider.bounds.center, collider.transform.localScale.x , layerMask);
+        Collider[] cal = Physics.OverlapBox(collider.bounds.center, collider.transform.localScale / 2, Quaternion.identity, layerMask);
 
         //bool isHit = false;
         int count = 0;
