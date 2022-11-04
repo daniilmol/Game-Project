@@ -115,8 +115,8 @@ public class SkillHolder : MonoBehaviour
         Gizmos.DrawWireSphere(CharacterHitbox.bounds.center, CharacterHitbox.transform.localScale.x*4); //Whirlwind hitbox
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(CharacterHitbox.bounds.center, CharacterHitbox.transform.localScale.x);
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireCube(mortal, Cube.transform.localScale);
+       // Gizmos.color = Color.green;
+       // Gizmos.DrawWireCube(mortal, Cube.transform.localScale);
     }
 
 }

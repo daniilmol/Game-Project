@@ -10,7 +10,7 @@ public class MortalStrike : MajorSkill
     private float basicDamage = 10f;
     private Hashtable hitList = new Hashtable();
     GameObject globalPlayer;
-    public GameObject sword;
+
     // public Transform AttackCube;
 
     public override void Activate(GameObject player)
@@ -26,7 +26,6 @@ public class MortalStrike : MajorSkill
             //get the sword collider
             //Debug.Log(input.getCube());
             Debug.Log(input.AttackCube);
-            Debug.Log(sword);
             launchAttack(input.AttackCube.GetComponent<Collider>());
             hitList.Clear();
         }
