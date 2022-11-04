@@ -19,12 +19,13 @@ public class WhirlwindSkill : MajorSkill
     public override void Activate(GameObject player)
     {
         globalPlayer = player;
+        Transform skill = player.transform.GetChild(0);
         PlayerController input = player.GetComponent<PlayerController>();
         if (isLearned)
         {
             //whirlwindSpin(player);
             //clearTable();
-            launchAttack(player.GetComponent<Collider>());
+            launchAttack(skill.GetComponent<Collider>());
             hitList.Clear();
         }
         else {

@@ -15,6 +15,8 @@ public class SkillHolder : MonoBehaviour
     //public ParticleSystem vfx;
     public VisualEffect vfx;
     public Collider sword;
+    public Transform Cube;
+    public GameObject playerGameObject;
     enum SkillState {
         ready,
         active,
@@ -36,8 +38,9 @@ public class SkillHolder : MonoBehaviour
                 if (Input.GetKeyDown(key))
                 {
                     Debug.Log("Clicked");
+                    Debug.Log(skill.skillName);
                     //launchAttack(CharacterHitbox);
-                    skill.Activate(gameObject);
+                    skill.Activate(playerGameObject);
                     state = SkillState.active;
                     activeTime = skill.activeTime;
                     Debug.Log(skill.skillName);
@@ -56,8 +59,8 @@ public class SkillHolder : MonoBehaviour
                 {
                     
                     activeTime -= Time.deltaTime;
-                    skill.whirlwindSpin(gameObject);
-                    skill.MortalStrikeSpin(gameObject);
+                    //skill.whirlwindSpin(gameObject);
+                    //skill.MortalStrikeSpin(gameObject);
                    //WhirlOnhit.launchAttack(CharacterHitbox);
                     //OnDrawGizmos(hitBox);
 
@@ -95,7 +98,7 @@ public class SkillHolder : MonoBehaviour
     }
     void OnDrawGizmos()
     {
-        Vector3 mortal = sword.bounds.center;
+        Vector3 mortal = Cube.position;
         //Ray ray = care.ScreenPointToRay(Input.mousePosition);
         //RaycastHit hit;
         //if (Physics.Raycast(ray, out hit))
@@ -113,7 +116,7 @@ public class SkillHolder : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(CharacterHitbox.bounds.center, CharacterHitbox.transform.localScale.x);
         Gizmos.color = Color.green;
-        Gizmos.DrawWireCube(mortal, new Vector3(CharacterHitbox.transform.localScale.x, CharacterHitbox.transform.localScale.y, CharacterHitbox.transform.localScale.z) );
+        Gizmos.DrawWireCube(mortal, Cube.transform.localScale);
     }
 
 }
