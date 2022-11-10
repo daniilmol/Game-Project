@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] float lifetime = 3f;
     [SerializeField] float speed = 20f;
+    private GameObject shooter;
 
     void Start()
     {
@@ -30,5 +31,13 @@ public class Bullet : MonoBehaviour
 
     public float GetSpeed(){
         return speed;
+    }
+
+    public GameObject GetShooter(){
+        return shooter;
+    }
+
+    public void SetShooter(GameObject shooter){
+        this.shooter = shooter;
     }
 }
