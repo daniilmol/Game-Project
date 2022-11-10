@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 [CreateAssetMenu]
 public class MortalStrike : MajorSkill
@@ -10,7 +11,7 @@ public class MortalStrike : MajorSkill
     private float basicDamage = 10f;
     private Hashtable hitList = new Hashtable();
     GameObject globalPlayer;
-
+    
     // public Transform AttackCube;
 
     public override void Activate(GameObject player)
@@ -27,6 +28,7 @@ public class MortalStrike : MajorSkill
             //Debug.Log(input.getCube());
             Debug.Log(input.AttackCube);
             launchAttack(input.AttackCube.GetComponent<Collider>());
+            //vfx.SendEvent("OnPlay");
             hitList.Clear();
         }
         else {
@@ -35,27 +37,6 @@ public class MortalStrike : MajorSkill
         
     }
   
-
-    public void MortalStrikeSkill(GameObject player)
-    {
-        //Mortal Strike!!!!
-        //GameObject fixedd = player.GetComponentInChildren<FixedJoint>();
-        //Rigidbody rb = player.GetComponent<Rigidbody>();
-        //rb.AddForce(0f, 100f, 0f);
-        //rb.AddForce(Physics.gravity * 3);
-        //Debug.Log(Physics.gravity * 3);
-        Debug.Log("MMMMMMMMMMMM");
-    }
-
-    public override void MortalStrikeSpin(GameObject player)
-    {
-
-        //player.transform.Rotate(0f, 0f, -10f, Space.Self);
-        //player.transform.Rotate(0f, 0f, -40f, Space.Self);
-        //Debug.Log("WWWWWWWWW");
-
-    }
-
     public void IsLearned()
     {
         isLearned = !isLearned;
@@ -66,7 +47,7 @@ public class MortalStrike : MajorSkill
     public void launchAttack(Collider collider)
     {
         int layerMask = 1 << 7;
-        Collider[] cal = Physics.OverlapBox(collider.bounds.center, collider.transform.localScale, Quaternion.identity, layerMask);
+        Collider[] cal = Physics.OverlapBox(collider.bounds.center, collider.bounds.extents * 2, Quaternion.identity, layerMask);
         //AttackCube.position = collider.bounds.center;
         //AttackCube = collider.transform;
         //Collider[] cal = Physics.OverlapSphere(collider.bounds.center, collider.transform.localScale.x * 4, layerMask);

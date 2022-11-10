@@ -16,3 +16,5 @@ MonoBehaviour:
   cooldownTime: 0.5
   activeTime: 0.5
   isLearned: 1
+  basicDamage: 1
+  m_SpawnTransform: {fileID: 0}

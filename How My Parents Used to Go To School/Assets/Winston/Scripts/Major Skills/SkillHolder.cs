@@ -14,9 +14,13 @@ public class SkillHolder : MonoBehaviour
     private string activingSkill;
     //public ParticleSystem vfx;
     public VisualEffect vfx;
-    public Collider sword;
+    public GameObject hit;
+    //public Collider sword;
     public Transform Cube;
     public GameObject playerGameObject;
+    public GameObject longrange;
+    public GameObject MaleC;
+    private GameObject generatedVfx;
     enum SkillState {
         ready,
         active,
@@ -48,9 +52,35 @@ public class SkillHolder : MonoBehaviour
                     //anima.
                     activingSkill = "is" + skill.skillName;
                     anima.takeActivingSkill(activingSkill);
-                    vfx.SendEvent("OnPlay");
-                    Debug.Log(state);
+
+
+                    Vector3 v3;
+                    //v3.x = playerGameObject.transform.position.x;
+                    //v3.y = playerGameObject.transform.position.y+2;
+                    //v3.z = playerGameObject.transform.position.z;
+
+                    if (skill.skillName == "MortalStrike")
+                    {
+                        v3.x = MaleC.transform.position.x;
+                        v3.y = MaleC.transform.position.y + 2;
+                        v3.z = MaleC.transform.position.z;
+                        generatedVfx = Instantiate(hit, v3, Quaternion.Euler(0, -90, 0) * MaleC.transform.rotation);
+                    }
+                    else if (skill.skillName == "Fury_Dual_Wielding") {
+                        v3.x = MaleC.transform.position.x;
+                        v3.y = MaleC.transform.position.y;
+                        v3.z = MaleC.transform.position.z;
+                        generatedVfx = Instantiate(hit, v3, Quaternion.Euler(0, 0, 0) * MaleC.transform.rotation);
+                    }
+                    else {
+                        v3.x = MaleC.transform.position.x;
+                        v3.y = MaleC.transform.position.y;
+                        v3.z = MaleC.transform.position.z;
+                        generatedVfx = Instantiate(hit, v3, Quaternion.Euler(0, 0, 0) * MaleC.transform.rotation);
+                    }
                     
+                    Debug.Log(state);
+                    //Quaternion.Euler(MaleC.transform.rotation.x, MaleC.transform.rotation.y + 90f, MaleC.transform.rotation.z)
                     //clearTable();
                 }
                 break;
@@ -71,6 +101,7 @@ public class SkillHolder : MonoBehaviour
                     cooldownTime = skill.cooldownTime;
                     anima.endActivingSkill(activingSkill);
                     Debug.Log(state);
+                    
                 }
                 break;
 
@@ -83,6 +114,7 @@ public class SkillHolder : MonoBehaviour
                 {
                     state = SkillState.ready;
                     Debug.Log(state);
+                    Destroy(generatedVfx);
                 }
                 break; 
         }
@@ -109,12 +141,14 @@ public class SkillHolder : MonoBehaviour
         //    
         //}
 
-            
+        Collider col = longrange.GetComponent<Collider>();
         //mortal.z = mortal.z -1f ;
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(CharacterHitbox.bounds.center, CharacterHitbox.transform.localScale.x*4); //Whirlwind hitbox
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(CharacterHitbox.bounds.center, CharacterHitbox.transform.localScale.x);
+        //Gizmos.color = Color.cyan;
+        //Gizmos.DrawWireCube(col.transform.position, col.transform.localScale);
        // Gizmos.color = Color.green;
        // Gizmos.DrawWireCube(mortal, Cube.transform.localScale);
     }
