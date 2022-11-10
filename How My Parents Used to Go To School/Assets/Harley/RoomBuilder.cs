@@ -100,9 +100,9 @@ public class RoomBuilder : MonoBehaviour
 
         // Random set length and width within range
         int maxRoomEdge = maxRoomArea / minRoomEdge;
-        roomTran.length = Random.Range(minRoomEdge + 1, maxRoomEdge + 1);
-        int width = maxRoomArea / roomTran.length;
-        roomTran.width = Random.Range(minRoomEdge, width + 1);
+        roomTran.length = Random.Range(minRoomEdge + 1, maxRoomEdge + 1) * cellScale;
+        int width = maxRoomArea / roomTran.length * cellScale;
+        roomTran.width = Random.Range(minRoomEdge, width + 1) * cellScale;
 
         // Random set center position
         roomTran.centerPos = new Vector2Int(Random.Range((int)(centerPos.x - roomTransRange.x * .5f), (int)(centerPos.x + roomTransRange.x * .5f)),
@@ -125,8 +125,8 @@ public class RoomBuilder : MonoBehaviour
     {
         bool result = false;
 
-        int lengthBorder = cellScale * (length + 1);
-        int widthBorder = cellScale * (width + 1);
+        int lengthBorder = length + cellScale;
+        int widthBorder = width + cellScale;
 
         Vector3 to = new Vector3(lengthBorder, 0, widthBorder) * 0.5f;
 
@@ -169,12 +169,12 @@ public class RoomBuilder : MonoBehaviour
      */
     void GenOneRoom(Vector3 centerPos, int length, int width, Transform parent = null)
     {
-        Vector3 to = new Vector3(cellScale * (length - 1), 0, cellScale * (width - 1)) * 0.5f;
+        Vector3 to = new Vector3(length - cellScale, 0, width - cellScale) * 0.5f;
         Vector3 ned = centerPos - to;
 
-        for (int i = 0; i < length; i++)
+        for (int i = 0; i < length / cellScale; i++)
         {
-            for (int j = 0; j < width; j++)
+            for (int j = 0; j < width / cellScale; j++)
             {
                 InsSetPos(ned + i * cellScale * Dx + j * cellScale * Dz, parent);
             }

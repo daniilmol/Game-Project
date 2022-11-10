@@ -218,6 +218,7 @@ GameObject:
   - component: {fileID: 477729193}
   - component: {fileID: 477729194}
   - component: {fileID: 477729192}
+  - component: {fileID: 477729196}
   - component: {fileID: 477729195}
   m_Layer: 0
   m_Name: Generater
@@ -240,10 +241,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cell: {fileID: 3726327134598553362, guid: 8b4c6cf35a81b2045864f593ec7f49c2, type: 3}
   cellScale: 4
-  roomTransRange: {x: 150, y: 150}
+  roomTransRange: {x: 200, y: 200}
   maxRoomArea: 100
   maxRoomCount: 50
-  maxLengthWidthScale: 2
+  maxLengthWidthScale: 1.4
 --- !u!4 &477729193
 Transform:
   m_ObjectHideFlags: 0
@@ -273,6 +274,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapData: {fileID: 477729195}
   roomBuilder: {fileID: 477729192}
+  crossBuilder: {fileID: 477729196}
+  anotherCrossProbability: 0.2
+  deadCrossProbability: 0.5
+  deadAwayProbability: 0.6
+  crossUnitInsts: []
+  roomUnitInsts: []
 --- !u!114 &477729195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,6 +294,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapCenter: {x: 0, y: 0, z: 0}
   crossUnitPos: []
+--- !u!114 &477729196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477729191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fdd8b3a1ad326a4eb7c7d56e62a66df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crossUnit: {fileID: 3726327134598553362, guid: 8b4c6cf35a81b2045864f593ec7f49c2,
+    type: 3}
+  ObstacleCrossType: 1
 --- !u!1 &741069792
 GameObject:
   m_ObjectHideFlags: 0
