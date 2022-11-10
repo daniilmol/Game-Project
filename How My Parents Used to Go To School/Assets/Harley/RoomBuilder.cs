@@ -62,7 +62,7 @@ public class RoomBuilder : MonoBehaviour
         minRoomEdge = temp > 3 ? temp : 3;
         for (int i = 0; i <= maxRoomCount; i++)
         {
-            SetGenOneRoom(centerPos, i);
+            SetGenOneRoom(centerPos);
             yield return new WaitForSeconds(0.1f);
         }
 
@@ -72,14 +72,14 @@ public class RoomBuilder : MonoBehaviour
     /**
      * Romdomly generate one room
      */
-    void SetGenOneRoom(Vector3Int centerPos, int r)
+    void SetGenOneRoom(Vector3Int centerPos)
     {
         RoomTran roomTran = RanRoomTran(centerPos);
         if (roomTran != null)
         {
             Vector3 roomCenter = new Vector3(roomTran.centerPos.x, 0, roomTran.centerPos.y);
 
-            GameObject temp = new GameObject("Room" + r.ToString());
+            GameObject temp = new GameObject("Room" + roomCenter.ToString());
             temp.transform.position = roomCenter;
             temp.tag = cellTag;
 
@@ -111,7 +111,7 @@ public class RoomBuilder : MonoBehaviour
         Vector3 roomCenter = new Vector3(roomTran.centerPos.x, 0, roomTran.centerPos.y);
 
         // Do ray check to avoid overlapping
-        if (RayRoomCheck(roomCenter, roomTran.length, roomTran.width))
+        if (RoomOverlapCheck(roomCenter, roomTran.length, roomTran.width))
         {
             return null;
         }
@@ -121,7 +121,7 @@ public class RoomBuilder : MonoBehaviour
     /**
      * Check if a new room is overlapping with existed rooms
      */
-    bool RayRoomCheck(Vector3 centerPos, int length, int width)
+    bool RoomOverlapCheck(Vector3 centerPos, int length, int width)
     {
         bool result = false;
 
@@ -140,36 +140,26 @@ public class RoomBuilder : MonoBehaviour
         Vector3 v7 = v1 + new Vector3(lengthBorder, 0, 0);
         Vector3 v8 = v1 + new Vector3(lengthBorder, 0, 0) * 0.5f;
 
-        // Check if ray cast hit any room based on each point
+        // Check if hit any room based on each point
         result =
-            RayCastCheckHitCell(v1, Dx, lengthBorder) ||
-            RayCastCheckHitCell(v2, Dx, lengthBorder) ||
-            RayCastCheckHitCell(v3, Dx, lengthBorder) ||
-
-            RayCastCheckHitCell(v7, Dx * -1, lengthBorder) ||
-            RayCastCheckHitCell(v6, Dx * -1, lengthBorder) ||
-            RayCastCheckHitCell(v5, Dx * -1, lengthBorder) ||
-
-            RayCastCheckHitCell(v1, Dz, widthBorder) ||
-            RayCastCheckHitCell(v8, Dz, widthBorder) ||
-            RayCastCheckHitCell(v7, Dz, widthBorder) ||
-
-            RayCastCheckHitCell(v3, Dz * -1, widthBorder) ||
-            RayCastCheckHitCell(v4, Dz * -1, widthBorder) ||
-            RayCastCheckHitCell(v5, Dz * -1, widthBorder);
+            PointOverlapCheck(v1, cellScale) ||
+            PointOverlapCheck(v2, cellScale) ||
+            PointOverlapCheck(v3, cellScale) ||
+            PointOverlapCheck(v4, cellScale) ||
+            PointOverlapCheck(v5, cellScale) ||
+            PointOverlapCheck(v6, cellScale) ||
+            PointOverlapCheck(v7, cellScale) ||
+            PointOverlapCheck(v8, cellScale);
 
         return result;
     }
 
-    bool RayCastCheckHitCell(Vector3 v, Vector3 dirction, int distance)
+    bool PointOverlapCheck(Vector3 center, int radius)
     {
-        RaycastHit hit;
-        if (Physics.Raycast(v, dirction, out hit, distance))
+        Collider[] hitColliders = Physics.OverlapSphere(center, radius);
+        if (hitColliders.Length > 0)
         {
-            if (hit.transform.tag == cellTag)
-            {
-                return true;
-            }
+            return true;
         }
         return false;
     }

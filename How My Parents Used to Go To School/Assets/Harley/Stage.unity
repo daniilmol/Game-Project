@@ -240,9 +240,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cell: {fileID: 3726327134598553362, guid: 8b4c6cf35a81b2045864f593ec7f49c2, type: 3}
   cellScale: 4
-  roomTransRange: {x: 200, y: 200}
+  roomTransRange: {x: 150, y: 150}
   maxRoomArea: 100
-  maxRoomCount: 20
+  maxRoomCount: 50
   maxLengthWidthScale: 2
 --- !u!4 &477729193
 Transform:
