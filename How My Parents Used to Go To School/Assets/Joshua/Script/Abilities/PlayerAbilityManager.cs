@@ -10,7 +10,7 @@ public class PlayerAbilityManager : MonoBehaviour
     private void Start()
     {
         //Instantiate(abilityPrefebList[0], this.transform);
-        //GeneratePrefeb();
+        GeneratePrefeb();
 
         go = abilityPrefebList[1];
 
