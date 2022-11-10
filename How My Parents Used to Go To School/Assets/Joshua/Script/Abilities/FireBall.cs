@@ -31,9 +31,9 @@ public class FireBall : MonoBehaviour, Ability
         {
             // wait 5 sec then call functions
             timer += Time.deltaTime;
-            if (timer >= 5)
+            if (timer >= coldDownTime)
             {
-                SearchNearUnits();
+                SearchNearUnits();                    
                 GenerateFireBall();
                 timer = 0f;
             }
@@ -55,9 +55,13 @@ public class FireBall : MonoBehaviour, Ability
 
         for (int i = 0; i < colliders.Length; i++)
         {
+            // find the closest gameobject with eney tag
             if (colliders[i].gameObject.tag == "Enemy" && DistanceCaculation(colliders[i].gameObject.transform.position) < enemyDistance)
             {
+                enemyDistance = DistanceCaculation(colliders[i].gameObject.transform.position);
                 enemyPosition = colliders[i].gameObject.transform.position;
+
+                // if find, then set fireBallFlag to true to enable generate fireball
                 fireBallFlag = true;
             }
         }
@@ -79,6 +83,8 @@ public class FireBall : MonoBehaviour, Ability
             GameObject fireBall = Instantiate(perfeb);
             fireBall.transform.position = new Vector3(player.transform.position.x + Mathf.Sign(enemyPosition.x), player.transform.position.y + 2, player.transform.position.z + Mathf.Sign(enemyPosition.z));
             Vector3 targetPosition = enemyPosition - fireBall.transform.position;
+            
+            // move fireball gameobject foreware enemy
             fireBall.GetComponent<Rigidbody>().AddForce(targetPosition, ForceMode.Impulse);
             fireBallFlag = false;
         }

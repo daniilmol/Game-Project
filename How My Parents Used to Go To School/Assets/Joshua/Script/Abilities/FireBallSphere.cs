@@ -5,16 +5,14 @@ using UnityEngine;
 public class FireBallSphere : MonoBehaviour
 {
     public ParticleSystem particle;
-    private Rigidbody rigidbody;
-    private bool abilityActiveFlag;
+    private Rigidbody rb;
     private float timer = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         particle.Stop();
-        abilityActiveFlag = false;
-        rigidbody = transform.GetComponent<Rigidbody>();
+        rb = transform.GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -60,9 +58,9 @@ public class FireBallSphere : MonoBehaviour
     // when sphere hit enemy, stop the sphere
     private void StopFireBallMove()
     {
-        rigidbody.velocity = Vector3.zero;
-        rigidbody.constraints = RigidbodyConstraints.FreezeAll;
-        rigidbody.constraints = RigidbodyConstraints.None;
+        rb.velocity = Vector3.zero;
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+        rb.constraints = RigidbodyConstraints.None;
     }
 
     // destory sphere

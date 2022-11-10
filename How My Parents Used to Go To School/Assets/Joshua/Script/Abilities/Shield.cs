@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class Shield : MonoBehaviour, Ability
 {
-    private Renderer renderer;
-    private SphereCollider collider;
+    private Renderer render;
+    private SphereCollider spjereCollider;
     private bool shieldFlag = true;
     private GameObject player;
     [SerializeField] private int shieldRecoverTime = 5;
+    //private float timer = 0;
 
     private void Awake()
     {
-        renderer = GetComponent<Renderer>();
-        collider = GetComponent<SphereCollider>();
+        render = GetComponent<Renderer>();
+        spjereCollider = GetComponent<SphereCollider>();
         player = GameObject.Find("Male C");
     }
 
@@ -32,6 +33,18 @@ public class Shield : MonoBehaviour, Ability
         {
             StartCoroutine(ReactShield());
         }
+
+        //if (shieldFlag)
+        //{
+        //    // wait 5 sec then call functions
+        //    timer += Time.deltaTime;
+        //    if (timer >= shieldRecoverTime)
+        //    {
+        //        Debug.Log("run");
+        //        ReactShield();
+        //        timer = 0f;
+        //    }
+        //}
     }
 
     // if shield touch enemy or bullet, disable shield and set shieldFlag to false
@@ -52,15 +65,15 @@ public class Shield : MonoBehaviour, Ability
     // when shield is disabled, uncheck Renderer and Collider compontents
     private void DisableShield()
     {
-        renderer.enabled = false;
-        collider.enabled = false;
+        render.enabled = false;
+        spjereCollider.enabled = false;
     }
 
     // when shield is enabled, check Renderer and Collider compontents and set shieldFlag to true
     private void EnableShield()
     {
-        renderer.enabled = true;
-        collider.enabled = true;
+        render.enabled = true;
+        spjereCollider.enabled = true;
         shieldFlag = true;
     }
 
@@ -70,6 +83,10 @@ public class Shield : MonoBehaviour, Ability
         yield return new WaitForSeconds(shieldRecoverTime);
         EnableShield();
     }
+    //private void ReactShield()
+    //{
+    //    EnableShield();
+    //}
 
     // set player position to shield
     private void FollowPlayer()

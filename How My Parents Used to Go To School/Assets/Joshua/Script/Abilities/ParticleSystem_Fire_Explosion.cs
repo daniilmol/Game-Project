@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ParticleSystem_Fire_Explosion : MonoBehaviour
 {
-    [SerializeField] private GameObject gameObject;
+    [SerializeField] private GameObject obj;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +20,6 @@ public class ParticleSystem_Fire_Explosion : MonoBehaviour
 
     private void FollowGameObject()
     {
-        transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1, gameObject.transform.position.z);
+        transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y + 1, obj.transform.position.z);
     }
 }

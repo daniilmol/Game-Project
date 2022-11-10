@@ -9,6 +9,7 @@ public class DarkMagicAura : MonoBehaviour, Ability
     public float damege = 1;
     private GameObject player;
     private bool abilityActiveFlag;
+    private float timer = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -30,10 +31,18 @@ public class DarkMagicAura : MonoBehaviour, Ability
 
         if (abilityActiveFlag)
         {
-            EnableAbility();
-            SearchNearUnits();
-            StartCoroutine(DisableAbility());
-            abilityActiveFlag = false;
+            timer += Time.deltaTime;
+            if (timer >= 5)
+            {
+                EnableAbility();
+                SearchNearUnits();
+                StartCoroutine(DisableAbility());
+                timer = 0f;
+            }
+            //EnableAbility();
+            //SearchNearUnits();
+            //StartCoroutine(DisableAbility());
+            //abilityActiveFlag = false;
         }
     }
 

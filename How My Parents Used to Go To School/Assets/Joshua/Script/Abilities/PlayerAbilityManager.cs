@@ -12,9 +12,16 @@ public class PlayerAbilityManager : MonoBehaviour
         //Instantiate(abilityPrefebList[0], this.transform);
         GeneratePrefeb();
 
-        go = abilityPrefebList[1];
+        //GameObject clone = (GameObject)Instantiate(abilityPrefebList[2]);
 
-        Instantiate(go, this.transform);
+        //Ability ab = clone.GetComponent<FireBall>();
+
+        //ab.DisplayName();
+        //ab.DeActive();
+
+        //go = abilityPrefebList[1];
+
+        //Instantiate(go, this.transform);
 
         //abilities.Add(abilityPrefebList[0].GetComponent<Shield>());
         //abilities.Add(abilityPrefebList[1].GetComponent<DarkMagicAura>());
