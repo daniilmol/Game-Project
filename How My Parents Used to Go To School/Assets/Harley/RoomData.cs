@@ -11,27 +11,27 @@ public class RoomData
     /**
      * Transform information of this room
      */
-    [SerializeField] RoomTran roomTran;
+    public RoomTran roomTran;
     /**
      * The type of this room
      */
-    [SerializeField] RoomType roomType;
+    public RoomType roomType;
     /**
      * The list of linked rooms
      */
-    [SerializeField] List<RoomData> crossRooms;
+    public List<RoomData> crossRooms;
     /**
      * The list of monsters inside
      */
-    [SerializeField] List<GameObject> monsters;
+    public List<GameObject> monsters;
     /**
      * If this is an end room
      */
-    [SerializeField] bool isEndRoom;
+    public bool isEndRoom;
     /**
      * If this is a room on main cross
      */
-    [SerializeField] bool isMainCrossRoom;
+    public bool isMainCrossRoom;
 
     public enum RoomType
     {

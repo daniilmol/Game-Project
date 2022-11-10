@@ -10,9 +10,9 @@ public class RoomBuilder : MonoBehaviour
      */
     [SerializeField] GameObject cell;
     /**
-     * Fixed height for room
+     * The scale of cell object
      */
-    [SerializeField] int fixedRoomHeight;
+    [SerializeField] int cellScale;
     /**
      * The range of room transform
      */
@@ -28,11 +28,11 @@ public class RoomBuilder : MonoBehaviour
     /**
      * Min for width
      */
-    [SerializeField] int minRoomEdge;
+    private int minRoomEdge;
     /**
      * Max for length width scale (1-2 in default)
      */
-    [SerializeField] int maxLengthWidthScale = 2;
+    [SerializeField] float maxLengthWidthScale = 1.5f;
 
     /**
      * Unit vectors
@@ -62,8 +62,7 @@ public class RoomBuilder : MonoBehaviour
         minRoomEdge = temp > 3 ? temp : 3;
         for (int i = 0; i <= maxRoomCount; i++)
         {
-            int r = Random.Range(1, 2);
-            SetGenOneRoom(centerPos, r);
+            SetGenOneRoom(centerPos, i);
             yield return new WaitForSeconds(0.1f);
         }
 
@@ -80,16 +79,14 @@ public class RoomBuilder : MonoBehaviour
         {
             Vector3 roomCenter = new Vector3(roomTran.centerPos.x, 0, roomTran.centerPos.y);
 
-            GameObject temp = new GameObject(r.ToString());
+            GameObject temp = new GameObject("Room" + r.ToString());
             temp.transform.position = roomCenter;
             temp.tag = cellTag;
 
             GenOneRoom(roomCenter, roomTran.length, roomTran.width, temp.transform);
-            BoxCollider box = temp.AddComponent<BoxCollider>();
-            box.size = new Vector3(roomTran.length, fixedRoomHeight, roomTran.width);
 
-            mapManager.GenRooms.Add(roomTran);
-            mapManager.UnCrossRooms.Add(roomTran);
+            mapManager.genRooms.Add(roomTran);
+            mapManager.unCrossRooms.Add(roomTran);
         }
     }
 
@@ -128,35 +125,38 @@ public class RoomBuilder : MonoBehaviour
     {
         bool result = false;
 
-        Vector3 to = new Vector3(length + 1, 0, width + 1) * 0.5f;
+        int lengthBorder = cellScale * (length + 1);
+        int widthBorder = cellScale * (width + 1);
+
+        Vector3 to = new Vector3(lengthBorder, 0, widthBorder) * 0.5f;
 
         // Get 4 vertexes and 4 midpoints for each edge
         Vector3 v1 = centerPos - to;
-        Vector3 v2 = v1 + new Vector3(0, 0, width + 1) * 0.5f;
-        Vector3 v3 = v1 + new Vector3(0, 0, width + 1);
-        Vector3 v4 = v1 + new Vector3(length * 0.5f + 0.5f, 0, width + 1);
+        Vector3 v2 = v1 + new Vector3(0, 0, widthBorder) * 0.5f;
+        Vector3 v3 = v1 + new Vector3(0, 0, widthBorder);
+        Vector3 v4 = v1 + new Vector3(lengthBorder * 0.5f, 0, widthBorder);
         Vector3 v5 = v1 + to;
-        Vector3 v6 = v1 + new Vector3(length + 1, 0, width * 0.5f + 0.5f);
-        Vector3 v7 = v1 + new Vector3(length + 1, 0, 0);
-        Vector3 v8 = v1 + new Vector3(length + 1, 0, 0) * 0.5f;
+        Vector3 v6 = v1 + new Vector3(lengthBorder, 0, widthBorder * 0.5f);
+        Vector3 v7 = v1 + new Vector3(lengthBorder, 0, 0);
+        Vector3 v8 = v1 + new Vector3(lengthBorder, 0, 0) * 0.5f;
 
         // Check if ray cast hit any room based on each point
         result =
-            RayCastCheckHitCell(v1, Dx, length + 1) ||
-            RayCastCheckHitCell(v2, Dx, length + 1) ||
-            RayCastCheckHitCell(v3, Dx, length + 1) ||
+            RayCastCheckHitCell(v1, Dx, lengthBorder) ||
+            RayCastCheckHitCell(v2, Dx, lengthBorder) ||
+            RayCastCheckHitCell(v3, Dx, lengthBorder) ||
 
-            RayCastCheckHitCell(v7, Dx * -1, length + 1) ||
-            RayCastCheckHitCell(v6, Dx * -1, length + 1) ||
-            RayCastCheckHitCell(v5, Dx * -1, length + 1) ||
+            RayCastCheckHitCell(v7, Dx * -1, lengthBorder) ||
+            RayCastCheckHitCell(v6, Dx * -1, lengthBorder) ||
+            RayCastCheckHitCell(v5, Dx * -1, lengthBorder) ||
 
-            RayCastCheckHitCell(v1, Dz, width + 1) ||
-            RayCastCheckHitCell(v8, Dz, width + 1) ||
-            RayCastCheckHitCell(v7, Dz, width + 1) ||
+            RayCastCheckHitCell(v1, Dz, widthBorder) ||
+            RayCastCheckHitCell(v8, Dz, widthBorder) ||
+            RayCastCheckHitCell(v7, Dz, widthBorder) ||
 
-            RayCastCheckHitCell(v3, Dz * -1, width + 1) ||
-            RayCastCheckHitCell(v4, Dz * -1, width + 1) ||
-            RayCastCheckHitCell(v5, Dz * -1, width + 1);
+            RayCastCheckHitCell(v3, Dz * -1, widthBorder) ||
+            RayCastCheckHitCell(v4, Dz * -1, widthBorder) ||
+            RayCastCheckHitCell(v5, Dz * -1, widthBorder);
 
         return result;
     }
@@ -179,32 +179,15 @@ public class RoomBuilder : MonoBehaviour
      */
     void GenOneRoom(Vector3 centerPos, int length, int width, Transform parent = null)
     {
-        Vector3 to = new Vector3(length - 1, 0, width - 1) * 0.5f;
-
+        Vector3 to = new Vector3(cellScale * (length - 1), 0, cellScale * (width - 1)) * 0.5f;
         Vector3 ned = centerPos - to;
-        Vector3 fod = centerPos + to;
 
-        Vector3 v1 = new Vector3(ned.x, 0, ned.z);
-        Vector3 v2 = new Vector3(ned.x, 0, fod.z);
-        Vector3 v3 = new Vector3(fod.x, 0, ned.z);
-        Vector3 v4 = new Vector3(fod.x, 0, fod.z);
-
-        InsSetPos(v1, parent);
-        InsSetPos(v2, parent);
-        InsSetPos(v3, parent);
-        InsSetPos(v4, parent);
-
-        InsOneEdge(length, v1, Dx, parent);
-        InsOneEdge(length, v2, Dx, parent);
-        InsOneEdge(width, v1, Dz, parent);
-        InsOneEdge(width, v3, Dz, parent);
-    }
-
-    void InsOneEdge(int edge, Vector3 v, Vector3 dir, Transform parent = null)
-    {
-        for (int i = 1; i < edge - 1; i++)
+        for (int i = 0; i < length; i++)
         {
-            InsSetPos(v + i * dir, parent);
+            for (int j = 0; j < width; j++)
+            {
+                InsSetPos(ned + i * cellScale * Dx + j * cellScale * Dz, parent);
+            }
         }
     }
 
