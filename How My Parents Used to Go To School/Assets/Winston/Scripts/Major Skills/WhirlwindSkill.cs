@@ -19,12 +19,13 @@ public class WhirlwindSkill : MajorSkill
     public override void Activate(GameObject player)
     {
         globalPlayer = player;
+        Transform skill = player.transform.GetChild(0);
         PlayerController input = player.GetComponent<PlayerController>();
         if (isLearned)
         {
             //whirlwindSpin(player);
             //clearTable();
-            launchAttack(player.GetComponent<Collider>());
+            launchAttack(skill.GetComponent<Collider>());
             hitList.Clear();
         }
         else {
@@ -69,10 +70,10 @@ public class WhirlwindSkill : MajorSkill
                     Debug.Log(c.name);
                     c.GetComponent<EnemyHealth>().takeDamage(basicDamage);
                                         //  Need a on hit decrese health function here, example: decreaseHealth(Gameobject enemy);
-                    float force = 50;
+                    float force = 6;
                     Vector3 vectorForce = Vector3.Normalize(globalPlayer.transform.position - c.transform.position);
                     //c.GetComponent<NavMeshAgent>().isStopped = true;
-                    c.GetComponent<Rigidbody>().AddForce(force * -c.transform.forward  * Time.deltaTime, ForceMode.VelocityChange);                    //  Need a on hit decrese health function here, example: decreaseHealth(Gameobject enemy);
+                    c.GetComponent<Rigidbody>().AddForce(force * -c.transform.forward, ForceMode.Impulse);                    //  Need a on hit decrese health function here, example: decreaseHealth(Gameobject enemy);
                     count++;
                 }
             }

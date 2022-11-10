@@ -7,6 +7,9 @@ TagManager:
   - Enemy
   - Sword
   - Bullet
+  - Shield
+  - Laser
+  - Spawnable
   layers:
   - Default
   - TransparentFX

@@ -14,6 +14,9 @@ public class SkillHolder : MonoBehaviour
     private string activingSkill;
     //public ParticleSystem vfx;
     public VisualEffect vfx;
+    public Collider sword;
+    public Transform Cube;
+    public GameObject playerGameObject;
     enum SkillState {
         ready,
         active,
@@ -35,8 +38,9 @@ public class SkillHolder : MonoBehaviour
                 if (Input.GetKeyDown(key))
                 {
                     Debug.Log("Clicked");
+                    Debug.Log(skill.skillName);
                     //launchAttack(CharacterHitbox);
-                    skill.Activate(gameObject);
+                    skill.Activate(playerGameObject);
                     state = SkillState.active;
                     activeTime = skill.activeTime;
                     Debug.Log(skill.skillName);
@@ -55,8 +59,8 @@ public class SkillHolder : MonoBehaviour
                 {
                     
                     activeTime -= Time.deltaTime;
-                    skill.whirlwindSpin(gameObject);
-                    skill.MortalStrikeSpin(gameObject);
+                    //skill.whirlwindSpin(gameObject);
+                    //skill.MortalStrikeSpin(gameObject);
                    //WhirlOnhit.launchAttack(CharacterHitbox);
                     //OnDrawGizmos(hitBox);
 
@@ -83,7 +87,6 @@ public class SkillHolder : MonoBehaviour
                 break; 
         }
 
-
     }
 
     public virtual void launchAttack(Collider collider)
@@ -95,10 +98,25 @@ public class SkillHolder : MonoBehaviour
     }
     void OnDrawGizmos()
     {
+        Vector3 mortal = Cube.position;
+        //Ray ray = care.ScreenPointToRay(Input.mousePosition);
+        //RaycastHit hit;
+        //if (Physics.Raycast(ray, out hit))
+        //{
+        //    Vector3 targetVec = hit.point;
+        //    targetVec.y = mortal.y;
+        //    transform.LookAt(targetVec);
+        //    
+        //}
+
+            
+        //mortal.z = mortal.z -1f ;
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(CharacterHitbox.bounds.center, CharacterHitbox.transform.localScale.x*4); //Whirlwind hitbox
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(CharacterHitbox.bounds.center, CharacterHitbox.transform.localScale.x);
+       // Gizmos.color = Color.green;
+       // Gizmos.DrawWireCube(mortal, Cube.transform.localScale);
     }
 
 }

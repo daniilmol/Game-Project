@@ -5,18 +5,28 @@ using UnityEngine;
 [CreateAssetMenu]
 public class MortalStrike : MajorSkill
 {
-    private float gravityScale = 5;
 
     [SerializeField]
     private float basicDamage = 10f;
     private Hashtable hitList = new Hashtable();
+    GameObject globalPlayer;
+
+    // public Transform AttackCube;
+
     public override void Activate(GameObject player)
     {
+        globalPlayer = player;
         PlayerController input = player.GetComponent<PlayerController>();
         if (isLearned)
         {
+            //AttackCube = player.getCube();
             //MortalStrikeSkill(player);
-            launchAttack(player.GetComponent<Collider>());
+            //player.transform.Find("childname");
+            //launchAttack(player.transform.Find("Player/Male C/Character/Character Pelvis/Character Spine/Character Spine1/Character Spine2/Character R Clavicle/Character R UpperArm/Character R Forearm/Character R Hand/TestSword").transform.GetComponent<Collider>());
+            //get the sword collider
+            //Debug.Log(input.getCube());
+            Debug.Log(input.AttackCube);
+            launchAttack(input.AttackCube.GetComponent<Collider>());
             hitList.Clear();
         }
         else {
@@ -24,16 +34,16 @@ public class MortalStrike : MajorSkill
         }
         
     }
-
+  
 
     public void MortalStrikeSkill(GameObject player)
     {
         //Mortal Strike!!!!
         //GameObject fixedd = player.GetComponentInChildren<FixedJoint>();
-        Rigidbody rb = player.GetComponent<Rigidbody>();
-        rb.AddForce(0f, 100f, 0f);
-        rb.AddForce(Physics.gravity * 3);
-        Debug.Log(Physics.gravity * 3);
+        //Rigidbody rb = player.GetComponent<Rigidbody>();
+        //rb.AddForce(0f, 100f, 0f);
+        //rb.AddForce(Physics.gravity * 3);
+        //Debug.Log(Physics.gravity * 3);
         Debug.Log("MMMMMMMMMMMM");
     }
 
@@ -56,8 +66,11 @@ public class MortalStrike : MajorSkill
     public void launchAttack(Collider collider)
     {
         int layerMask = 1 << 7;
-        Collider[] cal = Physics.OverlapSphere(collider.bounds.center, collider.transform.localScale.x , layerMask);
-
+        Collider[] cal = Physics.OverlapBox(collider.bounds.center, collider.transform.localScale, Quaternion.identity, layerMask);
+        //AttackCube.position = collider.bounds.center;
+        //AttackCube = collider.transform;
+        //Collider[] cal = Physics.OverlapSphere(collider.bounds.center, collider.transform.localScale.x * 4, layerMask);
+        Debug.Log("youyou");
         //bool isHit = false;
         int count = 0;
         foreach (Collider c in cal)
@@ -71,6 +84,7 @@ public class MortalStrike : MajorSkill
                     Debug.Log("Working");
                     Debug.Log("Hit!!!!!!");
                     Debug.Log(c.name);
+                    c.GetComponent<EnemyHealth>().takeDamage(basicDamage);
                     count++;
                 }
             }

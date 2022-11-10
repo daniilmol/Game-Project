@@ -4,7 +4,10 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - skill: {fileID: 11400000, guid: 5119b703262896740916482af38d8bb0, type: 2}
+  - skill: {fileID: 11400000, guid: db047f140f5304141945940c5d7ce9a6, type: 2}
+  - CharacterHitbox: {instanceID: 0}
+  - vfx: {instanceID: 0}
+  - sword: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
