@@ -8,6 +8,8 @@ TagManager:
   - Sword
   - Bullet
   - Shield
+  - Laser
+  - Spawnable
   layers:
   - Default
   - TransparentFX
