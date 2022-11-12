@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SpawnEnemies : RandomSpawner
 {
@@ -11,12 +12,17 @@ public class SpawnEnemies : RandomSpawner
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] GameObject[] enemyTypes;
     [SerializeField] float difficultyScaling;
+    [SerializeField] NavMeshSurface[] surfaces;
+    
 
     [Tooltip("How many objects to spawn. Cannot be greater than the array of spawnable locations")]
     [Range(0, 5)] [SerializeField] int enemyCount;
     public static int numberOfEnimies;
 
     public void Start(){
+        for(int i = 0; i < surfaces.Length; i++){
+            surfaces[i].BuildNavMesh();
+        }
         difficultyScaling = PlayerPrefs.GetFloat("Scale");
         Spawn(enemyCount, enemyTypes, enemySpawns, player, bulletPrefab, difficultyScaling);
         numberOfEnimies = enemyCount;
