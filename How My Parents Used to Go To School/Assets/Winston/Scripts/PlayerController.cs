@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private bool isOpened = false;
     private float speedFactor = 8f;
     public Transform AttackCube;
+    public Transform LongRangeAttackCube;
     //public event Action<InputAction.CallbackContext> openPanel;
     // Start is called before the first frame update
     void Awake()
@@ -66,6 +67,11 @@ public class PlayerController : MonoBehaviour
 
     public Vector3 getCube() {
         return AttackCube.position;
+    }
+
+    public Vector3 getLongRangeAttackCube()
+    {
+        return LongRangeAttackCube.position;
     }
 
 }

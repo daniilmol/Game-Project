@@ -35,14 +35,6 @@ public class WhirlwindSkill : MajorSkill
     }
 
 
-    public override void whirlwindSpin(GameObject player) {
-
-        //player.transform.Rotate(0f, 10f, 0f, Space.Self);
-        //player.transform.Rotate(0f, 60f, 0f, Space.Self);
-        //Debug.Log("WWWWWWWWW");
-
-    }
-
     public void IsLearned() {
         isLearned = !isLearned;
         Debug.Log("Learned");
@@ -82,6 +74,9 @@ public class WhirlwindSkill : MajorSkill
             //   Debug.Log(collider.name);
             //Debug.Log(hitList);
         }
+    }
+    void OnCollisionEnter() { 
+    
     }
     public void clearTable() {
         hitList.Clear();
