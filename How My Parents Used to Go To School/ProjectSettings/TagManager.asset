@@ -8,13 +8,15 @@ TagManager:
   - Sword
   - Bullet
   - Shield
+  - Collide
   - Laser
-  - Spawnable
+  - Unit
+  - Floor
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - 
   - Water
   - UI
   - Hitbox
