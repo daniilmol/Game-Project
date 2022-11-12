@@ -28,7 +28,6 @@ public class Necromancer : Enemy
         minionCount = 0;
         minionSpawnAmount = 3;
         agent = GetComponent<NavMeshAgent>();
-        damage = 3f;
         abilityTimer = 20;
         restTimer = 2;
         IsResting = false;

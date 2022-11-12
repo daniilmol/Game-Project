@@ -13,6 +13,7 @@ public class SpawnEnemies : RandomSpawner
     [SerializeField] GameObject[] enemyTypes;
     [SerializeField] float difficultyScaling;
     [SerializeField] NavMeshSurface[] surfaces;
+    public static float numberOfRoomsCleared = 0;
     
 
     [Tooltip("How many objects to spawn. Cannot be greater than the array of spawnable locations")]
@@ -23,6 +24,7 @@ public class SpawnEnemies : RandomSpawner
         for(int i = 0; i < surfaces.Length; i++){
             surfaces[i].BuildNavMesh();
         }
+        print("DIFFICULTY SCALE: " + PlayerPrefs.GetFloat("Scale"));
         difficultyScaling = PlayerPrefs.GetFloat("Scale");
         Spawn(enemyCount, enemyTypes, enemySpawns, player, bulletPrefab, difficultyScaling);
         numberOfEnimies = enemyCount;
@@ -45,7 +47,7 @@ public class SpawnEnemies : RandomSpawner
     }
 
     public float GetScale(){
-        return difficultyScaling;
+        return difficultyScaling + numberOfRoomsCleared * 0.1f;
     }
 
     public void SetScale(float scale){

@@ -15,7 +15,6 @@ public class Tank : Enemy
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        damage = 1f;
     }
     void Update()
     {
