@@ -8,16 +8,24 @@ public class MortalStrike : MajorSkill
 {
 
     [SerializeField]
-    private float basicDamage = 10f;
+    public StatContainer playerStats;
+    //public float basicDamage;
     private Hashtable hitList = new Hashtable();
     GameObject globalPlayer;
     
     // public Transform AttackCube;
+    //public void Update()
+    //{
+    //    basicDamage = playerStats.GetDamage() * 5f;
+    //}
+
+
 
     public override void Activate(GameObject player)
     {
         globalPlayer = player;
         PlayerController input = player.GetComponent<PlayerController>();
+        
         if (isLearned)
         {
             //AttackCube = player.getCube();
@@ -65,7 +73,14 @@ public class MortalStrike : MajorSkill
                     Debug.Log("Working");
                     Debug.Log("Hit!!!!!!");
                     Debug.Log(c.name);
-                    c.GetComponent<EnemyHealth>().takeDamage(basicDamage);
+                    c.GetComponent<EnemyHealth>().takeDamage(StatContainer.GetDamage() * 2);
+
+
+                    float force = 6;
+                    Vector3 vectorForce = Vector3.Normalize(globalPlayer.transform.position - c.transform.position);
+                    //c.GetComponent<NavMeshAgent>().isStopped = true;
+                    c.GetComponent<Rigidbody>().AddForce(force * -c.transform.forward, ForceMode.Impulse);
+
                     count++;
                 }
             }

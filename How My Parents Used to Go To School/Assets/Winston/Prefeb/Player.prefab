@@ -5359,7 +5359,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3412379148497975997}
-  m_LocalRotation: {x: -0, y: 0.9999866, z: -0, w: 0.005181595}
+  m_LocalRotation: {x: 0, y: 0.9999866, z: 0, w: 0.005183528}
   m_LocalPosition: {x: -12.445077, y: -0.96, z: -25.983387}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7963,6 +7963,8 @@ GameObject:
   - component: {fileID: 5210903785437269670}
   - component: {fileID: 5210903785437269666}
   - component: {fileID: 5210903785437269693}
+  - component: {fileID: 1253088776951328}
+  - component: {fileID: 1253088776951329}
   m_Layer: 0
   m_Name: Male C
   m_TagString: Player
@@ -8177,6 +8179,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 5230452462673746261}
   key: 0
+--- !u!114 &1253088776951328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5314801260943135515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98738f309a6d81b49b42b2ddfc686961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 1253088776951329}
+  maxHealth: 10
+  damage: 1
+  speed: 1
+  attackSpeed: 1
+--- !u!114 &1253088776951329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5314801260943135515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a433b38188a4e21a9e11acc71a463f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  healthMax: 10
+  anim: {fileID: 0}
 --- !u!1 &5314954124729539197
 GameObject:
   m_ObjectHideFlags: 0

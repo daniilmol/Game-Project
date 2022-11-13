@@ -34,6 +34,7 @@ public class EnemyHealth : MonoBehaviour
     public void takeDamage(float amount)
     {
         health -= amount;
+        Debug.Log("DDD" + amount);
         enemy.GetComponent<MeshRenderer>().material = enemy.getFlashColor();;
         Invoke("ResetColor", 0.2f);
         if (health <= 0)

@@ -12,6 +12,7 @@ public class Powerup : MonoBehaviour
 
     public void Initialize(int boost)
     {
+       // boost = 3;
         if (boost == 0)
         {
             name = "Health Boost";
@@ -25,7 +26,7 @@ public class Powerup : MonoBehaviour
         else if (boost == 2) 
         {
             name = "Speed Boost";
-            speedBoost = 1;
+            speedBoost = 0.1f;
         }
         else if(boost == 3)
         {
