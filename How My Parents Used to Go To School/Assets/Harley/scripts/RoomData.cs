@@ -35,8 +35,8 @@ public class RoomData
 
     public enum RoomType
     {
+        StartRoom,
         QuizRoom,
-        AssignmentRoom,
         FinalRoom
     }
 }

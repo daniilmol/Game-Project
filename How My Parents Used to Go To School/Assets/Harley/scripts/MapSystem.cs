@@ -7,6 +7,7 @@ public class MapSystem : MonoBehaviour
     public MapData mapData;
     public RoomBuilder roomBuilder;
     public CrossBuilder crossBuilder;
+    public WallBuilder wallBuilder;
 
     public GameObject playerPref;
 
@@ -33,12 +34,14 @@ public class MapSystem : MonoBehaviour
     [HideInInspector]
     public List<GameObject> roomUnitInsts = new List<GameObject>();
 
-    const string cellTag = "Floor";
+    [HideInInspector]
+    public const string cellTag = "Floor";
 
     public void Start()
     {
         crossBuilder = GetComponent<CrossBuilder>();
         roomBuilder = GetComponent<RoomBuilder>();
+        wallBuilder = GetComponent<WallBuilder>();
     }
 
     void SetSeed(bool bDebug)
@@ -68,7 +71,6 @@ public class MapSystem : MonoBehaviour
         {
             CreateRoomData();
             RandRoomCrosses();
-            SetPlayer();
         }));
     }
 
@@ -81,7 +83,7 @@ public class MapSystem : MonoBehaviour
             rd.roomTran = genRooms[i - 1];
             rd.roomType = RoomData.RoomType.QuizRoom;
             if (rd.roomId == 1)
-                rd.roomType = RoomData.RoomType.AssignmentRoom;
+                rd.roomType = RoomData.RoomType.StartRoom;
             rd.crossRooms = new List<RoomData>();
             rd.monsters = new List<GameObject>();
             rd.isEndRoom = false;
@@ -96,9 +98,14 @@ public class MapSystem : MonoBehaviour
     {
         if (genRooms.Count <= 0) return;
 
-        firstRoom = genRooms[Random.Range(0, genRooms.Count)];
+        firstRoom = genRooms[0];
 
         CalNextCross(firstRoom);
+    }
+
+    void BuildWalls()
+    {
+        wallBuilder.StartCoroutine(wallBuilder.GenWalls());
     }
 
     void UpdateMapData()
@@ -233,7 +240,11 @@ public class MapSystem : MonoBehaviour
             Debug.Log("End Rooms Number: " + endRooms.Count);
 
             UpdateMapData();
-            crossBuilder.StartCoroutine(crossBuilder.GenCrosses());
+            crossBuilder.StartCoroutine(crossBuilder.GenCrosses(() =>
+            {
+                BuildWalls();
+                SetPlayer();
+            }));
         }
     }
 
@@ -361,11 +372,12 @@ public class MapSystem : MonoBehaviour
 
     public ExCross GetExCross(Vector3 strPos, Vector3 tarPos)
     {
+        var scale = crossBuilder.cellScale;
         var ec = new ExCross();
         var rt = GetRoomByPos(strPos);
         if (rt != null)
         {
-            var to = new Vector3(rt.length - 1, 0, rt.width - 1) * .5f;
+            var to = new Vector3(rt.length + scale, 0, rt.width + scale) * .5f;
 
             var centerPos = new Vector3(rt.centerPos.x, 0, rt.centerPos.y);
             var ned = centerPos - to;
@@ -374,14 +386,14 @@ public class MapSystem : MonoBehaviour
             {
                 if (Random.value < .5f)
                 {
-                    ec.pos1 = strPos.z < tarPos.z ? new Vector3(ned.x - 1, strPos.y, strPos.z - 1) : new Vector3(ned.x - 1, strPos.y, strPos.z + 1);
-                    ec.pos2 = strPos.z < tarPos.z ? ec.pos1 + new Vector3(0, 0, rt.width + 1) : ec.pos1 - new Vector3(0, 0, rt.width + 1);
+                    ec.pos1 = strPos.z < tarPos.z ? new Vector3(ned.x - scale, strPos.y, strPos.z - scale  * 2) : new Vector3(ned.x - scale, strPos.y, strPos.z + scale * 2);
+                    ec.pos2 = strPos.z < tarPos.z ? ec.pos1 + new Vector3(0, 0, rt.width + scale * 3) : ec.pos1 - new Vector3(0, 0, rt.width + scale * 3);
                     ec.pos3 = new Vector3(strPos.x, strPos.y, ec.pos2.z);
                 }
                 else
                 {
-                    ec.pos1 = strPos.z < tarPos.z ? new Vector3(fod.x + 1, strPos.y, strPos.z - 1) : new Vector3(fod.x + 1, strPos.y, strPos.z + 1);
-                    ec.pos2 = strPos.z < tarPos.z ? ec.pos1 + new Vector3(0, 0, rt.width + 1) : ec.pos1 - new Vector3(0, 0, rt.width + 1);
+                    ec.pos1 = strPos.z < tarPos.z ? new Vector3(fod.x + scale, strPos.y, strPos.z - scale * 2) : new Vector3(fod.x + scale, strPos.y, strPos.z + scale * 2);
+                    ec.pos2 = strPos.z < tarPos.z ? ec.pos1 + new Vector3(0, 0, rt.width + scale * 3) : ec.pos1 - new Vector3(0, 0, rt.width + scale * 3);
                     ec.pos3 = new Vector3(strPos.x, strPos.y, ec.pos2.z);
                 }
 
@@ -390,14 +402,14 @@ public class MapSystem : MonoBehaviour
             {
                 if (Random.value < .5f)
                 {
-                    ec.pos1 = strPos.x < tarPos.x ? new Vector3(strPos.x - 1, strPos.y, ned.z - 1) : new Vector3(strPos.x + 1, strPos.y, ned.z - 1);
-                    ec.pos2 = strPos.x < tarPos.x ? ec.pos1 + new Vector3(rt.length + 1, 0, 0) : ec.pos1 - new Vector3(rt.length + 1, 0, 0);
+                    ec.pos1 = strPos.x < tarPos.x ? new Vector3(strPos.x - scale * 2, strPos.y, ned.z - scale) : new Vector3(strPos.x + scale * 2, strPos.y, ned.z - scale);
+                    ec.pos2 = strPos.x < tarPos.x ? ec.pos1 + new Vector3(rt.length + scale * 3, 0, 0) : ec.pos1 - new Vector3(rt.length + scale * 3, 0, 0);
                     ec.pos3 = new Vector3(ec.pos2.x, strPos.y, strPos.z);
                 }
                 else
                 {
-                    ec.pos1 = strPos.x < tarPos.x ? new Vector3(strPos.x - 1, strPos.y, fod.z + 1) : new Vector3(strPos.x + 1, strPos.y, fod.z + 1);
-                    ec.pos2 = strPos.x < tarPos.x ? ec.pos1 + new Vector3(rt.length + 1, 0, 0) : ec.pos1 - new Vector3(rt.length + 1, 0, 0);
+                    ec.pos1 = strPos.x < tarPos.x ? new Vector3(strPos.x - scale * 2, strPos.y, fod.z + scale) : new Vector3(strPos.x + scale * 2, strPos.y, fod.z + scale);
+                    ec.pos2 = strPos.x < tarPos.x ? ec.pos1 + new Vector3(rt.length + scale * 3, 0, 0) : ec.pos1 - new Vector3(rt.length + scale * 3, 0, 0);
                     ec.pos3 = new Vector3(ec.pos2.x, strPos.y, strPos.z);
                 }
             }

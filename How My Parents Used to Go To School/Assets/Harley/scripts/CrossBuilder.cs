@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum ObstacleCrossType
 {
@@ -16,6 +17,8 @@ public class CrossBuilder : MonoBehaviour
 
     private MapSystem mapSystem;
 
+    private GameObject container;
+
     Vector3Int Dx = new Vector3Int(1, 0, 0);
     Vector3Int Dy = new Vector3Int(0, 1, 0);
     Vector3Int Dz = new Vector3Int(0, 0, 1);
@@ -23,9 +26,11 @@ public class CrossBuilder : MonoBehaviour
     private void Start()
     {
         mapSystem = GetComponent<MapSystem>();
+        container = new GameObject("CrossPath");
+        container.transform.position = mapSystem.mapData.mapCenter;
     }
 
-    public IEnumerator GenCrosses()
+    public IEnumerator GenCrosses(UnityAction complete)
     {
         var fr = mapSystem.mainCross.First.Value;
         var lr = mapSystem.mainCross.Last.Value;
@@ -38,6 +43,7 @@ public class CrossBuilder : MonoBehaviour
             CrossTwoRoom(cd.id1, cd.id2);
             yield return null;
         }
+        complete();
     }
 
     void CrossTwoRoom(int id1, int id2)
@@ -62,13 +68,16 @@ public class CrossBuilder : MonoBehaviour
         Vector3 pos1;
         Vector3 pos2;
 
+        // no overlap on x
         if (rangex.y > rangex.x)
         {
+            // no overlap on y
             if (rangez.y > rangez.x)
             {
                 var fxmax = frcp.x + (from.length - cellScale) * .5f - cellScale;
                 var fzmax = frcp.z + (from.width - cellScale) * .5f - cellScale;
 
+                // from at left, to at right
                 if (fxmax == rangex.x)
                 {
                     if (fzmax == rangez.x)
@@ -77,8 +86,8 @@ public class CrossBuilder : MonoBehaviour
                         var fe = Random.value < .5f ? fxmax : fzmax;
                         if (fe == fxmax)
                         {
-                            pos1 = new Vector3(fe + cellScale, 0, fzmax);
-                            pos2 = new Vector3(rangex.y, 0, rangez.y - cellScale);
+                            pos1 = new Vector3(fe + cellScale * 2, 0, fzmax);
+                            pos2 = new Vector3(rangex.y, 0, rangez.y - cellScale * 2);
                             if (pos1.x >= pos2.x)
                             {
                                 pos2 = new Vector3(pos1.x + cellScale, 0, pos2.z);
@@ -94,8 +103,8 @@ public class CrossBuilder : MonoBehaviour
                         }
                         else
                         {
-                            pos1 = new Vector3(fxmax, 0, fe + cellScale);
-                            pos2 = new Vector3(rangex.y - cellScale, 0, rangez.y);
+                            pos1 = new Vector3(fxmax, 0, fe + cellScale * 2);
+                            pos2 = new Vector3(rangex.y - cellScale * 2, 0, rangez.y);
 
                             if (pos1.x >= pos2.x)
                             {
@@ -117,8 +126,8 @@ public class CrossBuilder : MonoBehaviour
                         var fe = Random.value < .5f ? fxmax : rangez.y;
                         if (fe == fxmax)
                         {
-                            pos1 = new Vector3(fe + cellScale, 0, rangez.y);
-                            pos2 = new Vector3(rangex.y, 0, rangez.x + cellScale);
+                            pos1 = new Vector3(fe + cellScale * 2, 0, rangez.y);
+                            pos2 = new Vector3(rangex.y, 0, rangez.x + cellScale * 2);
 
                             if (pos1.x >= pos2.x)
                             {
@@ -135,8 +144,8 @@ public class CrossBuilder : MonoBehaviour
                         }
                         else
                         {
-                            pos1 = new Vector3(rangex.x, 0, fe - cellScale);
-                            pos2 = new Vector3(rangex.y - cellScale, 0, rangez.x);
+                            pos1 = new Vector3(rangex.x, 0, fe - cellScale * 2);
+                            pos2 = new Vector3(rangex.y - cellScale * 2, 0, rangez.x);
 
                             if (pos1.x >= pos2.x)
                             {
@@ -161,8 +170,8 @@ public class CrossBuilder : MonoBehaviour
                         var fe = Random.value < .5f ? rangex.y : fzmax;
                         if (fe == fzmax)
                         {
-                            pos1 = new Vector3(rangex.y, 0, fe + cellScale);
-                            pos2 = new Vector3(rangex.x + cellScale, 0, rangez.y);
+                            pos1 = new Vector3(rangex.y, 0, fe + cellScale * 2);
+                            pos2 = new Vector3(rangex.x + cellScale * 2, 0, rangez.y);
 
                             if (pos1.x <= pos2.x)
                             {
@@ -179,8 +188,8 @@ public class CrossBuilder : MonoBehaviour
                         }
                         else
                         {
-                            pos1 = new Vector3(fe - cellScale, 0, rangez.x);
-                            pos2 = new Vector3(rangex.x, 0, rangez.y - cellScale);
+                            pos1 = new Vector3(fe - cellScale * 2, 0, rangez.x);
+                            pos2 = new Vector3(rangex.x, 0, rangez.y - cellScale * 2);
 
                             if (pos1.x <= pos2.x)
                             {
@@ -202,8 +211,8 @@ public class CrossBuilder : MonoBehaviour
                         var fe = Random.value < .5f ? rangex.y : rangez.y;
                         if (fe == rangex.y)
                         {
-                            pos1 = new Vector3(fe - cellScale, 0, rangez.y);
-                            pos2 = new Vector3(rangex.x, 0, rangez.x + cellScale);
+                            pos1 = new Vector3(fe - cellScale * 2, 0, rangez.y);
+                            pos2 = new Vector3(rangex.x, 0, rangez.x + cellScale * 2);
 
                             if (pos1.x <= pos2.x)
                             {
@@ -219,8 +228,8 @@ public class CrossBuilder : MonoBehaviour
                         }
                         else
                         {
-                            pos1 = new Vector3(rangex.y, 0, fe - cellScale);
-                            pos2 = new Vector3(rangex.x + cellScale, 0, rangez.x);
+                            pos1 = new Vector3(rangex.y, 0, fe - cellScale * 2);
+                            pos2 = new Vector3(rangex.x + cellScale * 2, 0, rangez.x);
 
                             if (pos1.x <= pos2.x)
                             {
@@ -240,8 +249,8 @@ public class CrossBuilder : MonoBehaviour
             else
             {
                 var rz = EdgeRandom(rangez.y, rangez.x);
-                var rx1 = rangex.x + cellScale;
-                var rx2 = rangex.y - cellScale;
+                var rx1 = rangex.x + cellScale * 2;
+                var rx2 = rangex.y - cellScale * 2;
 
                 pos1 = new Vector3(rx1, 0, rz);
                 pos2 = new Vector3(rx2, 0, rz);
@@ -252,8 +261,8 @@ public class CrossBuilder : MonoBehaviour
         else
         {
             var rx = EdgeRandom(rangex.y, rangex.x);
-            var rz1 = rangez.x + cellScale;
-            var rz2 = rangez.y - cellScale;
+            var rz1 = rangez.x + cellScale * 2;
+            var rz2 = rangez.y - cellScale * 2;
 
             pos1 = new Vector3(rx, 0, rz1);
             pos2 = new Vector3(rx, 0, rz2);
@@ -288,13 +297,13 @@ public class CrossBuilder : MonoBehaviour
 
     float EdgeRandom(float min, float max)
     {
-        float cut = .5f;
+        int cut = 1;
         var diff = max - min;
         if (diff % cellScale == 0)
-            cut = 1f;
+            cut = cellScale;
         int c = (int)(diff / cut);
 
-        return Random.Range(0, c + cellScale) * cut + min;
+        return Random.Range(0, c + 1) * cut + min;
     }
 
     void LineTwoPos(Vector3 pos1, Vector3 pos2)
@@ -316,9 +325,9 @@ public class CrossBuilder : MonoBehaviour
 
                         if (Mathf.Abs(pos.z - max.z) > 2 * cellScale)
                         {
-                            if (RayCast(pos, Dz, cellScale))
+                            if (RayCast(pos, Dz, cellScale * 2))
                             {
-                                var posex = new Vector3(pos.x, pos.y, pos.z + cellScale);
+                                var posex = new Vector3(pos.x, pos.y, pos.z + cellScale * 2);
                                 var cps = mapSystem.GetExCross(posex, max);
                                 switch (ObstacleCrossType)
                                 {
@@ -344,9 +353,9 @@ public class CrossBuilder : MonoBehaviour
 
                         if (Mathf.Abs(pos.z - max.z) > 2 * cellScale)
                         {
-                            if (RayCast(pos, Dz, cellScale))
+                            if (RayCast(pos, Dz, cellScale * 2))
                             {
-                                var posex = new Vector3(pos.x, pos.y, pos.z + cellScale);
+                                var posex = new Vector3(pos.x, pos.y, pos.z + cellScale * 2);
                                 var cps = mapSystem.GetExCross(posex, max);
                                 switch (ObstacleCrossType)
                                 {
@@ -381,9 +390,9 @@ public class CrossBuilder : MonoBehaviour
 
                         if (Mathf.Abs(pos.x - max.x) > 2 * cellScale)
                         {
-                            if (RayCast(pos, Dx, cellScale))
+                            if (RayCast(pos, Dx, cellScale * 2))
                             {
-                                var posex = new Vector3(pos.x + cellScale, pos.y, pos.z);
+                                var posex = new Vector3(pos.x + cellScale * 2, pos.y, pos.z);
                                 var cps = mapSystem.GetExCross(posex, max);
                                 switch (ObstacleCrossType)
                                 {
@@ -409,9 +418,9 @@ public class CrossBuilder : MonoBehaviour
 
                         if (Mathf.Abs(pos.x - max.x) > 2 * cellScale)
                         {
-                            if (RayCast(pos, Dx, cellScale))
+                            if (RayCast(pos, Dx, cellScale * 2))
                             {
-                                var posex = new Vector3(pos.x + cellScale, pos.y, pos.z);
+                                var posex = new Vector3(pos.x + cellScale * 2, pos.y, pos.z);
                                 var cps = mapSystem.GetExCross(posex, max);
                                 switch (ObstacleCrossType)
                                 {
@@ -440,7 +449,7 @@ public class CrossBuilder : MonoBehaviour
         var rt = mapSystem.GetRoomByPos(cp);
         if (ObstacleCrossType == ObstacleCrossType.Detour && rt != null)
         {
-            var to = new Vector2(rt.length + cellScale, rt.width + cellScale) * .5f;
+            var to = new Vector2(rt.length + cellScale * 3, rt.width + cellScale * 3) * .5f;
 
             var ned = rt.centerPos - to;
             var fod = rt.centerPos + to;
@@ -504,7 +513,10 @@ public class CrossBuilder : MonoBehaviour
 
     void InsSetPos(Vector3 pos, Transform parent = null)
     {
-        pos -= new Vector3(0, 0.05f, 0);
+        if (container != null)
+        {
+            parent = container.transform;
+        }
         var temp = mapSystem.mapData.crossUnitPos;
         if (!temp.Contains(pos))
         {
