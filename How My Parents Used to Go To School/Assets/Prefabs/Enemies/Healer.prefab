@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -4779098163835384486}
   - component: {fileID: 6310619642747645335}
   - component: {fileID: -4643285592366196923}
+  - component: {fileID: -1792795076083777277}
   m_Layer: 7
   m_Name: Healer
   m_TagString: Enemy
@@ -176,3 +177,20 @@ MonoBehaviour:
   healthMax: 3
   enemy: {fileID: 6310619642747645335}
   anim: {fileID: 0}
+--- !u!114 &-1792795076083777277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8366109158623594809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c8adc059d23e8341a2c189a1aaa77ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: -4643285592366196923}
+  maxHealth: 3
+  damage: 1
+  speed: 3.5
+  attackSpeed: 1

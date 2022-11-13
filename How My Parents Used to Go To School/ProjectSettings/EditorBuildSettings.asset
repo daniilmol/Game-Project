@@ -36,6 +36,9 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 0
+    path: Assets/Daniil/DaniilAlpha.unity
+    guid: 025de7e5fab1a2e48844f32f05bfa83f
+  - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
   m_configObjects: {}

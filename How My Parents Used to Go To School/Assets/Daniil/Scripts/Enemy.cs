@@ -10,7 +10,6 @@ public class Enemy : MonoBehaviour
     protected GameObject bullet;
     protected float dropChance = 100;
     protected int health;
-    protected float damage;
     protected bool canSeePlayer;
     protected bool withinPlayerRange;
     protected RaycastHit rayHit;
@@ -19,7 +18,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] GameObject powerUpDrop;
     [SerializeField] Material originalColor;
     [SerializeField] Material flashColor;
+    protected EnemyStatContainer enemyStats;
     protected int spawnWeight;
+
+    void Start(){
+        enemyStats = GetComponent<EnemyStatContainer>();
+    }
 
     void FixedUpdate()
     {
@@ -104,21 +108,12 @@ public class Enemy : MonoBehaviour
         return flashColor;
     }
 
-    public float GetDamage(){
-        return damage;
-    }
-
     public int GetSpawnWeight(){
         return spawnWeight;
     }
 
     public void SetSpawnWeight(int spawnWeight){
         this.spawnWeight = spawnWeight;
-    }
-
-    public void ScaleDamage(float scale){
-        damage += damage * scale;
-        difficultyScaling = scale;
     }
 
     public float GetScale(){

@@ -1,4 +1,4 @@
-using UnityEditor;
+/**using UnityEditor;
 using UnityEngine;
 
 namespace YourCompany.YourNameSpace
@@ -31,4 +31,4 @@ namespace YourCompany.YourNameSpace
         [MenuItem("GameObject/Copy Path", true)]
         static bool CopyPathValidation() => Selection.gameObjects.Length == 1;
     }
-}
+}*/

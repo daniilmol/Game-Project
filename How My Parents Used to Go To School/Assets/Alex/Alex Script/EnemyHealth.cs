@@ -12,6 +12,7 @@ public class EnemyHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        healthMax = enemy.GetComponent<EnemyStatContainer>().GetMaxHealth();
         health = healthMax;
     }
 
@@ -33,6 +34,7 @@ public class EnemyHealth : MonoBehaviour
     public void takeDamage(float amount)
     {
         health -= amount;
+        Debug.Log("DDD" + amount);
         enemy.GetComponent<MeshRenderer>().material = enemy.getFlashColor();;
         Invoke("ResetColor", 0.2f);
         if (health <= 0)

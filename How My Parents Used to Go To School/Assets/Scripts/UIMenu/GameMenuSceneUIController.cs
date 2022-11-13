@@ -7,6 +7,7 @@ public class GameMenuSceneUIController : MonoBehaviour
 {
     public void ChangeScene(string sceneName)
     {
+        PlayerPrefs.SetFloat("Scale", 1f);
         SceneManager.LoadScene(sceneName);
     }
 

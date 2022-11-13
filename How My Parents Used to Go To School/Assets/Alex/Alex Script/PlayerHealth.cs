@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        healthMax = GetComponent<StatContainer>().GetMaxHealth();
         health = healthMax;
     }
 
@@ -22,6 +23,11 @@ public class PlayerHealth : MonoBehaviour
     public float getHealthMax()
     {
         return healthMax;
+    }
+
+    public void SetHealth(float healthMax){
+        this.healthMax = healthMax;
+        health = this.healthMax;
     }
 
     public void takeDamage(float amount)
@@ -62,11 +68,5 @@ public class PlayerHealth : MonoBehaviour
         {
             takeDamage(2);
         }
-    }
-
-    public void IncreaseStats(Powerup powerup) {
-        health += powerup.getStats()[0];
-       // damage += powerup.getStats()[1];
-        //speed += powerup.getStats()[2];
     }
 }

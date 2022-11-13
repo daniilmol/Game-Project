@@ -8,20 +8,24 @@ public class MajorSkill : ScriptableObject
     public float cooldownTime;
     public float activeTime;
     public bool isLearned = false;
-
+    protected float basicDamage;
+    protected StatContainer StatContainer;
     public virtual void Activate(GameObject player)
     {
     
     }
 
-    public virtual void whirlwindSpin(GameObject player) { 
-    
-    
-    }
-
-    public virtual void MortalStrikeSpin(GameObject player)
+    public float GetDamage()
     {
-
-
+        return basicDamage;
     }
+
+    public void SetDamage(StatContainer sc) {
+        basicDamage = sc.GetDamage();
+    }
+
+    public void SetSC(StatContainer sc) {
+        StatContainer = sc;
+    }
+
 }

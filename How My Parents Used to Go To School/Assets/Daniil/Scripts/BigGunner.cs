@@ -19,7 +19,6 @@ public class BigGunner : Enemy
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        damage = 3f;
         abilityTimer = 5;
         restTimer = 2;
         IsResting = false;

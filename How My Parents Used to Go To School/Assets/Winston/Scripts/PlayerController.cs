@@ -14,9 +14,11 @@ public class PlayerController : MonoBehaviour
     private bool isOpened = false;
     private float speedFactor = 8f;
     public Transform AttackCube;
+    public Transform LongRangeAttackCube;
+    private StatContainer StatContainer;
     //public event Action<InputAction.CallbackContext> openPanel;
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         rb = GetComponent<Rigidbody>();
         inputActions = new UserInputs();
@@ -25,6 +27,7 @@ public class PlayerController : MonoBehaviour
         movement.Enable();
         inputActions.Player.CallOutPanel.performed += openConsole;
         panel.GetComponent<CanvasGroup>().alpha = 0;
+        StatContainer = GetComponentInChildren<StatContainer>();
     }
     // Update is called once per frame
     void Update()
@@ -41,7 +44,7 @@ public class PlayerController : MonoBehaviour
         //v3.x = Mathf.Clamp(v3.x, 0, 0.08f);
         //v3.z = Mathf.Clamp(v3.z, 0, 0.08f);
         //v3.y = Mathf.Clamp(v3.y, 0, 0.08f);
-        Vector3 finsihedVol = Quaternion.Euler(0, -45, 0) * v3.normalized * speedFactor * Time.deltaTime;
+        Vector3 finsihedVol = Quaternion.Euler(0, -45, 0) * v3.normalized * StatContainer.GetSpeed() * Time.deltaTime * speedFactor;
         transform.Translate(finsihedVol);
     }
 
@@ -66,6 +69,11 @@ public class PlayerController : MonoBehaviour
 
     public Vector3 getCube() {
         return AttackCube.position;
+    }
+
+    public Vector3 getLongRangeAttackCube()
+    {
+        return LongRangeAttackCube.position;
     }
 
 }

@@ -61,7 +61,7 @@ public class CharacterLoco : MonoBehaviour
                 {
                     Debug.Log("Clicked");
                     //launchAttack(CharacterHitbox);
-
+                    animator.applyRootMotion = true;
                     state = SkillState.active;
                     activeTime = 0.3f;
                     Debug.Log(state);

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Fury Dual Wielding
   m_EditorClassIdentifier: 
   skillName: Fury_Dual_Wielding
-  cooldownTime: 0.5
+  cooldownTime: 1
   activeTime: 0.5
   isLearned: 1
+  basicDamage: 1
+  m_SpawnTransform: {fileID: 0}

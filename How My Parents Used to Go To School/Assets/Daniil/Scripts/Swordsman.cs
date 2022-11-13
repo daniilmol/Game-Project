@@ -15,7 +15,6 @@ public class Swordsman : Enemy
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        damage = 2f;
     }
     void Update()
     {

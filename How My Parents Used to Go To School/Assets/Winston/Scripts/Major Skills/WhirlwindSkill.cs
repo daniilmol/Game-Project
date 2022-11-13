@@ -8,12 +8,17 @@ using UnityEngine.AI;
 public class WhirlwindSkill : MajorSkill
 {
 
-    [SerializeField] 
-    public float basicDamage = 1.0f;
+    [SerializeField]
+    public StatContainer playerStats;
+    //public float basicDamage;
     private Hashtable hitList = new Hashtable();
     GameObject globalPlayer;
-    
 
+    //public void Update() { 
+    //    basicDamage =  playerStats.GetDamage() * 2;
+    //    Debug.Log("Get" + playerStats.GetDamage());
+    //    Debug.Log("Damage" + basicDamage);
+    //}
 
     //public WhirlwindOnhit whirl;
     public override void Activate(GameObject player)
@@ -34,14 +39,6 @@ public class WhirlwindSkill : MajorSkill
         
     }
 
-
-    public override void whirlwindSpin(GameObject player) {
-
-        //player.transform.Rotate(0f, 10f, 0f, Space.Self);
-        //player.transform.Rotate(0f, 60f, 0f, Space.Self);
-        //Debug.Log("WWWWWWWWW");
-
-    }
 
     public void IsLearned() {
         isLearned = !isLearned;
@@ -82,6 +79,9 @@ public class WhirlwindSkill : MajorSkill
             //   Debug.Log(collider.name);
             //Debug.Log(hitList);
         }
+    }
+    void OnCollisionEnter() { 
+    
     }
     public void clearTable() {
         hitList.Clear();
