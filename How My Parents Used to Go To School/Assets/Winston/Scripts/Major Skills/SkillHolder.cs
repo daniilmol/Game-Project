@@ -6,6 +6,7 @@ using UnityEngine.Experimental.VFX;
 
 public class SkillHolder : MonoBehaviour
 {
+
     public MajorSkill skill;
     float cooldownTime;
     float activeTime;
@@ -21,6 +22,8 @@ public class SkillHolder : MonoBehaviour
     public GameObject longrange;
     public GameObject MaleC;
     private GameObject generatedVfx;
+    private StatContainer StatContainer;
+
     enum SkillState {
         ready,
         active,
@@ -33,9 +36,15 @@ public class SkillHolder : MonoBehaviour
     void Start()
     {
         anima = GetComponent<CharacterLoco>();
+        StatContainer = GetComponent<StatContainer>();
+        
     }
 
     void Update() {
+        skill.SetSC(StatContainer);
+
+
+
         switch (state) {
             case SkillState.ready:
                 if (Input.GetKeyDown(key))
@@ -97,7 +106,7 @@ public class SkillHolder : MonoBehaviour
                 }
                 else {
                     state = SkillState.cooldown;
-                    cooldownTime = skill.cooldownTime;
+                    cooldownTime = skill.cooldownTime / StatContainer.GetAttackSpeed();
                     anima.endActivingSkill(activingSkill);
                     Debug.Log(state);
                     

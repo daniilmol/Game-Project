@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Whirlwind
   m_EditorClassIdentifier: 
   skillName: Whirlwind
-  cooldownTime: 0
+  cooldownTime: 1
   activeTime: 0.5
   isLearned: 1
-  basicDamage: 1
+  playerStats: {fileID: 0}

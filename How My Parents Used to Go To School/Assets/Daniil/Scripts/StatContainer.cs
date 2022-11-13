@@ -38,6 +38,6 @@ public class StatContainer : MonoBehaviour
         playerHealth.heal(powerup.getStats()[0]);
         damage += powerup.getStats()[1];
         speed += powerup.getStats()[2];
-        attackSpeed *= powerup.getStats()[3];
+        attackSpeed /= powerup.getStats()[3];
     }
 }
