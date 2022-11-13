@@ -290,11 +290,11 @@ public class CrossBuilder : MonoBehaviour
     {
         float cut = .5f;
         var diff = max - min;
-        if (diff % 1 == 0)
+        if (diff % cellScale == 0)
             cut = 1f;
         int c = (int)(diff / cut);
 
-        return Random.Range(0, c + 1) * cut + min;
+        return Random.Range(0, c + cellScale) * cut + min;
     }
 
     void LineTwoPos(Vector3 pos1, Vector3 pos2)
@@ -308,7 +308,7 @@ public class CrossBuilder : MonoBehaviour
 
                 var diff = max.z - min.z;
 
-                if (diff % 1 == 0)
+                if (diff % cellScale == 0)
                 {
                     for (float i = min.z; i <= max.z; i += cellScale)
                     {
@@ -373,7 +373,7 @@ public class CrossBuilder : MonoBehaviour
 
                 var diff = max.x - min.x;
 
-                if (diff % 1 == 0)
+                if (diff % cellScale == 0)
                 {
                     for (float i = min.x; i <= max.x; i += cellScale)
                     {
