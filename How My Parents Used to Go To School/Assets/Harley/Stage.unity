@@ -159,7 +159,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -5, y: -5}
-  m_SizeDelta: {x: 300, y: 250}
+  m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &322144418
 MonoBehaviour:
@@ -348,9 +348,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cell: {fileID: 3726327134598553362, guid: 8b4c6cf35a81b2045864f593ec7f49c2, type: 3}
   cellScale: 4
-  roomTransRange: {x: 200, y: 200}
+  roomTransRange: {x: 50, y: 50}
   maxRoomArea: 100
   maxRoomCount: 50
+  startRoomSize: 4
   maxLengthWidthScale: 1.4
 --- !u!4 &477729193
 Transform:
@@ -417,7 +418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crossUnit: {fileID: 3726327134598553362, guid: 1591d39e5d7d2274a863d5b8bd8a113e,
     type: 3}
-  ObstacleCrossType: 0
+  ObstacleCrossType: 1
   cellScale: 4
 --- !u!1 &542310195
 GameObject:
@@ -758,14 +759,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1040754452}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: 0.27059805, y: 0.6532815, z: -0.6532815, w: 0.27059805}
   m_LocalPosition: {x: 0, y: 100, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 135, z: 0}
 --- !u!1 &2124417759
 GameObject:
   m_ObjectHideFlags: 0

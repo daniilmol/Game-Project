@@ -26,6 +26,10 @@ public class RoomBuilder : MonoBehaviour
      */
     [SerializeField] int maxRoomCount;
     /**
+     * The size of start room
+     */
+    [SerializeField] int startRoomSize;
+    /**
      * Min for width
      */
     private int minRoomEdge;
@@ -58,6 +62,8 @@ public class RoomBuilder : MonoBehaviour
      */
     public IEnumerator GenRooms(Vector3Int centerPos, UnityAction complete)
     {
+        SetGenStartRoom(centerPos);
+        yield return new WaitForSeconds(0.1f);
         int temp = (int)Mathf.Sqrt(maxRoomArea * 1.0f / maxLengthWidthScale);
         minRoomEdge = temp > 3 ? temp : 3;
         for (int i = 0; i <= maxRoomCount; i++)
@@ -67,6 +73,28 @@ public class RoomBuilder : MonoBehaviour
         }
 
         complete();
+    }
+
+    /**
+     * Generate start room
+     */
+    void SetGenStartRoom(Vector3Int centerPos)
+    {
+        RoomTran roomTran = new RoomTran();
+        roomTran.length = startRoomSize * cellScale;
+        roomTran.width = startRoomSize * cellScale;
+        roomTran.centerPos = new Vector2Int(Random.Range((int)(centerPos.x - roomTransRange.x * .5f), (int)(centerPos.x + roomTransRange.x * .5f)) * cellScale,
+            Random.Range((int)(centerPos.z - roomTransRange.y * .5f), (int)(centerPos.z + roomTransRange.y * .5f)) * cellScale);
+        Vector3 roomCenter = new Vector3(roomTran.centerPos.x, 0, roomTran.centerPos.y);
+        GameObject temp = new GameObject("Room1");
+        temp.transform.position = roomCenter;
+        temp.tag = cellTag;
+        GenOneRoom(roomCenter, roomTran.length, roomTran.width, temp.transform);
+        var box = temp.AddComponent<BoxCollider>();
+        box.size = new Vector3(roomTran.length, 1, roomTran.width);
+        box.isTrigger = true;
+        mapManager.genRooms.Add(roomTran);
+        mapManager.unCrossRooms.Add(roomTran);
     }
 
     /**
@@ -84,6 +112,9 @@ public class RoomBuilder : MonoBehaviour
             temp.tag = cellTag;
 
             GenOneRoom(roomCenter, roomTran.length, roomTran.width, temp.transform);
+            var box = temp.AddComponent<BoxCollider>();
+            box.size = new Vector3(roomTran.length, 1, roomTran.width);
+            box.isTrigger = true;
 
             mapManager.genRooms.Add(roomTran);
             mapManager.unCrossRooms.Add(roomTran);
@@ -100,13 +131,24 @@ public class RoomBuilder : MonoBehaviour
 
         // Random set length and width within range
         int maxRoomEdge = maxRoomArea / minRoomEdge;
-        roomTran.length = Random.Range(minRoomEdge + 1, maxRoomEdge + 1) * cellScale;
-        int width = maxRoomArea / roomTran.length * cellScale;
-        roomTran.width = Random.Range(minRoomEdge, width + 1) * cellScale;
+        int length = Random.Range(minRoomEdge + 1, maxRoomEdge + 1);
+        int width = Random.Range(minRoomEdge, maxRoomArea / length + 1);
+        roomTran.length = length * cellScale;
+        roomTran.width = width * cellScale;
 
         // Random set center position
-        roomTran.centerPos = new Vector2Int(Random.Range((int)(centerPos.x - roomTransRange.x * .5f), (int)(centerPos.x + roomTransRange.x * .5f)),
-            Random.Range((int)(centerPos.z - roomTransRange.y * .5f), (int)(centerPos.z + roomTransRange.y * .5f)));
+        roomTran.centerPos = new Vector2Int(Random.Range((int)(centerPos.x - roomTransRange.x * .5f), (int)(centerPos.x + roomTransRange.x * .5f)) * cellScale,
+            Random.Range((int)(centerPos.z - roomTransRange.y * .5f), (int)(centerPos.z + roomTransRange.y * .5f)) * cellScale);
+        
+        if (length % 2 != 0)
+        {
+            roomTran.centerPos -= new Vector2Int(cellScale / 2, 0);
+        }
+
+        if (width % 2 != 0)
+        {
+            roomTran.centerPos -= new Vector2Int(0, cellScale / 2);
+        }
 
         Vector3 roomCenter = new Vector3(roomTran.centerPos.x, 0, roomTran.centerPos.y);
 
@@ -142,6 +184,7 @@ public class RoomBuilder : MonoBehaviour
 
         // Check if hit any room based on each point
         result =
+            PointOverlapCheck(centerPos, lengthBorder > widthBorder ? widthBorder : lengthBorder) ||
             PointOverlapCheck(v1, cellScale) ||
             PointOverlapCheck(v2, cellScale) ||
             PointOverlapCheck(v3, cellScale) ||

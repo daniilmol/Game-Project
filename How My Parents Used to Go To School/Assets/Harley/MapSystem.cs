@@ -81,7 +81,7 @@ public class MapSystem : MonoBehaviour
             rd.roomTran = genRooms[i - 1];
             rd.roomType = RoomData.RoomType.QuizRoom;
             if (rd.roomId == 1)
-                rd.roomType = RoomData.RoomType.AssignmentRoom;
+                rd.roomType = RoomData.RoomType.StartRoom;
             rd.crossRooms = new List<RoomData>();
             rd.monsters = new List<GameObject>();
             rd.isEndRoom = false;
@@ -96,7 +96,7 @@ public class MapSystem : MonoBehaviour
     {
         if (genRooms.Count <= 0) return;
 
-        firstRoom = genRooms[Random.Range(0, genRooms.Count)];
+        firstRoom = genRooms[0];
 
         CalNextCross(firstRoom);
     }
