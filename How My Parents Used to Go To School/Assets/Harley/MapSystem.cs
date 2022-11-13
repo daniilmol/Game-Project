@@ -8,6 +8,8 @@ public class MapSystem : MonoBehaviour
     public RoomBuilder roomBuilder;
     public CrossBuilder crossBuilder;
 
+    public GameObject playerPref;
+
     public List<RoomTran> genRooms = new List<RoomTran>();
     public List<RoomTran> unCrossRooms = new List<RoomTran>();
 
@@ -66,6 +68,7 @@ public class MapSystem : MonoBehaviour
         {
             CreateRoomData();
             RandRoomCrosses();
+            SetPlayer();
         }));
     }
 
@@ -224,10 +227,10 @@ public class MapSystem : MonoBehaviour
             AddItemToRoomDic(nr, br);
             LAdd(endRooms, nr);
 
-            Debug.Log("Generate Room Number£º" + genRooms.Count);
-            Debug.Log("Main Cross Number£º" + mainCross.Count);
-            Debug.Log("Dead Rooms Number£º" + deadRooms.Count);
-            Debug.Log("End Rooms Number£º" + endRooms.Count);
+            Debug.Log("Generate Room Number: " + genRooms.Count);
+            Debug.Log("Main Cross Number: " + mainCross.Count);
+            Debug.Log("Dead Rooms Number: " + deadRooms.Count);
+            Debug.Log("End Rooms Number: " + endRooms.Count);
 
             UpdateMapData();
             crossBuilder.StartCoroutine(crossBuilder.GenCrosses());
@@ -400,6 +403,13 @@ public class MapSystem : MonoBehaviour
             }
         }
         return ec;
+    }
+
+    void SetPlayer()
+    {
+        var player = Instantiate(playerPref);
+        Vector2 center = firstRoom.centerPos;
+        player.transform.position = new Vector3(center.x, 0, center.y);
     }
 }
 

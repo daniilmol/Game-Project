@@ -222,7 +222,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 411617500}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &411617502
 Camera:
   m_ObjectHideFlags: 0
@@ -382,6 +382,8 @@ MonoBehaviour:
   mapData: {fileID: 477729195}
   roomBuilder: {fileID: 477729192}
   crossBuilder: {fileID: 477729196}
+  playerPref: {fileID: 3412379148497975997, guid: ad8092053a142d54cb4e251fa925aa08,
+    type: 3}
   anotherCrossProbability: 0.2
   deadCrossProbability: 0.5
   deadAwayProbability: 0.6
