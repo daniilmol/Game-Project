@@ -48,7 +48,7 @@ public class RoomBuilder : MonoBehaviour
     /**
      * Tag for floor cells
      */
-    const string cellTag = "Floor";
+    const string roomTag = "Room";
 
     private MapSystem mapManager;
 
@@ -88,7 +88,7 @@ public class RoomBuilder : MonoBehaviour
         Vector3 roomCenter = new Vector3(roomTran.centerPos.x, 0, roomTran.centerPos.y);
         GameObject temp = new GameObject("Room1");
         temp.transform.position = roomCenter;
-        temp.tag = cellTag;
+        temp.tag = roomTag;
         GenOneRoom(roomCenter, roomTran.length, roomTran.width, temp.transform);
         var box = temp.AddComponent<BoxCollider>();
         box.size = new Vector3(roomTran.length, 1, roomTran.width);
@@ -109,7 +109,7 @@ public class RoomBuilder : MonoBehaviour
 
             GameObject temp = new GameObject("Room" + (mapManager.genRooms.Count + 1).ToString());
             temp.transform.position = roomCenter;
-            temp.tag = cellTag;
+            temp.tag = roomTag;
 
             GenOneRoom(roomCenter, roomTran.length, roomTran.width, temp.transform);
             var box = temp.AddComponent<BoxCollider>();
