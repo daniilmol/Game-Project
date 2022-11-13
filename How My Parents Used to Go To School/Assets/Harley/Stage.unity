@@ -326,6 +326,7 @@ GameObject:
   - component: {fileID: 477729194}
   - component: {fileID: 477729192}
   - component: {fileID: 477729196}
+  - component: {fileID: 477729197}
   - component: {fileID: 477729195}
   m_Layer: 0
   m_Name: Generater
@@ -383,6 +384,7 @@ MonoBehaviour:
   mapData: {fileID: 477729195}
   roomBuilder: {fileID: 477729192}
   crossBuilder: {fileID: 477729196}
+  wallBuilder: {fileID: 477729197}
   playerPref: {fileID: 3412379148497975997, guid: ad8092053a142d54cb4e251fa925aa08,
     type: 3}
   anotherCrossProbability: 0.2
@@ -419,6 +421,22 @@ MonoBehaviour:
   crossUnit: {fileID: 3726327134598553362, guid: 1591d39e5d7d2274a863d5b8bd8a113e,
     type: 3}
   ObstacleCrossType: 1
+  cellScale: 4
+--- !u!114 &477729197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477729191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b66e85516fd937e4aa4c361aa63d3920, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallUnit: {fileID: 8571009805737820731, guid: d4c0d10c970be8a4b9583edbd644798f,
+    type: 3}
+  wallHeight: 4
   cellScale: 4
 --- !u!1 &542310195
 GameObject:

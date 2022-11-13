@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum ObstacleCrossType
 {
@@ -29,7 +30,7 @@ public class CrossBuilder : MonoBehaviour
         container.transform.position = mapSystem.mapData.mapCenter;
     }
 
-    public IEnumerator GenCrosses()
+    public IEnumerator GenCrosses(UnityAction complete)
     {
         var fr = mapSystem.mainCross.First.Value;
         var lr = mapSystem.mainCross.Last.Value;
@@ -42,6 +43,7 @@ public class CrossBuilder : MonoBehaviour
             CrossTwoRoom(cd.id1, cd.id2);
             yield return null;
         }
+        complete();
     }
 
     void CrossTwoRoom(int id1, int id2)

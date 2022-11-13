@@ -7,6 +7,7 @@ public class MapSystem : MonoBehaviour
     public MapData mapData;
     public RoomBuilder roomBuilder;
     public CrossBuilder crossBuilder;
+    public WallBuilder wallBuilder;
 
     public GameObject playerPref;
 
@@ -33,12 +34,14 @@ public class MapSystem : MonoBehaviour
     [HideInInspector]
     public List<GameObject> roomUnitInsts = new List<GameObject>();
 
-    const string cellTag = "Floor";
+    [HideInInspector]
+    public const string cellTag = "Floor";
 
     public void Start()
     {
         crossBuilder = GetComponent<CrossBuilder>();
         roomBuilder = GetComponent<RoomBuilder>();
+        wallBuilder = GetComponent<WallBuilder>();
     }
 
     void SetSeed(bool bDebug)
@@ -68,7 +71,6 @@ public class MapSystem : MonoBehaviour
         {
             CreateRoomData();
             RandRoomCrosses();
-            SetPlayer();
         }));
     }
 
@@ -99,6 +101,11 @@ public class MapSystem : MonoBehaviour
         firstRoom = genRooms[0];
 
         CalNextCross(firstRoom);
+    }
+
+    void BuildWalls()
+    {
+        wallBuilder.StartCoroutine(wallBuilder.GenWalls());
     }
 
     void UpdateMapData()
@@ -233,7 +240,11 @@ public class MapSystem : MonoBehaviour
             Debug.Log("End Rooms Number: " + endRooms.Count);
 
             UpdateMapData();
-            crossBuilder.StartCoroutine(crossBuilder.GenCrosses());
+            crossBuilder.StartCoroutine(crossBuilder.GenCrosses(() =>
+            {
+                BuildWalls();
+                SetPlayer();
+            }));
         }
     }
 

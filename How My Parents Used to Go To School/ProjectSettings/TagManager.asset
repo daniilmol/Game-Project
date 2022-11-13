@@ -12,6 +12,8 @@ TagManager:
   - Laser
   - Unit
   - Floor
+  - Room
+  - Wall
   layers:
   - Default
   - TransparentFX
