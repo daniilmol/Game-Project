@@ -25,7 +25,6 @@ public class SkillHolder : MonoBehaviour
         ready,
         active,
         cooldown
-    
     }
 
     SkillState state = SkillState.ready;
