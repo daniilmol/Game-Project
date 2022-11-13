@@ -20,22 +20,22 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Joshua/Scene/Menu.unity
     guid: 60493c22b58a5b2478c460e5e4b501bf
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Production/MainMenu.unity
     guid: 0dc14a3036772b744bdb58fc63bc1f8f
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Production/QuizRoom.unity
     guid: 052810abdfa59ee48b6ffb53b5922e4f
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Production/AssignmentRoom.unity
     guid: 83105b0d909ecde43ac66d18edc85beb
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Production/FinalRoom.unity
     guid: 8b4817509d9cba042be5fe5930834209
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Daniil/DaniilAlpha.unity
     guid: 025de7e5fab1a2e48844f32f05bfa83f
   - enabled: 0

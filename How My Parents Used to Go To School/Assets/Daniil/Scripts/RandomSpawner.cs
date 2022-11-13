@@ -27,22 +27,22 @@ public class RandomSpawner : MonoBehaviour
             spawns = spawns.Where((source, index) => index != indexRemove).ToArray();
             if (instantiated.TryGetComponent(out Swordsman s)) {
                 if(--swordsmanNumber <= 0){
-                                        print("Removing swordsman from suggestion");
+                    print("Removing swordsman from suggestion");
                     prefab = prefab.Where((source, index) => index != enemyIndex).ToArray();
                 }
             }if (instantiated.TryGetComponent(out Healer h)) {
                 if(--healerNumber <= 0){
-                                        print("Removing healer from suggestion");
+                    print("Removing healer from suggestion");
                     prefab = prefab.Where((source, index) => index != enemyIndex).ToArray();
                 }
             }if (instantiated.TryGetComponent(out Gunner g)) {
                 if(--gunnerNumber <= 0){
-                                        print("Removing gunner from suggestion");
+                    print("Removing gunner from suggestion");
                     prefab = prefab.Where((source, index) => index != enemyIndex).ToArray();
                 }
             }if (instantiated.TryGetComponent(out TripleGunner tg)) {
                 if(--tripleGunnerNumber <= 0){
-                                        print("Removing triple gunner from suggestion");
+                    print("Removing triple gunner from suggestion");
                     prefab = prefab.Where((source, index) => index != enemyIndex).ToArray();
                 }
             }if (instantiated.TryGetComponent(out Tank t)) {
