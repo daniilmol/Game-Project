@@ -19,6 +19,7 @@ public class Healer : Enemy
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        dropChance = 5f;
     }
 
      public IEnumerator StartCooldown() {

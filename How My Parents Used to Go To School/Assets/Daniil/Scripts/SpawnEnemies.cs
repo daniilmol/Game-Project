@@ -17,7 +17,7 @@ public class SpawnEnemies : RandomSpawner
     
 
     [Tooltip("How many objects to spawn. Cannot be greater than the array of spawnable locations")]
-    [Range(0, 5)] [SerializeField] int enemyCount;
+    [Range(0, 8)] [SerializeField] int enemyCount;
     public static int numberOfEnimies;
 
     public void Start(){

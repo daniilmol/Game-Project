@@ -24,6 +24,7 @@ public class BigGunner : Enemy
         IsResting = false;
         shooting = true;
         angleScale = 0;
+        dropChance = 100;
     }
     void Update()
     {
