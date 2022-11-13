@@ -12,7 +12,8 @@ public class LeaveTrigger : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            PlayerPrefs.SetFloat("Scale", spawnEnemies.GetScale() + 0.1f);
+            SpawnEnemies.numberOfRoomsCleared++;
+            PlayerPrefs.SetFloat("Scale", spawnEnemies.GetScale());
             SceneManager.LoadScene(sceneName);
         }
     }

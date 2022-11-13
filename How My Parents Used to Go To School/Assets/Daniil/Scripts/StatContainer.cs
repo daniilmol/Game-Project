@@ -10,6 +10,10 @@ public class StatContainer : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] float attackSpeed;
 
+    void Start(){
+        playerHealth.SetHealth(maxHealth);
+    }
+
     public PlayerHealth GetHealth(){
         return playerHealth;
     }
@@ -24,6 +28,10 @@ public class StatContainer : MonoBehaviour
 
     public float GetAttackSpeed(){
         return attackSpeed;
+    }
+
+    public float GetMaxHealth(){
+        return maxHealth;
     }
 
     public void IncreaseStats(Powerup powerup){

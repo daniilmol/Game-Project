@@ -16,7 +16,6 @@ public class Skeleton : Enemy
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        damage = 2f;
         necromancer = FindObjectOfType<Necromancer>();
         player = GameObject.FindGameObjectWithTag("Player");
         dropChance = 0;

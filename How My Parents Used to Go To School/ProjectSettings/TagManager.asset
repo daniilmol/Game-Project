@@ -8,8 +8,10 @@ TagManager:
   - Sword
   - Bullet
   - Shield
+  - Collide
   - Laser
-  - Spawnable
+  - Unit
+  - Floor
   layers:
   - Default
   - TransparentFX

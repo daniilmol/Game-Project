@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -1049250029645126604}
   - component: {fileID: 3035713440874051233}
   - component: {fileID: 851965452359905343}
+  - component: {fileID: -4561111868549122170}
   m_Layer: 7
   m_Name: Triple Gunner
   m_TagString: Enemy
@@ -176,3 +177,20 @@ MonoBehaviour:
   healthMax: 3
   enemy: {fileID: 3035713440874051233}
   anim: {fileID: 0}
+--- !u!114 &-4561111868549122170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3495559628825089393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c8adc059d23e8341a2c189a1aaa77ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 851965452359905343}
+  maxHealth: 3
+  damage: 1
+  speed: 3.5
+  attackSpeed: 1

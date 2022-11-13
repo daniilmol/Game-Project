@@ -14,7 +14,6 @@ public class TripleGunner : Enemy
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        damage = 1f;
     }
     void Update()
     {
