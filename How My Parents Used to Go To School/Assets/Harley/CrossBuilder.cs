@@ -323,9 +323,9 @@ public class CrossBuilder : MonoBehaviour
 
                         if (Mathf.Abs(pos.z - max.z) > 2 * cellScale)
                         {
-                            if (RayCast(pos, Dz, cellScale))
+                            if (RayCast(pos, Dz, cellScale * 2))
                             {
-                                var posex = new Vector3(pos.x, pos.y, pos.z + cellScale);
+                                var posex = new Vector3(pos.x, pos.y, pos.z + cellScale * 2);
                                 var cps = mapSystem.GetExCross(posex, max);
                                 switch (ObstacleCrossType)
                                 {
@@ -351,9 +351,9 @@ public class CrossBuilder : MonoBehaviour
 
                         if (Mathf.Abs(pos.z - max.z) > 2 * cellScale)
                         {
-                            if (RayCast(pos, Dz, cellScale))
+                            if (RayCast(pos, Dz, cellScale * 2))
                             {
-                                var posex = new Vector3(pos.x, pos.y, pos.z + cellScale);
+                                var posex = new Vector3(pos.x, pos.y, pos.z + cellScale * 2);
                                 var cps = mapSystem.GetExCross(posex, max);
                                 switch (ObstacleCrossType)
                                 {
@@ -388,9 +388,9 @@ public class CrossBuilder : MonoBehaviour
 
                         if (Mathf.Abs(pos.x - max.x) > 2 * cellScale)
                         {
-                            if (RayCast(pos, Dx, cellScale))
+                            if (RayCast(pos, Dx, cellScale * 2))
                             {
-                                var posex = new Vector3(pos.x + cellScale, pos.y, pos.z);
+                                var posex = new Vector3(pos.x + cellScale * 2, pos.y, pos.z);
                                 var cps = mapSystem.GetExCross(posex, max);
                                 switch (ObstacleCrossType)
                                 {
@@ -416,9 +416,9 @@ public class CrossBuilder : MonoBehaviour
 
                         if (Mathf.Abs(pos.x - max.x) > 2 * cellScale)
                         {
-                            if (RayCast(pos, Dx, cellScale))
+                            if (RayCast(pos, Dx, cellScale * 2))
                             {
-                                var posex = new Vector3(pos.x + cellScale, pos.y, pos.z);
+                                var posex = new Vector3(pos.x + cellScale * 2, pos.y, pos.z);
                                 var cps = mapSystem.GetExCross(posex, max);
                                 switch (ObstacleCrossType)
                                 {
