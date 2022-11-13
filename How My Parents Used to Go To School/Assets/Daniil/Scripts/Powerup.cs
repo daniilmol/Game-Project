@@ -42,6 +42,7 @@ public class Powerup : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player"){
             collision.gameObject.GetComponent<StatContainer>().IncreaseStats(this);
+            print("Picked up " + name);
             Destroy(gameObject);
         }
     }
