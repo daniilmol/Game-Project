@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public Transform LongRangeAttackCube;
     //public event Action<InputAction.CallbackContext> openPanel;
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         rb = GetComponent<Rigidbody>();
         inputActions = new UserInputs();
