@@ -47,7 +47,7 @@ public class SkillHolder : MonoBehaviour
 
         switch (state) {
             case SkillState.ready:
-                if (Input.GetKeyDown(key))
+                if (Input.GetKeyDown(key) && skill.isLearned)
                 {
                     Debug.Log("Clicked");
                     Debug.Log(skill.skillName);
