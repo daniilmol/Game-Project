@@ -79,7 +79,7 @@ public class RoomBuilder : MonoBehaviour
         {
             Vector3 roomCenter = new Vector3(roomTran.centerPos.x, 0, roomTran.centerPos.y);
 
-            GameObject temp = new GameObject("Room" + roomCenter.ToString());
+            GameObject temp = new GameObject("Room" + (mapManager.genRooms.Count + 1).ToString());
             temp.transform.position = roomCenter;
             temp.tag = cellTag;
 
@@ -135,7 +135,7 @@ public class RoomBuilder : MonoBehaviour
         Vector3 v2 = v1 + new Vector3(0, 0, widthBorder) * 0.5f;
         Vector3 v3 = v1 + new Vector3(0, 0, widthBorder);
         Vector3 v4 = v1 + new Vector3(lengthBorder * 0.5f, 0, widthBorder);
-        Vector3 v5 = v1 + to;
+        Vector3 v5 = centerPos + to;
         Vector3 v6 = v1 + new Vector3(lengthBorder, 0, widthBorder * 0.5f);
         Vector3 v7 = v1 + new Vector3(lengthBorder, 0, 0);
         Vector3 v8 = v1 + new Vector3(lengthBorder, 0, 0) * 0.5f;
