@@ -512,6 +512,7 @@ public class CrossBuilder : MonoBehaviour
 
     void InsSetPos(Vector3 pos, Transform parent = null)
     {
+        pos -= new Vector3(0, 0.05f, 0);
         var temp = mapSystem.mapData.crossUnitPos;
         if (!temp.Contains(pos))
         {
