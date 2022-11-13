@@ -415,7 +415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fdd8b3a1ad326a4eb7c7d56e62a66df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crossUnit: {fileID: 3726327134598553362, guid: 8b4c6cf35a81b2045864f593ec7f49c2,
+  crossUnit: {fileID: 3726327134598553362, guid: 1591d39e5d7d2274a863d5b8bd8a113e,
     type: 3}
   ObstacleCrossType: 1
 --- !u!1 &542310195
@@ -738,7 +738,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 84e2c40c646a41e4abcffbdd12aca935, type: 2}
   m_TargetDisplay: 0

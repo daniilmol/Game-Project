@@ -5345,7 +5345,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3412379148497975998}
   - component: {fileID: 3412379148497975999}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5381,7 +5381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6706584dfde614a9c96794af2180d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 0}
+  panel: {fileID: 1306312948562845118, guid: df599aae85cdf6c4f9341a656b6a9778, type: 3}
   AttackCube: {fileID: 856458419}
   LongRangeAttackCube: {fileID: 4396144619907310519}
 --- !u!1 &3613974028019876965
