@@ -154,7 +154,7 @@ public class MapSystem : MonoBehaviour
         return false;
     }
 
-    int GetRoomIdByRT(RoomTran rt)
+    public int GetRoomIdByRT(RoomTran rt)
     {
         foreach (var rd in mapData.roomDataDic)
         {
