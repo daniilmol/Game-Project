@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     protected NavMeshAgent agent;
     protected GameObject player;
     protected GameObject bullet;
-    protected float dropChance = 100;
+    protected float dropChance;
     protected int health;
     protected bool canSeePlayer;
     protected bool withinPlayerRange;
@@ -84,14 +84,6 @@ public class Enemy : MonoBehaviour
 
     public float GetDropChance() {
         return dropChance;
-    }
-
-    public void OnDeath() {
-        if (Random.Range(0, 100) < dropChance) {
-            Powerup powerUp = Instantiate(powerUpDrop, gameObject.transform.position, Quaternion.identity).GetComponent<Powerup>();
-            powerUp.Initialize(Random.Range(0, 3));
-        }
-        Destroy(gameObject);
     }
 
     private void CheckSpeed(){

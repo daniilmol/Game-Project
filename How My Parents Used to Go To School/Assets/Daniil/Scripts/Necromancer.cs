@@ -34,6 +34,7 @@ public class Necromancer : Enemy
         finishedAbility = false;
         hasTeleported = false;
         firstTimeTeleport = false;
+        dropChance = 100;
     }
     void Update()
     {

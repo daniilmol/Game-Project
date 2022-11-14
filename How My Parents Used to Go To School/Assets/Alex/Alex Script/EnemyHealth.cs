@@ -41,8 +41,9 @@ public class EnemyHealth : MonoBehaviour
         {
             if (Random.Range(0, 100) < enemy.GetDropChance())
             {
-                Powerup powerUp = Instantiate(enemy.GetPowerUp(), gameObject.transform.position, Quaternion.identity).GetComponent<Powerup>();
-                powerUp.Initialize(Random.Range(0, 1));
+                Quaternion powerUpRotation = enemy.GetPowerUp().transform.rotation;
+                Powerup powerUp = Instantiate(enemy.GetPowerUp(), gameObject.transform.position, powerUpRotation).GetComponent<Powerup>();
+                powerUp.Initialize(Random.Range(0, 4));
             }
             Destroy(this.gameObject);
             SpawnEnemies.numberOfEnimies--;

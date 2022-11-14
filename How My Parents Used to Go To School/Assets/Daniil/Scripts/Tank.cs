@@ -15,6 +15,7 @@ public class Tank : Enemy
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        dropChance = 10;
     }
     void Update()
     {
