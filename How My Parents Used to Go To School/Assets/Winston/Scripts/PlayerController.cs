@@ -20,14 +20,17 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        openPanel();
         rb = GetComponent<Rigidbody>();
         inputActions = new UserInputs();
         inputActions.Player.Enable();
         movement = inputActions.Player.Movement;
         movement.Enable();
-        inputActions.Player.CallOutPanel.performed += openConsole;
-        panel.GetComponent<CanvasGroup>().alpha = 0;
+        //inputActions.Player.CallOutPanel.performed += openConsole;
+        
+        panel.GetComponent<CanvasGroup>().alpha = 1;
         StatContainer = GetComponentInChildren<StatContainer>();
+   
     }
     // Update is called once per frame
     void Update()
@@ -50,21 +53,34 @@ public class PlayerController : MonoBehaviour
 
     public void openConsole(InputAction.CallbackContext context)
     {
-       // openPanel.Invoke();
+        
         //Debug.Log("close");
         //panel.GetComponent<Renderer>().enabled = true;
         if (isOpened)   // close the panel
         {
             isOpened = !isOpened;
-            panel.GetComponent<CanvasGroup>().alpha = 0;
-            panel.GetComponent<CanvasGroup>().interactable = false;
+            panel.GetComponent<CanvasGroup>().alpha = 1;
+            panel.GetComponent<CanvasGroup>().interactable = true;
         }
         else     // open the panel
         {
             isOpened = !isOpened;
-            panel.GetComponent<CanvasGroup>().alpha = 1;
-            panel.GetComponent<CanvasGroup>().interactable = true;
+            
+            panel.GetComponent<CanvasGroup>().alpha = 0;
+            panel.GetComponent<CanvasGroup>().interactable = false;
         }
+    }
+    public void ClosePanel() {
+        
+        panel.GetComponent<CanvasGroup>().alpha = 0;
+        panel.GetComponent<CanvasGroup>().interactable = false;
+    }
+
+    public void openPanel()
+    {
+        //isOpened = !isOpened;
+        panel.GetComponent<CanvasGroup>().alpha = 1;
+        panel.GetComponent<CanvasGroup>().interactable = true;
     }
 
     public Vector3 getCube() {

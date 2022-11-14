@@ -65,7 +65,7 @@ public class WhirlwindSkill : MajorSkill
                     Debug.Log("Hit!!!!!!");
                     Debug.Log("PUSHING ENEMY BACK");
                     Debug.Log(c.name);
-                    c.GetComponent<EnemyHealth>().takeDamage(basicDamage);
+                    c.GetComponent<EnemyHealth>().takeDamage(StatContainer.GetDamage());
                                         //  Need a on hit decrese health function here, example: decreaseHealth(Gameobject enemy);
                     float force = 6;
                     Vector3 vectorForce = Vector3.Normalize(globalPlayer.transform.position - c.transform.position);

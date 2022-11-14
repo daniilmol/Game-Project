@@ -15,5 +15,5 @@ MonoBehaviour:
   skillName: Whirlwind
   cooldownTime: 1
   activeTime: 0.5
-  isLearned: 1
+  isLearned: 0
   playerStats: {fileID: 0}
