@@ -34,6 +34,19 @@ public class StatContainer : MonoBehaviour
         return maxHealth;
     }
 
+    public void SetDamage(float damage){
+        this.damage = damage;
+    }
+
+    public void SetSpeed(float speed){
+        this.speed = speed;
+    }
+
+    public void SetPlayerHealth(float healNum)
+    {
+        playerHealth.heal(healNum);
+    }
+
     public void IncreaseStats(Powerup powerup){
         playerHealth.heal(powerup.getStats()[0]);
         damage += powerup.getStats()[1];
