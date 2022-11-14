@@ -63,16 +63,4 @@ public class EnemyHealth : MonoBehaviour
             health = healthMax;
         }
     }
-
-    private void OnTriggerEnter(Collider collision)
-    {
-        if (collision.gameObject.tag == "Sword")
-        {
-            takeDamage(1);
-        }
-        //if (collision.gameObject.tag == "Bullet")
-        //{
-        //    takeDamage(2);
-        //}
-    }
 }

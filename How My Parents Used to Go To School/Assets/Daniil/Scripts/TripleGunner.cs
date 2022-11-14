@@ -63,8 +63,10 @@ public class TripleGunner : Enemy
             GameObject particle3 = Instantiate(bullet, transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z));
             particle.GetComponent<Rigidbody>().AddForce(transform.forward * particle.GetComponent<Bullet>().GetSpeed(), ForceMode.Impulse);
             
-            //Vector3 angled = Quaternion.Euler(45f, 45f, 0) * transform.forward;
-            //Vector3 angle2 = Quaternion.Euler(-45f, -45f, 0) * transform.forward;
+            particle.GetComponent<Bullet>().SetShooter(gameObject);
+            particle2.GetComponent<Bullet>().SetShooter(gameObject);
+            particle3.GetComponent<Bullet>().SetShooter(gameObject);
+
 
             particle2.GetComponent<Rigidbody>().AddForce(Quaternion.Euler(-45, -45, 0) * transform.forward * particle.GetComponent<Bullet>().GetSpeed(), ForceMode.Impulse);
             particle3.GetComponent<Rigidbody>().AddForce(Quaternion.Euler(45, 45, 0) * transform.forward * particle.GetComponent<Bullet>().GetSpeed(), ForceMode.Impulse);

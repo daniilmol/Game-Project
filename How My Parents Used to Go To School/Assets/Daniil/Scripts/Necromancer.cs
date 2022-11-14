@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Necromancer : Enemy
 {
-    [SerializeField] float range = 7f;
+    [SerializeField] float range = 1f;
     [SerializeField] float attackSpeed = 0.5f;
     [SerializeField] GameObject skeleton;
     private bool following;
@@ -68,6 +68,7 @@ public class Necromancer : Enemy
 
     private void Summon(){
         GameObject[] spawnables = GameObject.FindGameObjectsWithTag("Spawnable");
+        
         for(int i = 0; i < minionSpawnAmount; i++){
             int index = Random.Range(0, spawnables.Length);
             Instantiate(skeleton, spawnables[index].transform.position, Quaternion.identity);
@@ -83,9 +84,11 @@ public class Necromancer : Enemy
     }
 
     private void Melee(){
-        if (following && CheckForPlayerRange())
-        {
+        if (following && hasTeleported)
+        {   
+            print("STOPPED?" + agent.isStopped);
             agent.SetDestination(player.transform.position);
+            print("necromancer destination set");
         }
         else if (attacking)
         {
@@ -102,28 +105,29 @@ public class Necromancer : Enemy
         if(!finishedAbility){
             Invincibility();
         }else if(finishedAbility){
-            
             Teleport();
             Melee();
         }
     }
     
-    private void Teleport(){
+    private void Teleport(){ 
         if(!firstTimeTeleport){
             if(!hasTeleported){
                 GetComponent<CapsuleCollider>().enabled = true;
                 GetComponent<MeshRenderer>().enabled = false;
                 GetComponent<NavMeshAgent>().enabled = false;
-                transform.position = new Vector3(0,0,0);
-                playerLocation = new Vector3(player.transform.position.x, -10f, player.transform.position.z);
+                agent.Warp(new Vector3(0,0,0));
+                playerLocation = new Vector3(player.transform.position.x, -4.6f, player.transform.position.z);
+                following = false;
                 StartCoroutine(StartTeleport());
             }
         }
         firstTimeTeleport = true;
         if(hasTeleported){
-            transform.position = playerLocation;
+            agent.Warp(playerLocation);
             GetComponent<NavMeshAgent>().enabled = true;
             GetComponent<MeshRenderer>().enabled = true;
+            following = true;
         }
     }
 
@@ -140,6 +144,7 @@ public class Necromancer : Enemy
         yield return new WaitForSeconds(abilityTimer);
         finishedAbility = false;
         firstTimeTeleport = false;
+        hasTeleported = false;
     }
     public IEnumerator StartCooldown()
     {

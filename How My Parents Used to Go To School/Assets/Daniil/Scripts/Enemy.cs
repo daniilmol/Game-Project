@@ -88,7 +88,7 @@ public class Enemy : MonoBehaviour
 
     private void CheckSpeed(){
         if(GetComponent<Rigidbody>().velocity == Vector3.zero){
-            agent.isStopped = false;
+            //agent.isStopped = false;
         }
     }
 

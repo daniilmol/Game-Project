@@ -57,6 +57,7 @@ public class BigGunner : Enemy
         }
         for(int i = 0; i < 10; i++){
             GameObject particle = Instantiate(bullet, transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z));
+            particle.GetComponent<Bullet>().SetShooter(gameObject);
             particle.GetComponent<Rigidbody>().AddForce(Quaternion.Euler(angleScale, angleScale, 0) * transform.forward * particle.GetComponent<Bullet>().GetSpeed(), ForceMode.Impulse);
             angleScale += 36;
         }
