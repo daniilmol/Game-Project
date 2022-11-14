@@ -6,28 +6,32 @@ public class DarkMagicAura : MonoBehaviour, Ability
 {
     public ParticleSystem ps;
     public float SearchRadius;
-    public float damege = 1;
+    public float damege;
+    public float healNum = 1;
     private GameObject player;
     private bool abilityActiveFlag;
     private float timer = 0;
+    private StatContainer statContainer;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         player = GameObject.Find("Male C");
         abilityActiveFlag = false;
         ps.Stop();
+        statContainer = GameObject.Find("Male C").GetComponent<StatContainer>();
+        damege = statContainer.GetDamage();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
     }
 
     // Update is called once per frame
     void Update()
     {
         FollowPlayer();
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            abilityActiveFlag = true;
-        }
 
         if (abilityActiveFlag)
         {
@@ -39,10 +43,6 @@ public class DarkMagicAura : MonoBehaviour, Ability
                 StartCoroutine(DisableAbility());
                 timer = 0f;
             }
-            //EnableAbility();
-            //SearchNearUnits();
-            //StartCoroutine(DisableAbility());
-            //abilityActiveFlag = false;
         }
     }
 
@@ -56,6 +56,8 @@ public class DarkMagicAura : MonoBehaviour, Ability
             if (colliders[i].gameObject.tag == "Enemy")
             {
                 colliders[i].gameObject.GetComponent<EnemyHealth>().takeDamage(damege);
+                statContainer.SetPlayerHealth(healNum);
+                Debug.Log("statContainer.GetHealth().getHealth(): " + statContainer.GetHealth().getHealth());
             }
         }
     }

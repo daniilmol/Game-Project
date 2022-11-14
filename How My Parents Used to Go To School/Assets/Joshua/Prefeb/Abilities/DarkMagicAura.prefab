@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2047906523977377308}
   - component: {fileID: 2047906523977377311}
-  - component: {fileID: 5639947887155989894}
   m_Layer: 0
   m_Name: DarkMagicAura
   m_TagString: Untagged
@@ -49,19 +48,6 @@ MonoBehaviour:
   ps: {fileID: 2047906523658682036}
   SearchRadius: 5
   damege: 1
---- !u!114 &5639947887155989894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2047906523977377309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b397edb169872cd4d92b0c221d61245c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameObj: {fileID: 2047906523977377309}
 --- !u!1001 &2047906523640717684
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5,43 +5,47 @@ using UnityEngine;
 public class PlayerAbilityManager : MonoBehaviour
 {
     [SerializeField] GameObject[] abilityPrefebList;
-    private List<Ability> abilities = new List<Ability>();
-    GameObject go;
+    //private List<Ability> abilities = new List<Ability>();
+    private List<GameObject> gObjList = new List<GameObject>();
+    private Ability shield;
+    private Ability darkMagicAura;
+    private Ability fireBall;
+    private Ability damageUp;
+    private Ability speedUp;
+
     private void Start()
     {
-        //Instantiate(abilityPrefebList[0], this.transform);
-        GeneratePrefeb();
+        GameObject shieldClone = (GameObject)Instantiate(abilityPrefebList[0], this.transform);
+        shield = shieldClone.GetComponent<Shield>();
+        shield.DeActive();
 
-        //GameObject clone = (GameObject)Instantiate(abilityPrefebList[2]);
+        GameObject darkMagicAuraClone = (GameObject)Instantiate(abilityPrefebList[1], this.transform);
+        darkMagicAura = darkMagicAuraClone.GetComponent<DarkMagicAura>();
+        darkMagicAura.DeActive();
 
-        //Ability ab = clone.GetComponent<FireBall>();
+        GameObject fireBallClone = (GameObject)Instantiate(abilityPrefebList[2], this.transform);
+        fireBall = fireBallClone.GetComponent<FireBall>();
+        fireBall.DeActive();
 
-        //ab.DisplayName();
-        //ab.DeActive();
+        GameObject damageUpClone = (GameObject)Instantiate(abilityPrefebList[3], this.transform);
+        damageUp = damageUpClone.GetComponent<DamageUp>();
+        damageUp.DeActive();
 
-        //go = abilityPrefebList[1];
-
-        //Instantiate(go, this.transform);
-
-        //abilities.Add(abilityPrefebList[0].GetComponent<Shield>());
-        //abilities.Add(abilityPrefebList[1].GetComponent<DarkMagicAura>());
+        GameObject speedUpClone = (GameObject)Instantiate(abilityPrefebList[4], this.transform);
+        speedUp = speedUpClone.GetComponent<SpeedUp>();
+        speedUp.DeActive();
     }
 
     private void Update()
     {
-        //abilityPrefebList[0].GetComponent<Shield>().DeActive();
-        //if (Input.GetKeyDown(KeyCode.F))
-        //{
-        //    Debug.Log("run");
-        //    go.GetComponent<DarkMagicAura>().DisplayName();
-        //}
+
     }
 
     private void GeneratePrefeb()
     {
         foreach(GameObject prefeb in abilityPrefebList)
         {
-            Instantiate(prefeb, this.transform);
+            gObjList.Add(Instantiate(prefeb, this.transform));
         }
     }
 }

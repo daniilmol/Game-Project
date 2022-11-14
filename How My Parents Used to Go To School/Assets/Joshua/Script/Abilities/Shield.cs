@@ -5,17 +5,19 @@ using UnityEngine;
 public class Shield : MonoBehaviour, Ability
 {
     private Renderer render;
-    private SphereCollider spjereCollider;
+    private SphereCollider sphereCollider;
     private bool shieldFlag = true;
     private GameObject player;
     [SerializeField] private int shieldRecoverTime = 5;
-    //private float timer = 0;
+    private float timer = 0;
+    //private bool abilityActiveFlag = false;
 
     private void Awake()
     {
         render = GetComponent<Renderer>();
-        spjereCollider = GetComponent<SphereCollider>();
+        sphereCollider = GetComponent<SphereCollider>();
         player = GameObject.Find("Male C");
+        DisableShield();
     }
 
     // Start is called before the first frame update
@@ -31,20 +33,14 @@ public class Shield : MonoBehaviour, Ability
 
         if (shieldFlag == false)
         {
-            StartCoroutine(ReactShield());
+            // wait 5 sec then call functions
+            timer += Time.deltaTime;
+            if (timer >= shieldRecoverTime)
+            {
+                EnableShield();
+                timer = 0f;
+            }
         }
-
-        //if (shieldFlag)
-        //{
-        //    // wait 5 sec then call functions
-        //    timer += Time.deltaTime;
-        //    if (timer >= shieldRecoverTime)
-        //    {
-        //        Debug.Log("run");
-        //        ReactShield();
-        //        timer = 0f;
-        //    }
-        //}
     }
 
     // if shield touch enemy or bullet, disable shield and set shieldFlag to false
@@ -66,27 +62,16 @@ public class Shield : MonoBehaviour, Ability
     private void DisableShield()
     {
         render.enabled = false;
-        spjereCollider.enabled = false;
+        sphereCollider.enabled = false;
     }
 
     // when shield is enabled, check Renderer and Collider compontents and set shieldFlag to true
     private void EnableShield()
     {
         render.enabled = true;
-        spjereCollider.enabled = true;
+        sphereCollider.enabled = true;
         shieldFlag = true;
     }
-
-    // wait for 5s then call EnableShield()
-    IEnumerator ReactShield()
-    {
-        yield return new WaitForSeconds(shieldRecoverTime);
-        EnableShield();
-    }
-    //private void ReactShield()
-    //{
-    //    EnableShield();
-    //}
 
     // set player position to shield
     private void FollowPlayer()
@@ -102,15 +87,13 @@ public class Shield : MonoBehaviour, Ability
     // enable the script
     public void Active()
     {
-        gameObject.SetActive(true);
-        Debug.Log("Active");
+        EnableShield();
     }
 
     // disable the script
     public void DeActive()
     {
-        gameObject.SetActive(false);
-        Debug.Log("DeActive");
+        DisableShield();
     }
 
     public void DisplayName()

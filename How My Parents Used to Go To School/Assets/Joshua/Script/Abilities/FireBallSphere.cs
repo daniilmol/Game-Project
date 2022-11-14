@@ -7,12 +7,16 @@ public class FireBallSphere : MonoBehaviour
     public ParticleSystem particle;
     private Rigidbody rb;
     private float timer = 0;
+    private StatContainer statContainer;
+    public float damege;
 
     // Start is called before the first frame update
     void Start()
     {
         particle.Stop();
         rb = transform.GetComponent<Rigidbody>();
+        statContainer = GameObject.Find("Male C").GetComponent<StatContainer>();
+        damege = statContainer.GetDamage();
     }
 
     // Update is called once per frame
@@ -45,7 +49,7 @@ public class FireBallSphere : MonoBehaviour
             particle.Play();
             HidenSphere();
             StartCoroutine(DistorySphere());
-            other.gameObject.GetComponent<EnemyHealth>().takeDamage(1);
+            other.gameObject.GetComponent<EnemyHealth>().takeDamage(damege);
         }
     }
 

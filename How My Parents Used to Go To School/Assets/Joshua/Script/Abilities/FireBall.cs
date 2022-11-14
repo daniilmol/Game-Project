@@ -98,6 +98,7 @@ public class FireBall : MonoBehaviour, Ability
     public void Active()
     {
         abilityActiveFlag = true;
+        Debug.Log("run");
     }
 
     public void DeActive()
