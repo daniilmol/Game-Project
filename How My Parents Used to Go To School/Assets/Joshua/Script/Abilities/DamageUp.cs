@@ -4,44 +4,35 @@ using UnityEngine;
 
 public class DamageUp : MonoBehaviour, Ability
 {
-    public float damage = 1;
+    public float increaseDamage = 1;
     private StatContainer statContainer;
-    private bool abilityActiveFlag = false;
 
     private void Awake()
     {
         statContainer = GameObject.Find("Male C").GetComponent<StatContainer>();
-        damage = damage + statContainer.GetDamage();
+        //damage = statContainer.GetDamage();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    // increase player damage
+    private void addDagame()
     {
-        
+        statContainer.SetDamage(statContainer.GetDamage() + increaseDamage);
     }
 
-    // Update is called once per frame
-    void Update()
+    // decrease player damage
+    private void minsDagame()
     {
-        if(abilityActiveFlag)
-        {
-            setDagame();
-        }
-    }
-
-    private void setDagame()
-    {
-        statContainer.SetDamage(damage);
+        statContainer.SetDamage(statContainer.GetDamage() - increaseDamage);
     }
 
     public void Active()
     {
-        abilityActiveFlag = true;
+        addDagame();
     }
 
     public void DeActive()
     {
-        abilityActiveFlag = false;
+        minsDagame();
     }
 
     public void DisplayName()

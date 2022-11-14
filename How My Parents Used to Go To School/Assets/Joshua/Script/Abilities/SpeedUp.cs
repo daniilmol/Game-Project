@@ -4,44 +4,36 @@ using UnityEngine;
 
 public class SpeedUp : MonoBehaviour, Ability
 {
-    public float speed = 0.5f;
+    public float speed = 1;
     private StatContainer statContainer;
-    private bool abilityActiveFlag = false;
 
     private void Awake()
     {
         statContainer = GameObject.Find("Male C").GetComponent<StatContainer>();
-        speed = speed + statContainer.GetSpeed();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    // increase player speed
+    private void IncreaseSpeed()
     {
-
+        float tmp = statContainer.GetSpeed() + 1;
+        statContainer.SetSpeed(tmp);
     }
 
-    // Update is called once per frame
-    void Update()
+    // decrease player speed
+    private void DecreaseSpeed()
     {
-        if (abilityActiveFlag)
-        {
-            setDagame();
-        }
-    }
-
-    private void setDagame()
-    {
-        statContainer.SetSpeed(speed);
+        float tmp = statContainer.GetSpeed() - 1;
+        statContainer.SetSpeed(tmp);
     }
 
     public void Active()
     {
-        abilityActiveFlag = true;
+        IncreaseSpeed();
     }
 
     public void DeActive()
     {
-        abilityActiveFlag = false;
+        DecreaseSpeed();
     }
 
     public void DisplayName()

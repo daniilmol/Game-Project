@@ -5,8 +5,6 @@ using UnityEngine;
 public class PlayerAbilityManager : MonoBehaviour
 {
     [SerializeField] GameObject[] abilityPrefebList;
-    //private List<Ability> abilities = new List<Ability>();
-    private List<GameObject> gObjList = new List<GameObject>();
     private Ability shield;
     private Ability darkMagicAura;
     private Ability fireBall;
@@ -15,37 +13,77 @@ public class PlayerAbilityManager : MonoBehaviour
 
     private void Start()
     {
+        // init shield
         GameObject shieldClone = (GameObject)Instantiate(abilityPrefebList[0], this.transform);
         shield = shieldClone.GetComponent<Shield>();
-        shield.Active();
+        shield.DeActive();
 
+        // init darkMagicAura
         GameObject darkMagicAuraClone = (GameObject)Instantiate(abilityPrefebList[1], this.transform);
         darkMagicAura = darkMagicAuraClone.GetComponent<DarkMagicAura>();
-        darkMagicAura.Active();
+        darkMagicAura.DeActive();
 
+        // init fireBallClone
         GameObject fireBallClone = (GameObject)Instantiate(abilityPrefebList[2], this.transform);
         fireBall = fireBallClone.GetComponent<FireBall>();
-        fireBall.Active();
+        fireBall.DeActive();
 
+        // init damageUp
         GameObject damageUpClone = (GameObject)Instantiate(abilityPrefebList[3], this.transform);
         damageUp = damageUpClone.GetComponent<DamageUp>();
-        damageUp.Active();
 
+        // init speedUp
         GameObject speedUpClone = (GameObject)Instantiate(abilityPrefebList[4], this.transform);
         speedUp = speedUpClone.GetComponent<SpeedUp>();
+    }
+
+    public void ActiveShield()
+    {
+        shield.Active();
+    }
+
+    public void DeActiveShield()
+    {
+        shield.DeActive();
+    }
+
+    public void ActiveDarkMagicAura()
+    {
+        darkMagicAura.Active();
+    }
+
+    public void DeActiveDarkMagicAura()
+    {
+        darkMagicAura.DeActive();
+    }
+
+    public void ActiveFireBall()
+    {
+        fireBall.Active();
+    }
+
+    public void DeActiveFireBall()
+    {
+        fireBall.DeActive();
+    }
+
+    public void ActiveDamageUp()
+    {
+        damageUp.Active();
+    }
+
+    public void DeActiveDamageUp()
+    {
+        damageUp.DeActive();
+    }
+
+    public void ActiveSpeedUp()
+    {
         speedUp.Active();
     }
 
-    private void Update()
+    public void DeActiveSpeedUp()
     {
-
-    }
-
-    private void GeneratePrefeb()
-    {
-        foreach(GameObject prefeb in abilityPrefebList)
-        {
-            gObjList.Add(Instantiate(prefeb, this.transform));
-        }
+        speedUp.DeActive();
     }
 }
