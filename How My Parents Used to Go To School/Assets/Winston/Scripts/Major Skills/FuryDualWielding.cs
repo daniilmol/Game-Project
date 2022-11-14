@@ -7,7 +7,8 @@ public class FuryDualWielding : MajorSkill
 {
 
     [SerializeField]
-    private float basicDamage = 5f;
+    public StatContainer playerStats;
+    //private float basicDamage = 5f;
     private Hashtable hitList = new Hashtable();
     GameObject globalPlayer;
     public Transform m_SpawnTransform;
@@ -68,13 +69,13 @@ public class FuryDualWielding : MajorSkill
                     Debug.Log("Working");
                     Debug.Log("Hit!!!!!!");
                     Debug.Log(c.name);
-                    c.GetComponent<EnemyHealth>().takeDamage(basicDamage);
+                    c.GetComponent<EnemyHealth>().takeDamage(StatContainer.GetDamage());
 
 
-                    float force = 6;
-                    Vector3 vectorForce = Vector3.Normalize(globalPlayer.transform.position - c.transform.position);
-                    //c.GetComponent<NavMeshAgent>().isStopped = true;
-                    c.GetComponent<Rigidbody>().AddForce(force * -c.transform.forward, ForceMode.Impulse);
+                    //float force = 6;
+                    //Vector3 vectorForce = Vector3.Normalize(globalPlayer.transform.position - c.transform.position);
+                    
+                    //c.GetComponent<Rigidbody>().AddForce(force * -c.transform.forward, ForceMode.Impulse);
 
                     count++;
                 }

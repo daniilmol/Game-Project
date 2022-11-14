@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df50565636a4cfa4288d375fa02cb4b5, type: 3}
   m_Name: Fury Dual Wielding
   m_EditorClassIdentifier: 
-  skillName: Fury_Dual_Wielding
+  skillName: FuryDualWielding
   cooldownTime: 1
   activeTime: 0.5
   isLearned: 1
-  basicDamage: 1
+  playerStats: {fileID: 0}
   m_SpawnTransform: {fileID: 0}

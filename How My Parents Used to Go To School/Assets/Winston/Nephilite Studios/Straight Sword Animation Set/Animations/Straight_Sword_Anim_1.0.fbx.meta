@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 6e2f485a5cf07ed4ca20959e516193ce
 ModelImporter:
-  serializedVersion: 20200
+  serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: -1723044332598814942
@@ -183,6 +183,9 @@ ModelImporter:
   - first:
       74: 6077991124214869142
     second: straight_sword_th_hit_B_02
+  - first:
+      74: 852637415073594195
+    second: straight_sword_th_light_attack_02 (1)
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -194,6 +197,7 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
     rigImportWarnings: 
@@ -218,21 +222,21 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: straight_sword_oh_idle_01
-      takeName: straight_sword_oh_idle_01
+      name: straight_sword_th_light_attack_02 (1)
+      takeName: straight_sword_th_light_attack_02
       internalID: 0
       firstFrame: 0
-      lastFrame: 80
+      lastFrame: 34
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 1
-      loopBlendPositionY: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
@@ -401,8 +405,8 @@ ModelImporter:
       name: straight_sword_oh_light_attack_02
       takeName: straight_sword_oh_light_attack_02
       internalID: 0
-      firstFrame: 0
-      lastFrame: 46
+      firstFrame: 1.3
+      lastFrame: 27.6
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -411,8 +415,8 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 1
-      loopBlendPositionY: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
@@ -837,7 +841,7 @@ ModelImporter:
       takeName: straight_sword_oh_jumping_attack_01
       internalID: 0
       firstFrame: 0
-      lastFrame: 44
+      lastFrame: 16
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -846,8 +850,8 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 1
-      loopBlendPositionY: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
@@ -1020,8 +1024,8 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 1
-      loopBlendPositionY: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
@@ -1243,7 +1247,7 @@ ModelImporter:
       takeName: straight_sword_th_charged_attack_02_release
       internalID: 0
       firstFrame: 0
-      lastFrame: 40
+      lastFrame: 10
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -1252,8 +1256,8 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 1
-      loopBlendPositionY: 1
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
@@ -2091,6 +2095,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    nodeNameCollisionStrategy: 0
     fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
@@ -2102,6 +2107,7 @@ ModelImporter:
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
+    optimizeBones: 1
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
@@ -2769,6 +2775,7 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

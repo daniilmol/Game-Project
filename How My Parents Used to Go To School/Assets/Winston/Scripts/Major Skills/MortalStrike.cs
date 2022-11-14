@@ -59,7 +59,7 @@ public class MortalStrike : MajorSkill
         //AttackCube.position = collider.bounds.center;
         //AttackCube = collider.transform;
         //Collider[] cal = Physics.OverlapSphere(collider.bounds.center, collider.transform.localScale.x * 4, layerMask);
-        Debug.Log("youyou");
+        //Debug.Log("youyou");
         //bool isHit = false;
         int count = 0;
         foreach (Collider c in cal)

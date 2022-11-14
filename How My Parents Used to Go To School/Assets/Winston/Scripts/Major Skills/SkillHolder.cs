@@ -42,6 +42,9 @@ public class SkillHolder : MonoBehaviour
 
     void Update() {
         skill.SetSC(StatContainer);
+        if (skill.isLearned) {
+            key = KeyCode.Mouse0;
+        }
 
 
 
