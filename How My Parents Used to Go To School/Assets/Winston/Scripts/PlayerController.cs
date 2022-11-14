@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,11 +17,24 @@ public class PlayerController : MonoBehaviour
     public Transform AttackCube;
     public Transform LongRangeAttackCube;
     private StatContainer StatContainer;
+    private bool firstSkillLearned;
+    public GameObject player;
+    public MajorSkill skill1;
+    public MajorSkill skill2;
+    public MajorSkill skill3;
     //public event Action<InputAction.CallbackContext> openPanel;
     // Start is called before the first frame update
     void Start()
     {
-        openPanel();
+        skill1.isLearned = false;
+        skill2.isLearned = false;
+        skill3.isLearned = false;
+        Scene currentScene = SceneManager.GetActiveScene();
+        Debug.Log(currentScene.name);
+        if (currentScene.name == "SpawnerScene") {
+            openPanel();
+        }
+        
         rb = GetComponent<Rigidbody>();
         inputActions = new UserInputs();
         inputActions.Player.Enable();
@@ -28,7 +42,7 @@ public class PlayerController : MonoBehaviour
         movement.Enable();
         //inputActions.Player.CallOutPanel.performed += openConsole;
         
-        panel.GetComponent<CanvasGroup>().alpha = 1;
+        //panel.GetComponent<CanvasGroup>().alpha = 1;
         StatContainer = GetComponentInChildren<StatContainer>();
    
     }
@@ -51,36 +65,47 @@ public class PlayerController : MonoBehaviour
         transform.Translate(finsihedVol);
     }
 
-    public void openConsole(InputAction.CallbackContext context)
-    {
+    //public void openConsole(InputAction.CallbackContext context)
+    //{
         
-        //Debug.Log("close");
-        //panel.GetComponent<Renderer>().enabled = true;
-        if (isOpened)   // close the panel
-        {
-            isOpened = !isOpened;
-            panel.GetComponent<CanvasGroup>().alpha = 1;
-            panel.GetComponent<CanvasGroup>().interactable = true;
-        }
-        else     // open the panel
-        {
-            isOpened = !isOpened;
+    //    //Debug.Log("close");
+    //    //panel.GetComponent<Renderer>().enabled = true;
+    //    if (isOpened)   // close the panel
+    //    {
+    //        isOpened = !isOpened;
+    //        panel.GetComponent<CanvasGroup>().alpha = 1;
+    //        panel.GetComponent<CanvasGroup>().interactable = true;
+    //    }
+    //    else     // open the panel
+    //    {
+    //        isOpened = !isOpened;
             
-            panel.GetComponent<CanvasGroup>().alpha = 0;
-            panel.GetComponent<CanvasGroup>().interactable = false;
-        }
-    }
+    //        panel.GetComponent<CanvasGroup>().alpha = 0;
+    //        panel.GetComponent<CanvasGroup>().interactable = false;
+    //    }
+    //}
     public void ClosePanel() {
         
         panel.GetComponent<CanvasGroup>().alpha = 0;
         panel.GetComponent<CanvasGroup>().interactable = false;
+        firstSkillLearned = true;
     }
-
+    private void Reset()
+    {
+        //SkillHolder dummy = GetComponent<SkillHolder>();
+        //dummy.skill.resetLearned();
+        //Debug.Log("Resetting" + dummy.skill.name);
+    }
     public void openPanel()
     {
-        //isOpened = !isOpened;
+        
+        Reset();
+        //MajorSkill skill = player.GetComponent<MajorSkill>();
+        //skill.resetLearned();
+
         panel.GetComponent<CanvasGroup>().alpha = 1;
         panel.GetComponent<CanvasGroup>().interactable = true;
+
     }
 
     public Vector3 getCube() {

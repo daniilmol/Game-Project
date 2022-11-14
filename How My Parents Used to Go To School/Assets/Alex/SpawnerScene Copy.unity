@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1031,6 +1031,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -513839390928651115, guid: e144eab7d5745984bab4eb66f43fd879,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5910971915677604480, guid: e144eab7d5745984bab4eb66f43fd879,
         type: 3}
       propertyPath: m_Constraints
@@ -1150,6 +1155,11 @@ MonoBehaviour:
   skill: {fileID: 11400000, guid: 077ce73202193a047a7e349ed6711362, type: 2}
   CharacterHitbox: {fileID: 926606340}
   vfx: {fileID: 0}
+  hit: {fileID: 0}
+  Cube: {fileID: 0}
+  playerGameObject: {fileID: 0}
+  longrange: {fileID: 0}
+  MaleC: {fileID: 0}
   key: 0
 --- !u!114 &926606344
 MonoBehaviour:
@@ -1166,6 +1176,11 @@ MonoBehaviour:
   skill: {fileID: 11400000, guid: db047f140f5304141945940c5d7ce9a6, type: 2}
   CharacterHitbox: {fileID: 926606340}
   vfx: {fileID: 0}
+  hit: {fileID: 0}
+  Cube: {fileID: 0}
+  playerGameObject: {fileID: 0}
+  longrange: {fileID: 0}
+  MaleC: {fileID: 0}
   key: 114
 --- !u!114 &926606345
 MonoBehaviour:
@@ -1182,6 +1197,11 @@ MonoBehaviour:
   skill: {fileID: 11400000, guid: 5119b703262896740916482af38d8bb0, type: 2}
   CharacterHitbox: {fileID: 926606340}
   vfx: {fileID: 0}
+  hit: {fileID: 0}
+  Cube: {fileID: 0}
+  playerGameObject: {fileID: 0}
+  longrange: {fileID: 0}
+  MaleC: {fileID: 0}
   key: 32
 --- !u!65 &926606349
 BoxCollider:

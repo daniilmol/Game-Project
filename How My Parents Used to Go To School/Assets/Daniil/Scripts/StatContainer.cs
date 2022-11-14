@@ -40,4 +40,5 @@ public class StatContainer : MonoBehaviour
         speed += powerup.getStats()[2];
         attackSpeed /= powerup.getStats()[3];
     }
+
 }

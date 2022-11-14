@@ -4,7 +4,7 @@ using UnityEngine;
 //using UnityEngine.Physics;
 using UnityEngine.AI;
 
-[CreateAssetMenu]
+//[CreateAssetMenu]
 public class WhirlwindSkill : MajorSkill
 {
 

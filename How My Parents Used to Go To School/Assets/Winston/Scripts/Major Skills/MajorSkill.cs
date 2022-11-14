@@ -27,5 +27,14 @@ public class MajorSkill : ScriptableObject
     public void SetSC(StatContainer sc) {
         StatContainer = sc;
     }
+    public bool GetIsLearned() {
+        return isLearned;
+    }
+    public void LearnTheSkill() {
+        isLearned = true;
+    }
 
+    public void resetLearned() {
+        isLearned = false;
+    }
 }

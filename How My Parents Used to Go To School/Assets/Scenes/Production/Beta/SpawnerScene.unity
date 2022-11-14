@@ -3852,10 +3852,40 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2160839469018554116, guid: cbf16e074e792df4da0f462882823e01,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.87058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160839469018554116, guid: cbf16e074e792df4da0f462882823e01,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160839469018554116, guid: cbf16e074e792df4da0f462882823e01,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160839469018554116, guid: cbf16e074e792df4da0f462882823e01,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2160839469018554138, guid: cbf16e074e792df4da0f462882823e01,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160839469018554139, guid: cbf16e074e792df4da0f462882823e01,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2160839469018554139, guid: cbf16e074e792df4da0f462882823e01,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 2160839469338073766, guid: cbf16e074e792df4da0f462882823e01,
         type: 3}
@@ -5122,6 +5152,11 @@ PrefabInstance:
       propertyPath: panel
       value: 
       objectReference: {fileID: 626326460}
+    - target: {fileID: 3412379148497975999, guid: ad8092053a142d54cb4e251fa925aa08,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1253088776951317}
     - target: {fileID: 5315800326064200079, guid: ad8092053a142d54cb4e251fa925aa08,
         type: 3}
       propertyPath: hit

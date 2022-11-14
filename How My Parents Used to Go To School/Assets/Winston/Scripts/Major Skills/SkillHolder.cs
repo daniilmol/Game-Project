@@ -42,15 +42,16 @@ public class SkillHolder : MonoBehaviour
 
     void Update() {
         skill.SetSC(StatContainer);
-        if (skill.isLearned) {
+        if (skill.GetIsLearned()) {
             key = KeyCode.Mouse0;
         }
 
 
 
+
         switch (state) {
             case SkillState.ready:
-                if (Input.GetKeyDown(key) && skill.isLearned)
+                if (Input.GetKeyDown(key) && skill.GetIsLearned())
                 {
                     Debug.Log("Clicked");
                     Debug.Log(skill.skillName);
