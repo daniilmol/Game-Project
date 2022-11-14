@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyStatContainer : MonoBehaviour
 {
     [SerializeField] EnemyHealth health;
+    [SerializeField] EnemyHealth enemyHealth;
     [SerializeField] float maxHealth;
     [SerializeField] float damage;
     [SerializeField] float speed;
