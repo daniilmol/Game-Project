@@ -17,23 +17,23 @@ public class PlayerAbilityManager : MonoBehaviour
     {
         GameObject shieldClone = (GameObject)Instantiate(abilityPrefebList[0], this.transform);
         shield = shieldClone.GetComponent<Shield>();
-        shield.DeActive();
+        shield.Active();
 
         GameObject darkMagicAuraClone = (GameObject)Instantiate(abilityPrefebList[1], this.transform);
         darkMagicAura = darkMagicAuraClone.GetComponent<DarkMagicAura>();
-        darkMagicAura.DeActive();
+        darkMagicAura.Active();
 
         GameObject fireBallClone = (GameObject)Instantiate(abilityPrefebList[2], this.transform);
         fireBall = fireBallClone.GetComponent<FireBall>();
-        fireBall.DeActive();
+        fireBall.Active();
 
         GameObject damageUpClone = (GameObject)Instantiate(abilityPrefebList[3], this.transform);
         damageUp = damageUpClone.GetComponent<DamageUp>();
-        damageUp.DeActive();
+        damageUp.Active();
 
         GameObject speedUpClone = (GameObject)Instantiate(abilityPrefebList[4], this.transform);
         speedUp = speedUpClone.GetComponent<SpeedUp>();
-        speedUp.DeActive();
+        speedUp.Active();
     }
 
     private void Update()

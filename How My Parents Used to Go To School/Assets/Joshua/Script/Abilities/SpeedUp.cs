@@ -11,6 +11,7 @@ public class SpeedUp : MonoBehaviour, Ability
     private void Awake()
     {
         statContainer = GameObject.Find("Male C").GetComponent<StatContainer>();
+        speed = speed + statContainer.GetSpeed();
     }
 
     // Start is called before the first frame update

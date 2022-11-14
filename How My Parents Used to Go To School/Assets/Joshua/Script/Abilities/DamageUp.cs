@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class DamageUp : MonoBehaviour, Ability
 {
-    public float damage = 10;
+    public float damage = 1;
     private StatContainer statContainer;
     private bool abilityActiveFlag = false;
 
     private void Awake()
     {
         statContainer = GameObject.Find("Male C").GetComponent<StatContainer>();
+        damage = damage + statContainer.GetDamage();
     }
 
     // Start is called before the first frame update
