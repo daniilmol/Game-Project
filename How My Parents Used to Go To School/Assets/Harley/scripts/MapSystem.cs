@@ -69,6 +69,7 @@ public class MapSystem : MonoBehaviour
         {
             CreateRoomData();
             BuildRoomTrigger();
+            SpawnEnemies();
             RandRoomCrosses();
         }));
     }
@@ -101,6 +102,14 @@ public class MapSystem : MonoBehaviour
             LockDoorTrigger temp = obj.AddComponent<LockDoorTrigger>();
             temp.mapSystem = this;
             temp.room = rd.Value;
+        }
+    }
+
+    void SpawnEnemies()
+    {
+        foreach (var rd in mapData.roomDataDic)
+        {
+            roomBuilder.SpawnEnemies(rd.Value);
         }
     }
 

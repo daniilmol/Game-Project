@@ -271,6 +271,22 @@ public class RoomBuilder : MonoBehaviour
         }
     }
 
+    public void SpawnEnemies(RoomData room)
+    {
+        if (room.roomType == RoomData.RoomType.QuizRoom)
+        {
+            // TODO: spawn here
+            // var obj = InsSetPos(GameObject prefab, Vector3 pos, bool rotate = false, Transform parent = null)
+            // room.monsters.Add(obj)
+        }
+        if (room.roomType == RoomData.RoomType.FinalRoom)
+        {
+            // TODO: spawn bosss here
+            // var obj = InsSetPos(GameObject prefab, Vector3 pos, bool rotate = false, Transform parent = null)
+            // room.monsters.Add(obj)
+        }
+    }
+
     public void DestroyAllDoors(RoomData room)
     {
         foreach (var door in room.doorList)
