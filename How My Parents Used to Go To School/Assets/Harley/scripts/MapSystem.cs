@@ -35,6 +35,7 @@ public class MapSystem : MonoBehaviour
 
     const string roomTag = "Room";
     const string wallTag = "Wall";
+    private NavMeshSurface nms;
 
     public void Start()
     {
@@ -69,7 +70,7 @@ public class MapSystem : MonoBehaviour
         {
             CreateRoomData();
             BuildRoomTrigger();
-            SpawnEnemies();
+            //SpawnEnemies();
             RandRoomCrosses();
         }));
     }
@@ -259,13 +260,23 @@ public class MapSystem : MonoBehaviour
                 ClearCrossPath();
                 BuildRoom();
                 GameObject floor = GameObject.FindGameObjectWithTag("Floor");
-                NavMeshSurface nms = floor.AddComponent<NavMeshSurface>() as NavMeshSurface;
-                nms.useGeometry = NavMeshCollectGeometry.PhysicsColliders;
+                nms = floor.AddComponent<NavMeshSurface>() as NavMeshSurface;
+                nms.useGeometry = NavMeshCollectGeometry.RenderMeshes;
+                //nms.voxelSize = 0.05f;
+                nms.buildHeightMesh = true;
                 nms.BuildNavMesh();
+                //Invoke ("RecalculateNav", 1.0f);
+                print("NAV MESH COMPLETED");
                 SetPlayer();
-
+                SpawnEnemies();
+                print("ENEMIES SPAWNED");
             }));
         }
+    }
+ 
+    public void RecalculateNav()
+    {
+    nms.BuildNavMesh();
     }
 
     CrossLately FindLatelyRooms(RoomTran tar)
@@ -473,6 +484,7 @@ public class MapSystem : MonoBehaviour
         var player = Instantiate(playerPref);
         Vector2 center = firstRoom.centerPos;
         player.transform.position = new Vector3(center.x, 0, center.y);
+        //Instantiate(playerPref, new Vector3(center.x, 0, center.y), Quaternion.identity);
     }
 }
 

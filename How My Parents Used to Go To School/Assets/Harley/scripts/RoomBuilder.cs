@@ -57,8 +57,6 @@ public class RoomBuilder : MonoBehaviour
      * Max for length width scale (1-2 in default)
      */
     [SerializeField] float maxLengthWidthScale = 1.5f;
-    private bool addedNavMeshSurface = false;
-    private NavMeshSurface nms;
 
     /**
      * Unit vectors
@@ -78,10 +76,6 @@ public class RoomBuilder : MonoBehaviour
     private void Awake()
     {
         mapManager = GetComponent<MapSystem>();
-    }
-
-    public NavMeshSurface getSurface(){
-        return nms;
     }
 
     /**
@@ -287,7 +281,7 @@ public class RoomBuilder : MonoBehaviour
 
     public void SpawnEnemies(RoomData room)
     {
-
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
         int healerNumber = enemyCount / 5;
         int swordsmanNumber = enemyCount / 2;
         int gunnerNumber = enemyCount / 3;
@@ -300,7 +294,16 @@ public class RoomBuilder : MonoBehaviour
             for (int i = 0; i < enemyCount; i++)
             {
                 int enemyIndex = Random.Range(0, prefab.Length);
-                GameObject item = prefab[enemyIndex];
+                var cp = room.roomTran.centerPos;
+                float x = Random.Range(-room.roomTran.length / 2 + cellScale, room.roomTran.length / 2 - cellScale);
+                float y = Random.Range(-room.roomTran.width / 2 + cellScale, room.roomTran.width / 2 - cellScale);
+
+                GameObject item = (GameObject)Instantiate(prefab[enemyIndex], new Vector3(cp.x + x, 0, cp.y + y), Quaternion.identity);
+                //InsSetPos(item, new Vector3(cp.x + x, 0, cp.y + y));
+                if (item.tag == "Enemy") {
+                    item.GetComponent<Enemy>().SetTarget(player, bulletPrefab);
+                    item.GetComponent<EnemyStatContainer>().IncreaseStats(PlayerPrefs.GetFloat("Scale"));
+                }
                 if (item.TryGetComponent(out Swordsman s)) {
                     if(--swordsmanNumber <= 0){
                         print("Removing swordsman from suggestion");
@@ -326,14 +329,6 @@ public class RoomBuilder : MonoBehaviour
                         print("Removing tank from suggestion");
                         prefab = prefab.Where((source, index) => index != enemyIndex).ToArray();
                     }
-                }
-                var cp = room.roomTran.centerPos;
-                int x = Random.Range(-room.roomTran.length / cellScale / 2 + 2, room.roomTran.length / cellScale / 2- 1) * cellScale;
-                int y = Random.Range(-room.roomTran.width / cellScale / 2 + 2, room.roomTran.width / cellScale / 2 - 1) * cellScale;
-                InsSetPos(item, new Vector3(cp.x + x, 0, cp.y + y));
-                if (item.tag == "Enemy") {
-                    item.GetComponent<Enemy>().SetTarget(GameObject.FindGameObjectWithTag("Player"), bulletPrefab);
-                    item.GetComponent<EnemyStatContainer>().IncreaseStats(PlayerPrefs.GetFloat("Scale"));
                 }
             }
         }

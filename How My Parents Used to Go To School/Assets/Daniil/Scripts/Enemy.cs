@@ -22,6 +22,8 @@ public class Enemy : MonoBehaviour
     protected int spawnWeight;
 
     void Start(){
+        agent.height = 0.5f;
+        agent.baseOffset = 0;
         enemyStats = GetComponent<EnemyStatContainer>();
     }
 
