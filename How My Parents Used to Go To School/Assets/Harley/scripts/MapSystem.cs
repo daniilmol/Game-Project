@@ -34,8 +34,8 @@ public class MapSystem : MonoBehaviour
     [HideInInspector]
     public List<GameObject> roomUnitInsts = new List<GameObject>();
 
-    [HideInInspector]
-    public const string cellTag = "Floor";
+    const string roomTag = "Room";
+    const string wallTag = "Wall";
 
     public void Start()
     {
@@ -242,8 +242,9 @@ public class MapSystem : MonoBehaviour
             UpdateMapData();
             crossBuilder.StartCoroutine(crossBuilder.GenCrosses(() =>
             {
-                BuildWalls();
-                SetPlayer();
+                // BuildWalls();
+                ClearCrossPath();
+                // SetPlayer();
             }));
         }
     }
@@ -335,11 +336,13 @@ public class MapSystem : MonoBehaviour
     public bool RayCast(Vector3 ori, Vector3 dir, float mD)
     {
         Ray ray = new Ray(ori, dir);
-        RaycastHit info;
-        if (Physics.Raycast(ray, out info, mD))
+        RaycastHit[] hits = Physics.RaycastAll(ray, mD);
+        for (int i = 0; i < hits.Length; i++)
         {
-            if (info.transform.tag == cellTag)
+            if (hits[i].transform.tag == roomTag)
+            {
                 return true;
+            }
         }
         return false;
     }
@@ -415,6 +418,52 @@ public class MapSystem : MonoBehaviour
             }
         }
         return ec;
+    }
+
+    void ClearCrossPath()
+    {
+        foreach (var cp in mapData.crossPosList)
+        {
+            float dist = Vector3.Distance(cp.start, cp.end);
+            RaycastHit[] hits = Physics.RaycastAll(cp.start, cp.end - cp.start, dist);
+            for (int i = 0; i < hits.Length; i++)
+            {
+                if (hits[i].transform.tag == wallTag)
+                {
+                    Destroy(hits[i].collider.gameObject);
+                }
+            }
+        }
+        foreach (var rd in mapData.roomDataDic)
+        {
+            Vector3Int Dx = new Vector3Int(1, 0, 0);
+            Vector3Int Dz = new Vector3Int(0, 0, 1);
+            foreach (var door in rd.Value.doorList)
+            {
+                if (door.rotate)
+                {
+                    RaycastHit[] hits = Physics.RaycastAll(door.position - Dx, Dx, 2.0f);
+                    for (int i = 0; i < hits.Length; i++)
+                    {
+                        if (hits[i].transform.tag == wallTag)
+                        {
+                            Destroy(hits[i].collider.gameObject);
+                        }
+                    }
+                }
+                else
+                {
+                    RaycastHit[] hits = Physics.RaycastAll(door.position - Dz, Dz, 2.0f);
+                    for (int i = 0; i < hits.Length; i++)
+                    {
+                        if (hits[i].transform.tag == wallTag)
+                        {
+                            Destroy(hits[i].collider.gameObject);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     void SetPlayer()

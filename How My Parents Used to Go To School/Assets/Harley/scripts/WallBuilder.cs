@@ -22,7 +22,7 @@ public class WallBuilder : MonoBehaviour
     private void Start()
     {
         mapSystem = GetComponent<MapSystem>();
-        cellTag = MapSystem.cellTag;
+        // cellTag = MapSystem.cellTag;
         container = new GameObject("Walls");
         container.transform.position = mapSystem.mapData.mapCenter;
     }

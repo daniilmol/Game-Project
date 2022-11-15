@@ -33,10 +33,18 @@ public class RoomData
      */
     public bool isMainCrossRoom;
 
+    public List<RoomDoorData> doorList = new List<RoomDoorData>();
+
     public enum RoomType
     {
         StartRoom,
         QuizRoom,
         FinalRoom
     }
+}
+
+public struct RoomDoorData
+{
+    public Vector3 position;
+    public bool rotate;
 }

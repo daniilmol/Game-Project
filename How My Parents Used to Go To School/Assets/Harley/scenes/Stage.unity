@@ -348,7 +348,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cell: {fileID: 3726327134598553362, guid: 8b4c6cf35a81b2045864f593ec7f49c2, type: 3}
+  wall: {fileID: 8571009805737820731, guid: d4c0d10c970be8a4b9583edbd644798f, type: 3}
   cellScale: 4
+  wallHeight: 4
   roomTransRange: {x: 50, y: 50}
   maxRoomArea: 100
   maxRoomCount: 50

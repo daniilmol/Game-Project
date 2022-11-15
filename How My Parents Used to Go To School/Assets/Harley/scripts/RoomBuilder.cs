@@ -10,9 +10,17 @@ public class RoomBuilder : MonoBehaviour
      */
     [SerializeField] GameObject cell;
     /**
+     * Wall cell object
+     */
+    [SerializeField] GameObject wall;
+    /**
      * The scale of cell object
      */
     [SerializeField] int cellScale;
+    /**
+     * The height of wall object
+     */
+    [SerializeField] int wallHeight;
     /**
      * The range of room transform
      */
@@ -214,20 +222,38 @@ public class RoomBuilder : MonoBehaviour
     {
         Vector3 to = new Vector3(length - cellScale, 0, width - cellScale) * 0.5f;
         Vector3 ned = centerPos - to;
+        Vector3 v1 = ned + new Vector3(0, wallHeight, -cellScale) * 0.5f;
+        Vector3 v2 = v1 + new Vector3(0, 0, width);
+        Vector3 v3 = ned + new Vector3(-cellScale, wallHeight, 0) * 0.5f;
+        Vector3 v4 = v3 + new Vector3(length, 0, 0);
 
         for (int i = 0; i < length / cellScale; i++)
         {
             for (int j = 0; j < width / cellScale; j++)
             {
-                InsSetPos(ned + i * cellScale * Dx + j * cellScale * Dz, parent);
+                InsSetPos(cell, ned + i * cellScale * Dx + j * cellScale * Dz, false, parent);
             }
+        }
+
+        for (int i = 0; i < length / cellScale; i++)
+        {
+            InsSetPos(wall, v1 + i * cellScale * Dx, false, parent);
+            InsSetPos(wall, v2 + i * cellScale * Dx, false, parent);
+        }
+
+        for (int i = 0; i < width / cellScale; i++)
+        {
+            InsSetPos(wall, v3 + i * cellScale * Dz, true, parent);
+            InsSetPos(wall, v4 + i * cellScale * Dz, true, parent);
         }
     }
 
-    void InsSetPos(Vector3 pos, Transform parent = null)
+    GameObject InsSetPos(GameObject prefab, Vector3 pos, bool rotate, Transform parent = null)
     {
-        var ins = Instantiate(cell);
+        var ins = Instantiate(prefab);
         ins.transform.position = pos;
+        ins.transform.eulerAngles = rotate ? new Vector3(0, 90, 0) : Vector3.zero;
         ins.transform.parent = parent;
+        return ins;
     }
 }

@@ -48,14 +48,16 @@ public class CrossBuilder : MonoBehaviour
 
     void CrossTwoRoom(int id1, int id2)
     {
-        var from = mapSystem.mapData.roomDataDic[id1].roomTran;
-        var to = mapSystem.mapData.roomDataDic[id2].roomTran;
+        var fromRoom = mapSystem.mapData.roomDataDic[id1];
+        var toRoom = mapSystem.mapData.roomDataDic[id2];
 
-        SameYCross(from, to);
+        SameYCross(fromRoom, toRoom);
     }
 
-    Vector3 SameYCross(RoomTran from, RoomTran to)
+    Vector3 SameYCross(RoomData fromRoom, RoomData toRoom)
     {
+        RoomTran from = fromRoom.roomTran;
+        RoomTran to = toRoom.roomTran;
         var frcp = new Vector3(from.centerPos.x, 0, from.centerPos.y);
         var trcp = new Vector3(to.centerPos.x, 0, to.centerPos.y);
 
@@ -99,6 +101,10 @@ public class CrossBuilder : MonoBehaviour
                             }
 
                             var cp = new Vector3(pos2.x, 0, pos1.z);
+
+                            SetPosOfRoomDoor(fromRoom, pos1 - new Vector3(cellScale, 0, 0) * 0.5f, true);
+                            SetPosOfRoomDoor(toRoom, pos2 + new Vector3(0, 0, cellScale) * 0.5f, false);
+
                             LShapePos(pos1, pos2, cp);
                         }
                         else
@@ -117,6 +123,10 @@ public class CrossBuilder : MonoBehaviour
                             }
 
                             var cp = new Vector3(pos1.x, 0, pos2.z);
+
+                            SetPosOfRoomDoor(fromRoom, pos1 - new Vector3(0, 0, cellScale) * 0.5f, false);
+                            SetPosOfRoomDoor(toRoom, pos2 + new Vector3(cellScale, 0, 0) * 0.5f, true);
+
                             LShapePos(pos1, pos2, cp);
                         }
                     }
@@ -140,6 +150,10 @@ public class CrossBuilder : MonoBehaviour
                             }
 
                             var cp = new Vector3(pos2.x, 0, pos1.z);
+
+                            SetPosOfRoomDoor(fromRoom, pos1 - new Vector3(cellScale, 0, 0) * 0.5f, true);
+                            SetPosOfRoomDoor(toRoom, pos2 - new Vector3(0, 0, cellScale) * 0.5f, false);
+
                             LShapePos(pos1, pos2, cp);
                         }
                         else
@@ -157,7 +171,11 @@ public class CrossBuilder : MonoBehaviour
                                 pos2 = new Vector3(pos2.x, 0, pos1.z - cellScale);
                             }
 
-                            var cp = new Vector3(pos1.x, 0, pos2.z);                      
+                            var cp = new Vector3(pos1.x, 0, pos2.z);
+
+                            SetPosOfRoomDoor(fromRoom, pos1 + new Vector3(0, 0, cellScale) * 0.5f, false);
+                            SetPosOfRoomDoor(toRoom, pos2 + new Vector3(cellScale, 0, 0) * 0.5f, true);
+
                             LShapePos(pos1, pos2, cp);
                         }
                     }
@@ -184,6 +202,10 @@ public class CrossBuilder : MonoBehaviour
                             }
 
                             var cp = new Vector3(pos1.x, 0, pos2.z);
+
+                            SetPosOfRoomDoor(fromRoom, pos1 - new Vector3(0, 0, cellScale) * 0.5f, false);
+                            SetPosOfRoomDoor(toRoom, pos2 - new Vector3(cellScale, 0, 0) * 0.5f, true);
+
                             LShapePos(pos1, pos2, cp);
                         }
                         else
@@ -202,6 +224,10 @@ public class CrossBuilder : MonoBehaviour
                             }
 
                             var cp = new Vector3(pos2.x, 0, pos1.z);
+
+                            SetPosOfRoomDoor(fromRoom, pos1 + new Vector3(cellScale, 0, 0) * 0.5f, true);
+                            SetPosOfRoomDoor(toRoom, pos2 + new Vector3(0, 0, cellScale) * 0.5f, false);
+
                             LShapePos(pos1, pos2, cp);
                         }
                     }
@@ -224,6 +250,10 @@ public class CrossBuilder : MonoBehaviour
                             }
 
                             var cp = new Vector3(pos2.x, 0, pos1.z);
+
+                            SetPosOfRoomDoor(fromRoom, pos1 + new Vector3(cellScale, 0, 0) * 0.5f, true);
+                            SetPosOfRoomDoor(toRoom, pos2 - new Vector3(0, 0, cellScale) * 0.5f, false);
+
                             LShapePos(pos1, pos2, cp);
                         }
                         else
@@ -241,6 +271,10 @@ public class CrossBuilder : MonoBehaviour
                             }
 
                             var cp = new Vector3(pos1.x, 0, pos2.z);
+
+                            SetPosOfRoomDoor(fromRoom, pos1 + new Vector3(0, 0, cellScale) * 0.5f, false);
+                            SetPosOfRoomDoor(toRoom, pos2 - new Vector3(cellScale, 0, 0) * 0.5f, true);
+
                             LShapePos(pos1, pos2, cp);
                         }
                     }
@@ -255,6 +289,11 @@ public class CrossBuilder : MonoBehaviour
                 pos1 = new Vector3(rx1, 0, rz);
                 pos2 = new Vector3(rx2, 0, rz);
 
+                var room1 = from.centerPos.y > to.centerPos.y ? toRoom : fromRoom;
+                var room2 = room1 == fromRoom ? toRoom : fromRoom;
+                SetPosOfRoomDoor(room1, pos1 - new Vector3(cellScale, 0, 0) * 0.5f, true);
+                SetPosOfRoomDoor(room2, pos2 + new Vector3(cellScale, 0, 0) * 0.5f, true);
+
                 LineTwoPos(pos1, pos2);
             }
         }
@@ -267,9 +306,27 @@ public class CrossBuilder : MonoBehaviour
             pos1 = new Vector3(rx, 0, rz1);
             pos2 = new Vector3(rx, 0, rz2);
 
+            var room1 = from.centerPos.x > to.centerPos.x ? toRoom : fromRoom;
+            var room2 = room1 == fromRoom ? toRoom : fromRoom;
+            SetPosOfRoomDoor(room1, pos1 - new Vector3(0, 0, cellScale) * 0.5f, false);
+            SetPosOfRoomDoor(room2, pos2 + new Vector3(0, 0, cellScale) * 0.5f, false);
+
             LineTwoPos(pos1, pos2);
         }
         return PosOfRoom(pos1, pos2, or);
+    }
+
+    void SetPosOfRoomDoor(RoomData room, Vector3 pos, bool rotate)
+    {
+        var doorList = room.doorList;
+        var door = new RoomDoorData();
+        door.position = pos;
+        door.rotate = rotate;
+        if (!doorList.Contains(door))
+        {
+            doorList.Add(door);
+            room.doorList = doorList;
+        }
     }
 
     Vector3 PosOfRoom(Vector3 pos1, Vector3 pos2, RoomTran room)
@@ -308,6 +365,7 @@ public class CrossBuilder : MonoBehaviour
 
     void LineTwoPos(Vector3 pos1, Vector3 pos2)
     {
+        bool isFinished = true;
         if (pos1.y == pos2.y)
         {
             if (pos1.x == pos2.x)
@@ -323,10 +381,11 @@ public class CrossBuilder : MonoBehaviour
                     {
                         var pos = new Vector3(min.x, min.y, i);
 
-                        if (Mathf.Abs(pos.z - max.z) > 2 * cellScale)
+                        if (Mathf.Abs(pos.z - max.z) > 3 * cellScale)
                         {
                             if (RayCast(pos, Dz, cellScale * 2))
                             {
+                                isFinished = false;
                                 var posex = new Vector3(pos.x, pos.y, pos.z + cellScale * 2);
                                 var cps = mapSystem.GetExCross(posex, max);
                                 switch (ObstacleCrossType)
@@ -351,10 +410,11 @@ public class CrossBuilder : MonoBehaviour
                     {
                         var pos = new Vector3(pos1.x, pos1.y, i);
 
-                        if (Mathf.Abs(pos.z - max.z) > 2 * cellScale)
+                        if (Mathf.Abs(pos.z - max.z) > 3 * cellScale)
                         {
                             if (RayCast(pos, Dz, cellScale * 2))
                             {
+                                isFinished = false;
                                 var posex = new Vector3(pos.x, pos.y, pos.z + cellScale * 2);
                                 var cps = mapSystem.GetExCross(posex, max);
                                 switch (ObstacleCrossType)
@@ -388,10 +448,11 @@ public class CrossBuilder : MonoBehaviour
                     {
                         var pos = new Vector3(i, min.y, min.z);
 
-                        if (Mathf.Abs(pos.x - max.x) > 2 * cellScale)
+                        if (Mathf.Abs(pos.x - max.x) > 3 * cellScale)
                         {
                             if (RayCast(pos, Dx, cellScale * 2))
                             {
+                                isFinished = false;
                                 var posex = new Vector3(pos.x + cellScale * 2, pos.y, pos.z);
                                 var cps = mapSystem.GetExCross(posex, max);
                                 switch (ObstacleCrossType)
@@ -416,10 +477,11 @@ public class CrossBuilder : MonoBehaviour
                     {
                         var pos = new Vector3(i, pos1.y, pos1.z);
 
-                        if (Mathf.Abs(pos.x - max.x) > 2 * cellScale)
+                        if (Mathf.Abs(pos.x - max.x) > 3 * cellScale)
                         {
                             if (RayCast(pos, Dx, cellScale * 2))
                             {
+                                isFinished = false;
                                 var posex = new Vector3(pos.x + cellScale * 2, pos.y, pos.z);
                                 var cps = mapSystem.GetExCross(posex, max);
                                 switch (ObstacleCrossType)
@@ -440,6 +502,13 @@ public class CrossBuilder : MonoBehaviour
                     InsSetPos(max);
                 }
             }
+        }
+        if (isFinished)
+        {
+            var crossPos = new CrossPosData();
+            crossPos.start = pos1;
+            crossPos.end = pos2;
+            mapSystem.mapData.crossPosList.Add(crossPos);
         }
     }
 
