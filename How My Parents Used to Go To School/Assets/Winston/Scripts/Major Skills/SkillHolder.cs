@@ -23,6 +23,7 @@ public class SkillHolder : MonoBehaviour
     public GameObject MaleC;
     private GameObject generatedVfx;
     private StatContainer StatContainer;
+    public AudioSource skillAudio;
 
     enum SkillState {
         ready,
@@ -57,6 +58,7 @@ public class SkillHolder : MonoBehaviour
                     Debug.Log(skill.skillName);
                     //launchAttack(CharacterHitbox);
                     skill.Activate(playerGameObject);
+                    skillAudio.Play();
                     state = SkillState.active;
                     activeTime = skill.activeTime;
                     Debug.Log(skill.skillName);
