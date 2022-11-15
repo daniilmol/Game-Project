@@ -66,8 +66,8 @@ public class PlayerHealth : MonoBehaviour
         }
         if (collision.gameObject.tag == "Bullet")
         {
-            takeDamage(collision.gameObject.GetComponent<Bullet>().GetShooter().GetComponent<Enemy>().GetDamage());
-            print("Player took " + collision.gameObject.GetComponent<Bullet>().GetShooter().GetComponent<Enemy>().GetDamage());
+            takeDamage(collision.gameObject.GetComponent<Bullet>().GetShooter().GetComponent<EnemyStatContainer>().GetDamage());
+            print("Player took " + collision.gameObject.GetComponent<Bullet>().GetShooter().GetComponent<EnemyStatContainer>().GetDamage());
         }
     }
 }
