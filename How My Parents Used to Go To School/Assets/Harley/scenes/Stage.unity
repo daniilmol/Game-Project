@@ -350,7 +350,10 @@ MonoBehaviour:
   cell: {fileID: 3726327134598553362, guid: 8b4c6cf35a81b2045864f593ec7f49c2, type: 3}
   wall: {fileID: 8571009805737820731, guid: d4c0d10c970be8a4b9583edbd644798f, type: 3}
   door: {fileID: 1686429701618223743, guid: e0906f4d97f567f41a337edf2cc252a4, type: 3}
-  items: []
+  items:
+  - {fileID: 5685383902958068137, guid: 06a3ec5ea1ef2b14b85a459dce8a93aa, type: 3}
+  - {fileID: 8842249614710946050, guid: a8c131245fdcb984a92e6ef7d0e224d8, type: 3}
+  - {fileID: 8776046494669011018, guid: a5638f9cfc386e14099f39ccd7d6f858, type: 3}
   cellScale: 4
   wallHeight: 4
   roomTransRange: {x: 50, y: 50}
