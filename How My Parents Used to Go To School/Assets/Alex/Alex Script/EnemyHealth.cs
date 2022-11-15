@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] float health;
     [SerializeField] float healthMax = 3f;
     [SerializeField] Enemy enemy;
+    public Image healthBar;
     public Animator anim;
 
     // Start is called before the first frame update
@@ -37,6 +39,7 @@ public class EnemyHealth : MonoBehaviour
         Debug.Log("DDD" + amount);
         enemy.GetComponent<MeshRenderer>().material = enemy.getFlashColor();;
         Invoke("ResetColor", 0.2f);
+        healthBar.fillAmount = health / healthMax;
         if (health <= 0)
         {
             if (Random.Range(0, 100) < enemy.GetDropChance())
@@ -57,10 +60,10 @@ public class EnemyHealth : MonoBehaviour
     public void heal(float amount)
     {
         health += amount;
-
         if (health > healthMax)
         {
             health = healthMax;
         }
+        healthBar.fillAmount = health / healthMax;
     }
 }

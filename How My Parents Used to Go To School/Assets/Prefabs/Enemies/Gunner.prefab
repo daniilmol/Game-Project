@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4703023648385929489}
   - component: {fileID: 1337982420290460601}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Outer Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -270,6 +270,7 @@ MonoBehaviour:
   health: 3
   healthMax: 3
   enemy: {fileID: -4346603138488992170}
+  healthBar: {fileID: 803143149467337367}
   anim: {fileID: 0}
 --- !u!114 &-1095020877842705855
 MonoBehaviour:
@@ -379,7 +380,7 @@ GameObject:
   - component: {fileID: 3125086357709313806}
   - component: {fileID: 803143149467337367}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Health Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
