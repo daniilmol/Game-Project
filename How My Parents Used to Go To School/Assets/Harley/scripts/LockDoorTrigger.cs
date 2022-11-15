@@ -12,6 +12,11 @@ public class LockDoorTrigger : MonoBehaviour
         if (room.monsters.Count == 0)
         {
             mapSystem.roomBuilder.DestroyAllDoors(room);
+            if (room.roomType == RoomData.RoomType.FinalRoom)
+            {
+                // maybe drop something?
+                // leave stage
+            }
         }
     }
 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -363,6 +363,8 @@ MonoBehaviour:
   enemyCount: 5
   bulletPrefab: {fileID: 640899133263499273, guid: 12e5a5b78f70f4f46a6625e175756f36,
     type: 3}
+  bosses:
+  - {fileID: 171526967958850859, guid: 5efb8389b43f9be448d37261d9781c70, type: 3}
   cellScale: 4
   wallHeight: 4
   roomTransRange: {x: 50, y: 50}
