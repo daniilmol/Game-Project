@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 public class MapSystem : MonoBehaviour
 { 
     public MapData mapData;
@@ -258,7 +258,12 @@ public class MapSystem : MonoBehaviour
             {
                 ClearCrossPath();
                 BuildRoom();
+                GameObject floor = GameObject.FindGameObjectWithTag("Floor");
+                NavMeshSurface nms = floor.AddComponent<NavMeshSurface>() as NavMeshSurface;
+                nms.useGeometry = NavMeshCollectGeometry.PhysicsColliders;
+                nms.BuildNavMesh();
                 SetPlayer();
+
             }));
         }
     }

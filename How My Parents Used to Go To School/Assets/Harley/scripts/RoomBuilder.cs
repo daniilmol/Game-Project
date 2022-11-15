@@ -80,6 +80,10 @@ public class RoomBuilder : MonoBehaviour
         mapManager = GetComponent<MapSystem>();
     }
 
+    public NavMeshSurface getSurface(){
+        return nms;
+    }
+
     /**
      * Generate rooms
      */
@@ -96,7 +100,6 @@ public class RoomBuilder : MonoBehaviour
         }
 
         complete();
-        nms.BuildNavMesh();
     }
 
     /**
@@ -248,12 +251,7 @@ public class RoomBuilder : MonoBehaviour
             for (int j = 0; j < width / cellScale; j++)
             {
                 InsSetPos(cell, ned + i * cellScale * Dx + j * cellScale * Dz, false, parent);
-                if(!addedNavMeshSurface){
-                    addedNavMeshSurface = true;
-                    print("ADDED NAV MESH SURFACE");
-                    nms = cell.AddComponent(typeof(NavMeshSurface)) as NavMeshSurface;
-                    nms.useGeometry = NavMeshCollectGeometry.PhysicsColliders; 
-                }
+                cell.tag = "Floor";
             }
         }
 
