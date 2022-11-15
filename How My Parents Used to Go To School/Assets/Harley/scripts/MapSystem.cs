@@ -259,19 +259,24 @@ public class MapSystem : MonoBehaviour
             {
                 ClearCrossPath();
                 BuildRoom();
-                GameObject floor = GameObject.FindGameObjectWithTag("Floor");
-                nms = floor.AddComponent<NavMeshSurface>() as NavMeshSurface;
-                nms.useGeometry = NavMeshCollectGeometry.RenderMeshes;
-                //nms.voxelSize = 0.05f;
-                nms.buildHeightMesh = true;
-                nms.BuildNavMesh();
-                //Invoke ("RecalculateNav", 1.0f);
-                print("NAV MESH COMPLETED");
+                BuildNavMesh();
                 SetPlayer();
                 SpawnEnemies();
                 print("ENEMIES SPAWNED");
             }));
         }
+    }
+
+    void BuildNavMesh()
+    {
+        GameObject floor = GameObject.FindGameObjectWithTag("Floor");
+        nms = floor.AddComponent<NavMeshSurface>() as NavMeshSurface;
+        nms.useGeometry = NavMeshCollectGeometry.RenderMeshes;
+        //nms.voxelSize = 0.05f;
+        nms.buildHeightMesh = true;
+        nms.BuildNavMesh();
+        //Invoke ("RecalculateNav", 1.0f);
+        print("NAV MESH COMPLETED");
     }
  
     public void RecalculateNav()

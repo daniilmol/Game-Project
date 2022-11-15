@@ -24,6 +24,7 @@ public class RoomBuilder : MonoBehaviour
     [SerializeField] GameObject[] enemies;
     [SerializeField] int enemyCount;
     [SerializeField] GameObject bulletPrefab;
+    [SerializeField] GameObject[] bosses;
 
     /**
      * The scale of cell object
@@ -264,6 +265,7 @@ public class RoomBuilder : MonoBehaviour
 
     public void BuildEnvironment(RoomData room)
     {
+        var parent = GameObject.Find(roomTag + room.roomId).transform;
         if (room.roomType != RoomData.RoomType.StartRoom)
         {
             foreach (GameObject item in items)
@@ -273,7 +275,7 @@ public class RoomBuilder : MonoBehaviour
                     var cp = room.roomTran.centerPos;
                     int x = Random.Range(-room.roomTran.length / cellScale / 2 + 2, room.roomTran.length / cellScale / 2- 1) * cellScale;
                     int y = Random.Range(-room.roomTran.width / cellScale / 2 + 2, room.roomTran.width / cellScale / 2 - 1) * cellScale;
-                    InsSetPos(item, new Vector3(cp.x + x, 0, cp.y + y));
+                    InsSetPos(item, new Vector3(cp.x + x, 0, cp.y + y), false, parent);
                 }
             }
         }
@@ -281,6 +283,7 @@ public class RoomBuilder : MonoBehaviour
 
     public void SpawnEnemies(RoomData room)
     {
+        var parent = GameObject.Find(roomTag + room.roomId).transform;
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         int healerNumber = enemyCount / 5;
         int swordsmanNumber = enemyCount / 2;
@@ -298,7 +301,7 @@ public class RoomBuilder : MonoBehaviour
                 float x = Random.Range(-room.roomTran.length / 2 + cellScale, room.roomTran.length / 2 - cellScale);
                 float y = Random.Range(-room.roomTran.width / 2 + cellScale, room.roomTran.width / 2 - cellScale);
 
-                GameObject item = (GameObject)Instantiate(prefab[enemyIndex], new Vector3(cp.x + x, 0, cp.y + y), Quaternion.identity);
+                GameObject item = (GameObject)Instantiate(prefab[enemyIndex], new Vector3(cp.x + x, 0, cp.y + y), Quaternion.identity, parent);
                 //InsSetPos(item, new Vector3(cp.x + x, 0, cp.y + y));
                 if (item.tag == "Enemy") {
                     item.GetComponent<Enemy>().SetTarget(player, bulletPrefab);
@@ -330,13 +333,18 @@ public class RoomBuilder : MonoBehaviour
                         prefab = prefab.Where((source, index) => index != enemyIndex).ToArray();
                     }
                 }
+
+                room.monsters.Add(item);
             }
         }
         if (room.roomType == RoomData.RoomType.FinalRoom)
         {
-            // TODO: spawn bosss here
-            // var obj = InsSetPos(GameObject prefab, Vector3 pos, bool rotate = false, Transform parent = null)
-            // room.monsters.Add(obj)
+            if (bosses.Length != 0)
+            {
+                Vector3 pos = new Vector3(room.roomTran.centerPos.x, 0, room.roomTran.centerPos.y);
+                GameObject boss = InsSetPos(bosses[Random.Range(0, bosses.Length)], pos, false, parent);
+                room.monsters.Add(boss);
+            }
         }
     }
 
@@ -371,9 +379,10 @@ public class RoomBuilder : MonoBehaviour
 
     public void LockRoom(RoomData room)
     {
+        var parent = GameObject.Find(roomTag + room.roomId).transform;
         foreach (var dr in room.doorList)
         {
-            InsSetPos(door, dr.position, dr.rotate);
+            InsSetPos(door, dr.position, dr.rotate, parent);
         }
     }
 
