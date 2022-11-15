@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Linq;
+using UnityEngine.AI;
+using UnityEditor.AI;
 
 public class RoomBuilder : MonoBehaviour
 {
@@ -17,6 +20,10 @@ public class RoomBuilder : MonoBehaviour
     [SerializeField] GameObject door;
 
     [SerializeField] GameObject[] items;
+
+    [SerializeField] GameObject[] enemies;
+    [SerializeField] int enemyCount;
+    [SerializeField] GameObject bulletPrefab;
 
     /**
      * The scale of cell object
@@ -50,6 +57,8 @@ public class RoomBuilder : MonoBehaviour
      * Max for length width scale (1-2 in default)
      */
     [SerializeField] float maxLengthWidthScale = 1.5f;
+    private bool addedNavMeshSurface = false;
+    private NavMeshSurface nms;
 
     /**
      * Unit vectors
@@ -87,6 +96,7 @@ public class RoomBuilder : MonoBehaviour
         }
 
         complete();
+        nms.BuildNavMesh();
     }
 
     /**
@@ -238,6 +248,12 @@ public class RoomBuilder : MonoBehaviour
             for (int j = 0; j < width / cellScale; j++)
             {
                 InsSetPos(cell, ned + i * cellScale * Dx + j * cellScale * Dz, false, parent);
+                if(!addedNavMeshSurface){
+                    addedNavMeshSurface = true;
+                    print("ADDED NAV MESH SURFACE");
+                    nms = cell.AddComponent(typeof(NavMeshSurface)) as NavMeshSurface;
+                    nms.useGeometry = NavMeshCollectGeometry.PhysicsColliders; 
+                }
             }
         }
 
@@ -273,11 +289,55 @@ public class RoomBuilder : MonoBehaviour
 
     public void SpawnEnemies(RoomData room)
     {
+
+        int healerNumber = enemyCount / 5;
+        int swordsmanNumber = enemyCount / 2;
+        int gunnerNumber = enemyCount / 3;
+        int tripleGunnerNumber = enemyCount / 3;
+        int tankNumber = enemyCount / 3;
+        GameObject[] prefab = enemies;
         if (room.roomType == RoomData.RoomType.QuizRoom)
         {
-            // TODO: spawn here
-            // var obj = InsSetPos(GameObject prefab, Vector3 pos, bool rotate = false, Transform parent = null)
-            // room.monsters.Add(obj)
+
+            for (int i = 0; i < enemyCount; i++)
+            {
+                int enemyIndex = Random.Range(0, prefab.Length);
+                GameObject item = prefab[enemyIndex];
+                if (item.TryGetComponent(out Swordsman s)) {
+                    if(--swordsmanNumber <= 0){
+                        print("Removing swordsman from suggestion");
+                        prefab = prefab.Where((source, index) => index != enemyIndex).ToArray();
+                    }
+                }if (item.TryGetComponent(out Healer h)) {
+                    if(--healerNumber <= 0){
+                        print("Removing healer from suggestion");
+                        prefab = prefab.Where((source, index) => index != enemyIndex).ToArray();
+                    }
+                }if (item.TryGetComponent(out Gunner g)) {
+                    if(--gunnerNumber <= 0){
+                        print("Removing gunner from suggestion");
+                        prefab = prefab.Where((source, index) => index != enemyIndex).ToArray();
+                    }
+                }if (item.TryGetComponent(out TripleGunner tg)) {
+                    if(--tripleGunnerNumber <= 0){
+                        print("Removing triple gunner from suggestion");
+                        prefab = prefab.Where((source, index) => index != enemyIndex).ToArray();
+                    }
+                }if (item.TryGetComponent(out Tank t)) {
+                    if(--tankNumber <= 0){
+                        print("Removing tank from suggestion");
+                        prefab = prefab.Where((source, index) => index != enemyIndex).ToArray();
+                    }
+                }
+                var cp = room.roomTran.centerPos;
+                int x = Random.Range(-room.roomTran.length / cellScale / 2 + 2, room.roomTran.length / cellScale / 2- 1) * cellScale;
+                int y = Random.Range(-room.roomTran.width / cellScale / 2 + 2, room.roomTran.width / cellScale / 2 - 1) * cellScale;
+                InsSetPos(item, new Vector3(cp.x + x, 0, cp.y + y));
+                if (item.tag == "Enemy") {
+                    item.GetComponent<Enemy>().SetTarget(GameObject.FindGameObjectWithTag("Player"), bulletPrefab);
+                    item.GetComponent<EnemyStatContainer>().IncreaseStats(PlayerPrefs.GetFloat("Scale"));
+                }
+            }
         }
         if (room.roomType == RoomData.RoomType.FinalRoom)
         {

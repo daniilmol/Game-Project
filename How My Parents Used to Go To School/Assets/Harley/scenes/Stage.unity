@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -354,6 +354,15 @@ MonoBehaviour:
   - {fileID: 5685383902958068137, guid: 06a3ec5ea1ef2b14b85a459dce8a93aa, type: 3}
   - {fileID: 8842249614710946050, guid: a8c131245fdcb984a92e6ef7d0e224d8, type: 3}
   - {fileID: 8776046494669011018, guid: a5638f9cfc386e14099f39ccd7d6f858, type: 3}
+  enemies:
+  - {fileID: 3732227733825626360, guid: b787143c5b4c6524a9b6f3d51e476bac, type: 3}
+  - {fileID: 8366109158623594809, guid: 7ef6f793b192c764ea1fb1b837b91088, type: 3}
+  - {fileID: 8905634646024945879, guid: e190e6d9eedb41c43abc69c98894b3ae, type: 3}
+  - {fileID: 6281208654159445526, guid: f8706b48c1474ae4997bb23573386c3a, type: 3}
+  - {fileID: 3495559628825089393, guid: 073f598a69d046345b832f3d09b00e01, type: 3}
+  enemyCount: 5
+  bulletPrefab: {fileID: 640899133263499273, guid: 12e5a5b78f70f4f46a6625e175756f36,
+    type: 3}
   cellScale: 4
   wallHeight: 4
   roomTransRange: {x: 50, y: 50}
@@ -440,16 +449,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66e85516fd937e4aa4c361aa63d3920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallUnit: {fileID: 8571009805737820731, guid: d4c0d10c970be8a4b9583edbd644798f,
-    type: 3}
-  wallHeight: 4
-  cellScale: 4
-  mapSystem: {fileID: 0}
-  container: {fileID: 0}
-  cellTag: 
-  Dx: {x: 1, y: 0, z: 0}
-  Dy: {x: 0, y: 1, z: 0}
-  Dz: {x: 0, y: 0, z: 1}
 --- !u!1 &542310195
 GameObject:
   m_ObjectHideFlags: 0

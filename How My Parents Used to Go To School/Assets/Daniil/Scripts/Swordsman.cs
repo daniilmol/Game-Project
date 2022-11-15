@@ -15,7 +15,7 @@ public class Swordsman : Enemy
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        dropChance = 100f;
+        dropChance = 5f;
     }
     void Update()
     {
