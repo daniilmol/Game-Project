@@ -461,7 +461,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 4396144619148148967}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1443732249}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d6706584dfde614a9c96794af2180d1, type: 3}
@@ -4173,6 +4173,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbf16e074e792df4da0f462882823e01, type: 3}
+--- !u!1 &1443732249 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3412379148497975997, guid: ad8092053a142d54cb4e251fa925aa08,
+    type: 3}
+  m_PrefabInstance: {fileID: 4396144619148148967}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1443732251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443732249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d69cf5c3e35151459d4d2a32822a500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityPrefebList:
+  - {fileID: 6577730821407940041, guid: 046b2e5a521e43440a8a16b7748ee509, type: 3}
+  - {fileID: 2047906523977377309, guid: db2ffdbba2111664f9906a269d4ebc5e, type: 3}
+  - {fileID: 5740114744125000864, guid: 23270df6ca9c312419ea927b3c317e3f, type: 3}
+  - {fileID: 4304350652174267842, guid: 00d7ecc9a3f4a7a499d8f99396a8d83b, type: 3}
+  - {fileID: 1692998369776905259, guid: ae7aa452b65a80c4cac66363e61a0e58, type: 3}
 --- !u!1 &1625503446 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7672704724415020735, guid: 7e16ffff8ead77943b3a3a95919d2f68,
@@ -5344,6 +5368,11 @@ PrefabInstance:
       propertyPath: key
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5315800326064200076, guid: ad8092053a142d54cb4e251fa925aa08,
+        type: 3}
+      propertyPath: skillAudio
+      value: 
+      objectReference: {fileID: 985799941}
     - target: {fileID: 5315800326064200078, guid: ad8092053a142d54cb4e251fa925aa08,
         type: 3}
       propertyPath: key
@@ -5371,5 +5400,10 @@ PrefabInstance:
       propertyPath: key
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5315800326064200079, guid: ad8092053a142d54cb4e251fa925aa08,
+        type: 3}
+      propertyPath: skillAudio
+      value: 
+      objectReference: {fileID: 985799941}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad8092053a142d54cb4e251fa925aa08, type: 3}
