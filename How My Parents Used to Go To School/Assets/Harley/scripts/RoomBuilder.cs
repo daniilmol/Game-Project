@@ -13,6 +13,12 @@ public class RoomBuilder : MonoBehaviour
      * Wall cell object
      */
     [SerializeField] GameObject wall;
+
+    [SerializeField] GameObject door;
+    [SerializeField] GameObject item1;
+    [SerializeField] GameObject item2;
+    [SerializeField] GameObject item3;
+
     /**
      * The scale of cell object
      */
@@ -248,7 +254,43 @@ public class RoomBuilder : MonoBehaviour
         }
     }
 
-    GameObject InsSetPos(GameObject prefab, Vector3 pos, bool rotate, Transform parent = null)
+    public void BuildEnvironment(RoomData room)
+    {
+        if (room.roomType != RoomData.RoomType.StartRoom)
+        {
+            for (int i = 0; i < Random.Range(0, 3); i++)
+            {
+                var cp = room.roomTran.centerPos;
+                int x = Random.Range(-room.roomTran.length / cellScale / 2 + 2, room.roomTran.length / cellScale / 2- 1) * cellScale;
+                int y = Random.Range(-room.roomTran.width / cellScale / 2 + 2, room.roomTran.width / cellScale / 2 - 1) * cellScale;
+                InsSetPos(item1, new Vector3(cp.x + x, 0, cp.y + y));
+            }
+            for (int i = 0; i < Random.Range(0, 3); i++)
+            {
+                var cp = room.roomTran.centerPos;
+                int x = Random.Range(-room.roomTran.length / cellScale / 2 + 2, room.roomTran.length / cellScale / 2- 1) * cellScale;
+                int y = Random.Range(-room.roomTran.width / cellScale / 2 + 2, room.roomTran.width / cellScale / 2 - 1) * cellScale;
+                InsSetPos(item2, new Vector3(cp.x + x, 0, cp.y + y));
+            }
+            for (int i = 0; i < Random.Range(0, 3); i++)
+            {
+                var cp = room.roomTran.centerPos;
+                int x = Random.Range(-room.roomTran.length / cellScale / 2 + 2, room.roomTran.length / cellScale / 2- 1) * cellScale;
+                int y = Random.Range(-room.roomTran.width / cellScale / 2 + 2, room.roomTran.width / cellScale / 2 - 1) * cellScale;
+                InsSetPos(item3, new Vector3(cp.x + x, 0, cp.y + y));
+            }
+        }
+    }
+
+    void LockRoom(RoomData room)
+    {
+        foreach (var dr in room.doorList)
+        {
+            InsSetPos(door, dr.position, dr.rotate);
+        }
+    }
+
+    GameObject InsSetPos(GameObject prefab, Vector3 pos, bool rotate = false, Transform parent = null)
     {
         var ins = Instantiate(prefab);
         ins.transform.position = pos;

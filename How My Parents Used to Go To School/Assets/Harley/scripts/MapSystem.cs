@@ -244,6 +244,7 @@ public class MapSystem : MonoBehaviour
             {
                 // BuildWalls();
                 ClearCrossPath();
+                BuildRoom();
                 // SetPlayer();
             }));
         }
@@ -434,10 +435,11 @@ public class MapSystem : MonoBehaviour
                 }
             }
         }
+
+        Vector3Int Dx = new Vector3Int(1, 0, 0);
+        Vector3Int Dz = new Vector3Int(0, 0, 1);
         foreach (var rd in mapData.roomDataDic)
         {
-            Vector3Int Dx = new Vector3Int(1, 0, 0);
-            Vector3Int Dz = new Vector3Int(0, 0, 1);
             foreach (var door in rd.Value.doorList)
             {
                 if (door.rotate)
@@ -463,6 +465,14 @@ public class MapSystem : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    void BuildRoom()
+    {
+        foreach (var rd in mapData.roomDataDic)
+        {
+            roomBuilder.BuildEnvironment(rd.Value);
         }
     }
 
