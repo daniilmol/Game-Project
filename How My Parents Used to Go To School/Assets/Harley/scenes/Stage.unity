@@ -350,9 +350,7 @@ MonoBehaviour:
   cell: {fileID: 3726327134598553362, guid: 8b4c6cf35a81b2045864f593ec7f49c2, type: 3}
   wall: {fileID: 8571009805737820731, guid: d4c0d10c970be8a4b9583edbd644798f, type: 3}
   door: {fileID: 1686429701618223743, guid: e0906f4d97f567f41a337edf2cc252a4, type: 3}
-  item1: {fileID: 5685383902958068137, guid: 06a3ec5ea1ef2b14b85a459dce8a93aa, type: 3}
-  item2: {fileID: 8842249614710946050, guid: a8c131245fdcb984a92e6ef7d0e224d8, type: 3}
-  item3: {fileID: 8776046494669011018, guid: a5638f9cfc386e14099f39ccd7d6f858, type: 3}
+  items: []
   cellScale: 4
   wallHeight: 4
   roomTransRange: {x: 50, y: 50}
@@ -390,8 +388,7 @@ MonoBehaviour:
   mapData: {fileID: 477729195}
   roomBuilder: {fileID: 477729192}
   crossBuilder: {fileID: 477729196}
-  wallBuilder: {fileID: 477729197}
-  playerPref: {fileID: 3412379148497975997, guid: ad8092053a142d54cb4e251fa925aa08,
+  playerPref: {fileID: 7499472414397004360, guid: 3a2c54d09b5b27d45a49fa2f15b3e3c5,
     type: 3}
   anotherCrossProbability: 0.2
   deadCrossProbability: 0.5
@@ -444,6 +441,12 @@ MonoBehaviour:
     type: 3}
   wallHeight: 4
   cellScale: 4
+  mapSystem: {fileID: 0}
+  container: {fileID: 0}
+  cellTag: 
+  Dx: {x: 1, y: 0, z: 0}
+  Dy: {x: 0, y: 1, z: 0}
+  Dz: {x: 0, y: 0, z: 1}
 --- !u!1 &542310195
 GameObject:
   m_ObjectHideFlags: 0

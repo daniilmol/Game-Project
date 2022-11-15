@@ -68,6 +68,7 @@ public class MapSystem : MonoBehaviour
         roomBuilder.StartCoroutine(roomBuilder.GenRooms(mapData.mapCenter, () =>
         {
             CreateRoomData();
+            BuildRoomTrigger();
             RandRoomCrosses();
         }));
     }
@@ -90,6 +91,17 @@ public class MapSystem : MonoBehaviour
             mapData.roomDataDic.Add(rd.roomId, rd);
         }
 
+    }
+    
+    void BuildRoomTrigger()
+    {
+        foreach (var rd in mapData.roomDataDic)
+        {
+            GameObject obj = GameObject.Find(roomTag + rd.Key);
+            LockDoorTrigger temp = obj.AddComponent<LockDoorTrigger>();
+            temp.mapSystem = this;
+            temp.room = rd.Value;
+        }
     }
 
     void RandRoomCrosses()
