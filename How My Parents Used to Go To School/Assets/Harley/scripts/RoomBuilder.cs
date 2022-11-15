@@ -63,6 +63,7 @@ public class RoomBuilder : MonoBehaviour
      * Tag for floor cells
      */
     const string roomTag = "Room";
+    const string wallTag = "Wall";
 
     private MapSystem mapManager;
 
@@ -282,7 +283,36 @@ public class RoomBuilder : MonoBehaviour
         }
     }
 
-    void LockRoom(RoomData room)
+    public void DestroyAllDoors(RoomData room)
+    {
+        foreach (var door in room.doorList)
+        {
+            if (door.rotate)
+            {
+                RaycastHit[] hits = Physics.RaycastAll(door.position - Dx, Dx, 2.0f);
+                for (int i = 0; i < hits.Length; i++)
+                {
+                    if (hits[i].transform.tag == wallTag)
+                    {
+                        Destroy(hits[i].collider.gameObject);
+                    }
+                }
+            }
+            else
+            {
+                RaycastHit[] hits = Physics.RaycastAll(door.position - Dz, Dz, 2.0f);
+                for (int i = 0; i < hits.Length; i++)
+                {
+                    if (hits[i].transform.tag == wallTag)
+                    {
+                        Destroy(hits[i].collider.gameObject);
+                    }
+                }
+            }
+        }
+    }
+
+    public void LockRoom(RoomData room)
     {
         foreach (var dr in room.doorList)
         {

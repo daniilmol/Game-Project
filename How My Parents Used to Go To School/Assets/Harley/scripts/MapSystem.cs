@@ -7,7 +7,6 @@ public class MapSystem : MonoBehaviour
     public MapData mapData;
     public RoomBuilder roomBuilder;
     public CrossBuilder crossBuilder;
-    public WallBuilder wallBuilder;
 
     public GameObject playerPref;
 
@@ -41,7 +40,6 @@ public class MapSystem : MonoBehaviour
     {
         crossBuilder = GetComponent<CrossBuilder>();
         roomBuilder = GetComponent<RoomBuilder>();
-        wallBuilder = GetComponent<WallBuilder>();
     }
 
     void SetSeed(bool bDebug)
@@ -101,11 +99,6 @@ public class MapSystem : MonoBehaviour
         firstRoom = genRooms[0];
 
         CalNextCross(firstRoom);
-    }
-
-    void BuildWalls()
-    {
-        wallBuilder.StartCoroutine(wallBuilder.GenWalls());
     }
 
     void UpdateMapData()
@@ -242,10 +235,9 @@ public class MapSystem : MonoBehaviour
             UpdateMapData();
             crossBuilder.StartCoroutine(crossBuilder.GenCrosses(() =>
             {
-                // BuildWalls();
                 ClearCrossPath();
                 BuildRoom();
-                // SetPlayer();
+                SetPlayer();
             }));
         }
     }
@@ -436,35 +428,9 @@ public class MapSystem : MonoBehaviour
             }
         }
 
-        Vector3Int Dx = new Vector3Int(1, 0, 0);
-        Vector3Int Dz = new Vector3Int(0, 0, 1);
         foreach (var rd in mapData.roomDataDic)
         {
-            foreach (var door in rd.Value.doorList)
-            {
-                if (door.rotate)
-                {
-                    RaycastHit[] hits = Physics.RaycastAll(door.position - Dx, Dx, 2.0f);
-                    for (int i = 0; i < hits.Length; i++)
-                    {
-                        if (hits[i].transform.tag == wallTag)
-                        {
-                            Destroy(hits[i].collider.gameObject);
-                        }
-                    }
-                }
-                else
-                {
-                    RaycastHit[] hits = Physics.RaycastAll(door.position - Dz, Dz, 2.0f);
-                    for (int i = 0; i < hits.Length; i++)
-                    {
-                        if (hits[i].transform.tag == wallTag)
-                        {
-                            Destroy(hits[i].collider.gameObject);
-                        }
-                    }
-                }
-            }
+            roomBuilder.DestroyAllDoors(rd.Value);
         }
     }
 
