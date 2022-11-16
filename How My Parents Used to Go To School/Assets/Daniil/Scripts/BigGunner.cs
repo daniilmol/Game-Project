@@ -25,6 +25,7 @@ public class BigGunner : Enemy
         shooting = true;
         angleScale = 0;
         dropChance = 100;
+        boss = true;
     }
     void Update()
     {

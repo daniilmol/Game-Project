@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     protected bool canSeePlayer;
     protected bool withinPlayerRange;
     protected RaycastHit rayHit;
+    protected bool boss = false;
     [SerializeField] float difficultyScaling;
     [SerializeField] float sightRange;
     [SerializeField] GameObject powerUpDrop;
@@ -33,6 +34,10 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate(){
         CheckForPlayerSight();
+    }
+
+    public bool isBoss(){
+        return boss;
     }
 
     protected bool CheckForPlayerRange() {
