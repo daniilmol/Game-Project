@@ -58,6 +58,7 @@ public class RoomBuilder : MonoBehaviour
      * Max for length width scale (1-2 in default)
      */
     [SerializeField] float maxLengthWidthScale = 1.5f;
+    [SerializeField] GameObject baker;
 
     /**
      * Unit vectors
@@ -77,6 +78,10 @@ public class RoomBuilder : MonoBehaviour
     private void Awake()
     {
         mapManager = GetComponent<MapSystem>();
+    }
+
+    public NavMeshSurface getSurface(){
+        return baker.GetComponent<NavMeshSurface>();
     }
 
     /**
