@@ -510,8 +510,8 @@ MonoBehaviour:
   enemyCount: 5
   bulletPrefab: {fileID: 640899133263499273, guid: 12e5a5b78f70f4f46a6625e175756f36,
     type: 3}
-  bosses:
-  - {fileID: 171526967958850859, guid: 5efb8389b43f9be448d37261d9781c70, type: 3}
+  telepoter: {fileID: 9111350892228349607, guid: 8eeb1f05235fc7d429c474f4d54ccf2b,
+    type: 3}
   cellScale: 4
   wallHeight: 4
   roomTransRange: {x: 50, y: 50}
