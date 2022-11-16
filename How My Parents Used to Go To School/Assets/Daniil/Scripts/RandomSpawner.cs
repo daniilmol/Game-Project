@@ -15,11 +15,22 @@ public class RandomSpawner : MonoBehaviour
         int gunnerNumber = count / 3;
         int tripleGunnerNumber = count / 3;
         int tankNumber = count / 3;
-        for (int i = 0; i < count; i++)
+        int bossNumber = 1;
+        GameObject instantiated = (GameObject)Instantiate(prefab[0], spawns[0].transform);
+        if (instantiated.tag == "Enemy") {
+                instantiated.GetComponent<Enemy>().SetTarget(player, bulletPrefab);
+                instantiated.GetComponent<EnemyStatContainer>().IncreaseStats(scale);
+            }
+        if (instantiated.TryGetComponent(out BigGunner bg)) {
+                if(--bossNumber <= 0){
+                    prefab = prefab.Where((source, index) => index != 0).ToArray();
+                }
+            }
+        for (int i = 1; i < count; i++)
         {
-            int indexRemove = Random.Range(0, spawns.Length);
+            int indexRemove = Random.Range(1, spawns.Length);
             int enemyIndex = Random.Range(0, prefab.Length);
-            GameObject instantiated = (GameObject)Instantiate(prefab[enemyIndex], spawns[indexRemove].transform);
+            instantiated = (GameObject)Instantiate(prefab[enemyIndex], spawns[indexRemove].transform);
             if (instantiated.tag == "Enemy") {
                 instantiated.GetComponent<Enemy>().SetTarget(player, bulletPrefab);
                 instantiated.GetComponent<EnemyStatContainer>().IncreaseStats(scale);

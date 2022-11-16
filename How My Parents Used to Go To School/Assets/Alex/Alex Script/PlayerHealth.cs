@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -39,8 +39,12 @@ public class PlayerHealth : MonoBehaviour
         healthBar.fillAmount = health / healthMax;
         if (health <= 0)
         {
-            // Dead
-            //anim.SetBool("IsDead", true);
+            PlayerPrefs.SetFloat("Scale", 1f);
+            PlayerPrefs.SetFloat("Damage", 1f);
+            PlayerPrefs.SetFloat("Speed", 1f);
+            PlayerPrefs.SetFloat("AttackSpeed", 1f);
+            PlayerPrefs.SetFloat("Health", 10f);
+            SceneManager.LoadScene("Stage");
         }
     }
 
@@ -62,19 +66,29 @@ public class PlayerHealth : MonoBehaviour
     //        Destroy(this.gameObject);
     //    }
     //}
+    bool allowed = true;
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<Enemy>().isBoss())
         {
-            takeDamage(5);
-            //c.GetComponent<NavMeshAgent>().isStopped = true;
-            float force = 30f;
-            GetComponent<Rigidbody>().AddForce(force * -collision.gameObject.transform.forward, ForceMode.Impulse);                    //  Need a on hit decrese health function here, example: decreaseHealth(Gameobject enemy);
+            if(allowed){
+                takeDamage(2);
+                //c.GetComponent<NavMeshAgent>().isStopped = true;
+                float force = 50f;
+                GetComponent<Rigidbody>().AddForce(force * collision.gameObject.transform.forward, ForceMode.Impulse);                    //  Need a on hit decrese health function here, example: decreaseHealth(Gameobject enemy);
+                StartCoroutine(StartChargeCooldown());
+            }
         }
         if (collision.gameObject.tag == "Bullet")
         {
             //takeDamage(collision.gameObject.GetComponent<Bullet>().GetShooter().GetComponent<EnemyStatContainer>().GetDamage());
             //print("Player took " + collision.gameObject.GetComponent<Bullet>().GetShooter().GetComponent<EnemyStatContainer>().GetDamage());
         }
+    }
+
+    public IEnumerator StartChargeCooldown(){
+        allowed = false;
+        yield return new WaitForSeconds(2);
+        allowed = true;
     }
 }
