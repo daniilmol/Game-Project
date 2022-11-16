@@ -18,6 +18,7 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Debug.Log("Hit Player");
+            other.gameObject.GetComponent<PlayerHealth>().takeDamage(shooter.GetComponent<EnemyStatContainer>().GetDamage());
             Destroy(gameObject);
         }
     }

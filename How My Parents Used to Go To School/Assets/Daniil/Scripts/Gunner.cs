@@ -7,6 +7,7 @@ public class Gunner : Enemy
 {
     [SerializeField] float range = 7f;
     [SerializeField] float attackSpeed = 1f;
+    [SerializeField] bool displayDistance = false;
     private bool shooting;
     private bool following;
     private bool IsAvailable = true;
@@ -21,6 +22,9 @@ public class Gunner : Enemy
     {
         agent.updateRotation = false;
         FaceTarget(player.transform.position);
+        if(displayDistance){
+            //print("GUNNER PLAYER DISTANCE: " + Vector3.Distance(gameObject.transform.position, player.transform.position));
+        }
         if (Vector3.Distance(gameObject.transform.position, player.transform.position) > range)
         {
             following = true;
@@ -29,6 +33,9 @@ public class Gunner : Enemy
         else if (Vector3.Distance(gameObject.transform.position, player.transform.position) <= range) {
             shooting = true;
             following = false;
+        }
+        if(displayDistance){
+            print("The gunner is shooting: " + shooting + " The gunner is following: " + following);
         }
         GunnerBehaviour();
     }
@@ -59,10 +66,10 @@ public class Gunner : Enemy
         if (!IsAvailable) {
             return;
         }
-            GameObject particle = Instantiate(bullet, transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z));
-            particle.GetComponent<Bullet>().SetShooter(gameObject);
-            particle.GetComponent<Rigidbody>().AddForce(transform.forward * particle.GetComponent<Bullet>().GetSpeed(), ForceMode.Impulse);
-            StartCoroutine(StartCooldown());
+        GameObject particle = Instantiate(bullet, transform.position, Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z));
+        particle.GetComponent<Bullet>().SetShooter(gameObject);
+        particle.GetComponent<Rigidbody>().AddForce(transform.forward * particle.GetComponent<Bullet>().GetSpeed(), ForceMode.Impulse);
+        StartCoroutine(StartCooldown());
     }
     public IEnumerator StartCooldown()
     {

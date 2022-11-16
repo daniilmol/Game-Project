@@ -27,13 +27,12 @@ public class Enemy : MonoBehaviour
         enemyStats = GetComponent<EnemyStatContainer>();
     }
 
-    void FixedUpdate()
-    {
-        CheckForPlayerSight();
-    }
-
     void Update(){
         CheckSpeed();
+    }
+
+    void FixedUpdate(){
+        CheckForPlayerSight();
     }
 
     protected bool CheckForPlayerRange() {
@@ -49,8 +48,9 @@ public class Enemy : MonoBehaviour
     }
 
     private void CheckForPlayerSight() {
-        Ray ray = new Ray(transform.position, (player.transform.position - transform.position).normalized * 10);
-        Debug.DrawRay(transform.position, (player.transform.position - transform.position).normalized * 10);
+        Vector3 playerPos = new Vector3(player.transform.position.x, player.transform.position.y + 0.5f, player.transform.position.z);
+        Ray ray = new Ray(transform.position, (playerPos - transform.position).normalized * 10);
+        Debug.DrawRay(transform.position, (playerPos - transform.position).normalized * 10);
         if (Physics.Raycast(ray, out rayHit, 100))
         {
             if (rayHit.transform.gameObject.tag == "Player")

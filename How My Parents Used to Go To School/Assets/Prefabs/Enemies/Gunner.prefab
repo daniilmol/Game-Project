@@ -255,6 +255,7 @@ MonoBehaviour:
   flashColor: {fileID: 2100000, guid: 2f3f6b45693e03d4dac03ea894a0dd78, type: 2}
   range: 7
   attackSpeed: 1
+  displayDistance: 0
 --- !u!114 &-8503506788489985883
 MonoBehaviour:
   m_ObjectHideFlags: 0
