@@ -12,6 +12,7 @@ public class CharacterLoco : MonoBehaviour
     private UserInputs inputActions;
     private InputAction movement;
     public Animator animator;
+    private Collider playerCollider;
     Vector2 input;
     bool isRoll = false;
     bool isMoving = false;
@@ -22,6 +23,7 @@ public class CharacterLoco : MonoBehaviour
         animator = GetComponent<Animator>();
         inputActions = new UserInputs();
         movement = inputActions.Player.Movement;
+        playerCollider = GetComponent<Collider>();
     }
 
     // Update is called once per frame
@@ -63,7 +65,7 @@ public class CharacterLoco : MonoBehaviour
                     //launchAttack(CharacterHitbox);
                     animator.applyRootMotion = true;
                     state = SkillState.active;
-                    activeTime = 0.3f;
+                    activeTime = 0.6f;
                     Debug.Log(state);
                     movement.Disable();
                     //clearTable();
@@ -73,6 +75,7 @@ public class CharacterLoco : MonoBehaviour
                 if (activeTime > 0)
                 {
 
+                    playerCollider.enabled = false;
                     activeTime -= Time.deltaTime;
                     animator.applyRootMotion = true;
                     isRoll = true;
@@ -93,6 +96,7 @@ public class CharacterLoco : MonoBehaviour
                     animator.SetBool("isRoll", isRoll);
                     animator.applyRootMotion = false;
                     movement.Enable();
+                    playerCollider.enabled = true;
                     Debug.Log(state);
 
                 }
@@ -105,6 +109,7 @@ public class CharacterLoco : MonoBehaviour
                 }
                 else
                 {
+                    playerCollider.enabled = true;
                     state = SkillState.ready;
                     Debug.Log(state);
                     isRoll = false;
