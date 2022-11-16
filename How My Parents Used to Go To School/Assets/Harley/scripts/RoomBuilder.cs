@@ -61,6 +61,7 @@ public class RoomBuilder : MonoBehaviour
     [SerializeField] GameObject baker;
 
 
+
     /**
      * Unit vectors
      */
@@ -101,6 +102,7 @@ public class RoomBuilder : MonoBehaviour
 
     public NavMeshSurface getSurface(){
         return baker.GetComponent<NavMeshSurface>();
+
     }
 
     /**
