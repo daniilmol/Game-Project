@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.056336965, g: 0.009480024, b: 0.0009113174, a: 1}
+  m_IndirectSpecularColor: {r: 0.056357797, g: 0.009486724, b: 0.0009414677, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -550,7 +550,7 @@ MonoBehaviour:
   mapData: {fileID: 477729195}
   roomBuilder: {fileID: 477729192}
   crossBuilder: {fileID: 477729196}
-  player: {fileID: 1785978549}
+  player: {fileID: 1344553070}
   anotherCrossProbability: 0.2
   deadCrossProbability: 0.5
   deadAwayProbability: 0.6
@@ -1582,6 +1582,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 0ce3195ee4366a34a8b863779a045fca,
         type: 2}
+    - target: {fileID: 5314801260943135515, guid: ad8092053a142d54cb4e251fa925aa08,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5315800325502458802, guid: ad8092053a142d54cb4e251fa925aa08,
         type: 3}
       propertyPath: m_CullingMask.m_Bits
@@ -1867,19 +1872,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1785978549 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3412379148497975997, guid: ad8092053a142d54cb4e251fa925aa08,
-    type: 3}
-  m_PrefabInstance: {fileID: 1344553069}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1785978550 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3412379148497975999, guid: ad8092053a142d54cb4e251fa925aa08,
     type: 3}
   m_PrefabInstance: {fileID: 1344553069}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1785978549}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d6706584dfde614a9c96794af2180d1, type: 3}
