@@ -72,6 +72,7 @@ public class Healer : Enemy
         for(int i = 0; i < otherEnemies.Length; i++){
             print(otherEnemies[i].GetComponent<EnemyHealth>());
             if(otherEnemies[i].GetComponent<Enemy>() != GetComponent<Enemy>() && otherEnemies[i].GetComponent<EnemyHealth>().getHealth() < otherEnemies[i].GetComponent<EnemyHealth>().getHealthMax() 
+                && Vector3.Distance(otherEnemies[i].transform.position, transform.position) < 10f
                 && Vector3.Distance(otherEnemies[i].transform.position, transform.position) < playerDistance
                 && Vector3.Distance(otherEnemies[i].transform.position, transform.position) < currentLowest){
                 agent.destination = otherEnemies[i].transform.position;

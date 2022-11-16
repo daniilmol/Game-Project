@@ -58,6 +58,9 @@ public class RoomBuilder : MonoBehaviour
      * Max for length width scale (1-2 in default)
      */
     [SerializeField] float maxLengthWidthScale = 1.5f;
+    [SerializeField] GameObject baker;
+
+
 
     /**
      * Unit vectors
@@ -95,6 +98,11 @@ public class RoomBuilder : MonoBehaviour
         }
 
         complete();
+    }
+
+    public NavMeshSurface getSurface(){
+        return baker.GetComponent<NavMeshSurface>();
+
     }
 
     /**
@@ -281,6 +289,10 @@ public class RoomBuilder : MonoBehaviour
         }
     }
 
+    public GameObject GetCell(){
+        return cell;
+    }
+
     public void SpawnEnemies(RoomData room)
     {
         var parent = GameObject.Find(roomTag + room.roomId).transform;
@@ -343,6 +355,8 @@ public class RoomBuilder : MonoBehaviour
             {
                 Vector3 pos = new Vector3(room.roomTran.centerPos.x, 0, room.roomTran.centerPos.y);
                 GameObject boss = InsSetPos(bosses[Random.Range(0, bosses.Length)], pos, false, parent);
+                boss.GetComponent<Enemy>().SetTarget(player, bulletPrefab);
+                boss.GetComponent<EnemyStatContainer>().IncreaseStats(PlayerPrefs.GetFloat("Scale"));
                 room.monsters.Add(boss);
             }
         }

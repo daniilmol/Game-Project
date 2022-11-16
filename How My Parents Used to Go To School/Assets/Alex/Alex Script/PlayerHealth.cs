@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] float health;
     [SerializeField] float healthMax;
+    public Image healthBar;
     public Animator anim;
 
     // Start is called before the first frame update
@@ -33,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
     public void takeDamage(float amount)
     {
         health -= amount;
-
+        healthBar.fillAmount = health / healthMax;
         if (health <= 0)
         {
             // Dead
@@ -44,6 +47,7 @@ public class PlayerHealth : MonoBehaviour
     public void heal(float amount)
     {
         health += amount;
+        healthBar.fillAmount = health / healthMax;
 
         if (health > healthMax)
         {

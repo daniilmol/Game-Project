@@ -305,7 +305,7 @@ MonoBehaviour:
   health: 5
   healthMax: 5
   enemy: {fileID: 889967539194732058}
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 5255411748691843114}
   anim: {fileID: 0}
 --- !u!114 &889967539194732058
 MonoBehaviour:
