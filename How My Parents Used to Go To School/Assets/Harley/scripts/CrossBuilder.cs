@@ -289,7 +289,7 @@ public class CrossBuilder : MonoBehaviour
                 pos1 = new Vector3(rx1, 0, rz);
                 pos2 = new Vector3(rx2, 0, rz);
 
-                var room1 = from.centerPos.y > to.centerPos.y ? toRoom : fromRoom;
+                var room1 = from.centerPos.x > to.centerPos.x ? toRoom : fromRoom;
                 var room2 = room1 == fromRoom ? toRoom : fromRoom;
                 SetPosOfRoomDoor(room1, pos1 - new Vector3(cellScale, 0, 0) * 0.5f, true);
                 SetPosOfRoomDoor(room2, pos2 + new Vector3(cellScale, 0, 0) * 0.5f, true);
@@ -306,7 +306,7 @@ public class CrossBuilder : MonoBehaviour
             pos1 = new Vector3(rx, 0, rz1);
             pos2 = new Vector3(rx, 0, rz2);
 
-            var room1 = from.centerPos.x > to.centerPos.x ? toRoom : fromRoom;
+            var room1 = from.centerPos.y > to.centerPos.y ? toRoom : fromRoom;
             var room2 = room1 == fromRoom ? toRoom : fromRoom;
             SetPosOfRoomDoor(room1, pos1 - new Vector3(0, 0, cellScale) * 0.5f, false);
             SetPosOfRoomDoor(room2, pos2 + new Vector3(0, 0, cellScale) * 0.5f, false);
