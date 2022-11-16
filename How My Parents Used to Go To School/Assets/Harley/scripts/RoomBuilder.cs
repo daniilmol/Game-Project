@@ -355,6 +355,8 @@ public class RoomBuilder : MonoBehaviour
             {
                 Vector3 pos = new Vector3(room.roomTran.centerPos.x, 0, room.roomTran.centerPos.y);
                 GameObject boss = InsSetPos(bosses[Random.Range(0, bosses.Length)], pos, false, parent);
+                boss.GetComponent<Enemy>().SetTarget(player, bulletPrefab);
+                boss.GetComponent<EnemyStatContainer>().IncreaseStats(PlayerPrefs.GetFloat("Scale"));
                 room.monsters.Add(boss);
             }
         }

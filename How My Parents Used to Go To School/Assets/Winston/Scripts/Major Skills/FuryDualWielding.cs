@@ -72,10 +72,10 @@ public class FuryDualWielding : MajorSkill
                     c.GetComponent<EnemyHealth>().takeDamage(StatContainer.GetDamage());
 
 
-                    //float force = 6;
+                    float force = 6;
                     //Vector3 vectorForce = Vector3.Normalize(globalPlayer.transform.position - c.transform.position);
                     
-                    //c.GetComponent<Rigidbody>().AddForce(force * -c.transform.forward, ForceMode.Impulse);
+                    c.GetComponent<Rigidbody>().AddForce(force * -c.transform.forward, ForceMode.Impulse);
 
                     count++;
                 }
