@@ -202,7 +202,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 322144416}
   m_CullTransparentMesh: 1
-
 --- !u!1001 &343766204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -217,6 +216,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 2db4b38c5968c334ba9ebd8d33dda174, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 2db4b38c5968c334ba9ebd8d33dda174, type: 3}
+      propertyPath: m_TagString
+      value: Floor
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2db4b38c5968c334ba9ebd8d33dda174, type: 3}
       propertyPath: m_RootOrder
@@ -440,7 +443,7 @@ MonoBehaviour:
   maxRoomCount: 50
   startRoomSize: 4
   maxLengthWidthScale: 1.4
-  testBaker: {fileID: 983155522}
+  baker: {fileID: 983155522}
 --- !u!4 &477729193
 Transform:
   m_ObjectHideFlags: 0
@@ -454,7 +457,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &477729194
 MonoBehaviour:
@@ -587,6 +590,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &614299111 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6079529326770488868, guid: ce0871d30347c51459edcb2bace05608,
+    type: 3}
+  m_PrefabInstance: {fileID: 1345934932}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &741069792
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,7 +848,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-
 --- !u!1 &983155522 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 2db4b38c5968c334ba9ebd8d33dda174,
@@ -1213,7 +1221,7 @@ PrefabInstance:
         type: 3}
       propertyPath: panel
       value: 
-      objectReference: {fileID: 912992186}
+      objectReference: {fileID: 0}
     - target: {fileID: 3412379148497975999, guid: ad8092053a142d54cb4e251fa925aa08,
         type: 3}
       propertyPath: player
@@ -1262,7 +1270,7 @@ PrefabInstance:
         type: 3}
       propertyPath: skillAudio
       value: 
-      objectReference: {fileID: 376458407}
+      objectReference: {fileID: 614299111}
     - target: {fileID: 5315800326064200079, guid: ad8092053a142d54cb4e251fa925aa08,
         type: 3}
       propertyPath: hit
