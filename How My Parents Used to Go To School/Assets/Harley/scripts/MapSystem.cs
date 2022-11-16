@@ -8,7 +8,7 @@ public class MapSystem : MonoBehaviour
     public RoomBuilder roomBuilder;
     public CrossBuilder crossBuilder;
 
-    public GameObject playerPref;
+    public GameObject player;
 
     public List<RoomTran> genRooms = new List<RoomTran>();
     public List<RoomTran> unCrossRooms = new List<RoomTran>();
@@ -486,10 +486,8 @@ public class MapSystem : MonoBehaviour
 
     void SetPlayer()
     {
-        var player = Instantiate(playerPref);
         Vector2 center = firstRoom.centerPos;
         player.transform.position = new Vector3(center.x, 0, center.y);
-        //Instantiate(playerPref, new Vector3(center.x, 0, center.y), Quaternion.identity);
     }
 }
 
