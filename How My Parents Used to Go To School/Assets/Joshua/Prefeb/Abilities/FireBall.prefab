@@ -45,6 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SearchRadius: 10
-  timer: 0
-  perfeb: {fileID: 2440770778020908726, guid: e64b590194601df42b3126b05d7a7b01, type: 3}
+  perfeb: {fileID: 2440770778020908726, guid: 11ed41243a8fc9d42850632fc65dc0ec, type: 3}
   coldDownTime: 5

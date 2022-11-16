@@ -44,7 +44,7 @@ public class BigGunner : Enemy
     }
 
     private void FirstBossBehaviour() {
-        if(!IsResting && Vector3.Distance(player.transform.position, transform.position) < 30){
+        if(!IsResting && Vector3.Distance(player.transform.position, transform.position) < 50){
             Attack();
         }
     }
@@ -57,7 +57,7 @@ public class BigGunner : Enemy
             angleScale = 0;
         }
         for(int i = 0; i < 10; i++){
-            GameObject particle = Instantiate(bullet, new Vector3(transform.position.x, 1f, transform.position.y), Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z));
+            GameObject particle = Instantiate(bullet, new Vector3(transform.position.x, 0f, transform.position.z), Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z));
             particle.GetComponent<Bullet>().SetShooter(gameObject);
             particle.GetComponent<Rigidbody>().AddForce(Quaternion.Euler(angleScale, angleScale, 0) * transform.forward * particle.GetComponent<Bullet>().GetSpeed(), ForceMode.Impulse);
             angleScale += 36;

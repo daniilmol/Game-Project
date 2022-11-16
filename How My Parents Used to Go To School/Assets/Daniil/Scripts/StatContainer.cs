@@ -11,6 +11,10 @@ public class StatContainer : MonoBehaviour
     [SerializeField] float attackSpeed;
 
     void Start(){
+        maxHealth = PlayerPrefs.GetFloat("Health");
+        damage = PlayerPrefs.GetFloat("Damage");
+        speed = PlayerPrefs.GetFloat("Speed");
+        attackSpeed = PlayerPrefs.GetFloat("AttackSpeed");
         playerHealth.SetHealth(maxHealth);
     }
 

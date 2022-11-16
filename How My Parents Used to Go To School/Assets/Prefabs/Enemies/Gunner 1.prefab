@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   difficultyScaling: 0
   sightRange: 15
-  powerUpDrop: {fileID: 109661819918598396, guid: 0829e679566932643b7a51374fe01813,
+  powerUpDrop: {fileID: 7281708842366114227, guid: ea077e6406b421c4e961a21f6393b7cc,
     type: 3}
   originalColor: {fileID: 2100000, guid: 17e2ba978178f704597b179d71eaa406, type: 2}
   flashColor: {fileID: 2100000, guid: 2f3f6b45693e03d4dac03ea894a0dd78, type: 2}
@@ -197,6 +197,7 @@ MonoBehaviour:
   damage: 3
   speed: 10
   attackSpeed: 1
+  roomId: 0
 --- !u!1 &299205250572896335
 GameObject:
   m_ObjectHideFlags: 0

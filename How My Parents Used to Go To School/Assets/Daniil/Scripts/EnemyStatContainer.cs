@@ -12,6 +12,9 @@ public class EnemyStatContainer : MonoBehaviour
     [SerializeField] float attackSpeed;
     [SerializeField] int roomId;
     
+    void Start(){
+    
+    }
     public EnemyHealth GetHealth(){
         return health;
     }
