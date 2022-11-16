@@ -60,6 +60,7 @@ public class RoomBuilder : MonoBehaviour
     [SerializeField] float maxLengthWidthScale = 1.5f;
     [SerializeField] GameObject baker;
 
+
     /**
      * Unit vectors
      */
@@ -80,10 +81,6 @@ public class RoomBuilder : MonoBehaviour
         mapManager = GetComponent<MapSystem>();
     }
 
-    public NavMeshSurface getSurface(){
-        return baker.GetComponent<NavMeshSurface>();
-    }
-
     /**
      * Generate rooms
      */
@@ -100,6 +97,10 @@ public class RoomBuilder : MonoBehaviour
         }
 
         complete();
+    }
+
+    public NavMeshSurface getSurface(){
+        return baker.GetComponent<NavMeshSurface>();
     }
 
     /**
@@ -284,6 +285,10 @@ public class RoomBuilder : MonoBehaviour
                 }
             }
         }
+    }
+
+    public GameObject GetCell(){
+        return cell;
     }
 
     public void SpawnEnemies(RoomData room)

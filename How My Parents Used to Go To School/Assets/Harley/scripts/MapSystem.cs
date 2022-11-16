@@ -269,11 +269,6 @@ public class MapSystem : MonoBehaviour
 
     void BuildNavMesh()
     {
-       // GameObject floor = GameObject.FindGameObjectWithTag("Floor");
-        //nms = floor.AddComponent<NavMeshSurface>() as NavMeshSurface;
-        //nms.useGeometry = NavMeshCollectGeometry.RenderMeshes;
-        //nms.voxelSize = 0.05f;
-        //nms.buildHeightMesh = true;
         nms = roomBuilder.getSurface();
         nms.BuildNavMesh();
         //Invoke ("RecalculateNav", 1.0f);
