@@ -12,8 +12,12 @@ public class LeaveTrigger : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            StatContainer sc = other.gameObject.GetComponent<StatContainer>();
             SpawnEnemies.numberOfRoomsCleared++;
-            PlayerPrefs.SetFloat("Scale", spawnEnemies.GetScale());
+            PlayerPrefs.SetFloat("Damage", sc.GetDamage());
+            PlayerPrefs.SetFloat("Speed", sc.GetSpeed());
+            PlayerPrefs.SetFloat("AttackSpeed", sc.GetAttackSpeed());
+            PlayerPrefs.SetFloat("Health", sc.GetMaxHealth());
             SceneManager.LoadScene(sceneName);
         }
     }

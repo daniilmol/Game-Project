@@ -177,7 +177,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 7
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -232,12 +232,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficultyScaling: 0
-  sightRange: 10
+  sightRange: 20
   powerUpDrop: {fileID: 109661819918598396, guid: 0829e679566932643b7a51374fe01813,
     type: 3}
   originalColor: {fileID: 2100000, guid: 17e2ba978178f704597b179d71eaa406, type: 2}
   flashColor: {fileID: 2100000, guid: 2f3f6b45693e03d4dac03ea894a0dd78, type: 2}
-  range: 7
+  range: 5
   attackSpeed: 1
 --- !u!114 &851965452359905343
 MonoBehaviour:
@@ -274,6 +274,7 @@ MonoBehaviour:
   damage: 1
   speed: 3.5
   attackSpeed: 1
+  roomId: 0
 --- !u!1 &8453887311115216129
 GameObject:
   m_ObjectHideFlags: 0

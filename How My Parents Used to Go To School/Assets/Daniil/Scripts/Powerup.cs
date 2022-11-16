@@ -38,7 +38,7 @@ public class Powerup : MonoBehaviour
         else if (boost == 1)
         {
             name = "Damage +1";
-            damageBoost = 1f;
+            damageBoost = 0.1f;
         }
         else if (boost == 2) 
         {

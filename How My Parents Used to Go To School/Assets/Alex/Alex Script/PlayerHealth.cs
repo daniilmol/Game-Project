@@ -64,14 +64,17 @@ public class PlayerHealth : MonoBehaviour
     //}
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<Enemy>().isBoss())
         {
-            takeDamage(1);
+            takeDamage(5);
+            //c.GetComponent<NavMeshAgent>().isStopped = true;
+            float force = 30f;
+            GetComponent<Rigidbody>().AddForce(force * -collision.gameObject.transform.forward, ForceMode.Impulse);                    //  Need a on hit decrese health function here, example: decreaseHealth(Gameobject enemy);
         }
         if (collision.gameObject.tag == "Bullet")
         {
-            takeDamage(collision.gameObject.GetComponent<Bullet>().GetShooter().GetComponent<EnemyStatContainer>().GetDamage());
-            print("Player took " + collision.gameObject.GetComponent<Bullet>().GetShooter().GetComponent<EnemyStatContainer>().GetDamage());
+            //takeDamage(collision.gameObject.GetComponent<Bullet>().GetShooter().GetComponent<EnemyStatContainer>().GetDamage());
+            //print("Player took " + collision.gameObject.GetComponent<Bullet>().GetShooter().GetComponent<EnemyStatContainer>().GetDamage());
         }
     }
 }

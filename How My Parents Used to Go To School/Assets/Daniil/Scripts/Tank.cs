@@ -6,27 +6,36 @@ using UnityEngine.AI;
 public class Tank : Enemy
 {
     [SerializeField] float range = 1f;
-    [SerializeField] float attackSpeed = 3f;
+    [SerializeField] float attackSpeed = 2f;
+    [SerializeField] Transform cube;
+    [SerializeField] bool debug;
+    private float restTimer;
+    private float lastRestTimerEnd;
     private float lastShotTime;
     private bool attacking;
     private bool following;
     private bool IsAvailable = true;
+    private bool switchedToAttack;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        dropChance = 10;
+        dropChance = 10f;
+        restTimer = 0.3f;
+        switchedToAttack = false;
     }
     void Update()
     {
         agent.updateRotation = false;
         FaceTarget(player.transform.position);
-        if (Vector3.Distance(gameObject.transform.position, player.transform.position) > range)
+        if (Vector3.Distance(gameObject.transform.position, player.transform.position) - 1 > range  && CheckForPlayerRange())
         {
             following = true;
             attacking = false;
+            switchedToAttack = false;
+            lastRestTimerEnd = 0.3f;
         }
-        else if (Vector3.Distance(gameObject.transform.position, player.transform.position) <= range)
+        else if (Vector3.Distance(gameObject.transform.position, player.transform.position) - 1 <= range)
         {
             attacking = true;
             following = false;
@@ -36,7 +45,7 @@ public class Tank : Enemy
 
     private void FaceTarget(Vector3 destination)
     {
-        if (following && CheckForPlayerRange()) {
+        if (following) {
             Vector3 lookPos = destination - transform.position;
             lookPos.y = 0;
             Quaternion rotation = Quaternion.LookRotation(lookPos);
@@ -55,20 +64,79 @@ public class Tank : Enemy
             Attack();
         }
     }
+    
 
     protected override void Attack()
     {
+        agent.SetDestination(transform.position);
         if (!IsAvailable)
         {
             return;
         }
+        if(!switchedToAttack){
+            StartCoroutine(StartRestCooldown());
+            print("AFTER START REST COOLDOWN");
+        }
+        if(lastRestTimerEnd == 0){
+            SwingForward();
+            StartCoroutine(StartCooldown());
+        }
+    }
 
-        StartCoroutine(StartCooldown());
+    private void SwingForward(){
+        if(debug){
+            print("TANK IS ATTACKING THE PLAYER");
+        }
+        int layerMask = 1 << 9;
+        Collider collider = cube.GetComponent<Collider>();
+        Collider[] cal = Physics.OverlapBox(collider.bounds.center, collider.bounds.extents * 2, Quaternion.identity, layerMask);
+        Hashtable hitList = new Hashtable();
+
+        //Debug.Log("youyou");
+        bool isHit = false;
+        int count = 0;
+        foreach (Collider c in cal)
+        {
+            if (!hitList.ContainsKey(c.GetInstanceID()))
+            {
+                hitList.Add(c.GetInstanceID(), true);
+                if (c != GetComponent<Collider>())
+                {
+                    if(debug){
+                        print("c is null? " + c);
+                        print("playerhealth is null? " + c.GetComponent<PlayerHealth>());
+                        print("enemystats is null? " + GetComponent<EnemyStatContainer>().GetDamage());
+
+                    }
+                    c.GetComponent<PlayerHealth>().takeDamage(GetComponent<EnemyStatContainer>().GetDamage());
+
+
+                    float force = 6;
+                    Vector3 vectorForce = Vector3.Normalize(transform.position - c.transform.position);
+                    //c.GetComponent<NavMeshAgent>().isStopped = true;
+                    c.GetComponent<Rigidbody>().AddForce(force * -c.transform.forward, ForceMode.Impulse);
+
+                    count++;
+                }
+            }
+            //Debug.Log("Length" + count );
+            //OnDrawGizmos(collider);
+            //   Debug.Log(collider.name);
+            //Debug.Log(hitList);
+        }
     }
     public IEnumerator StartCooldown()
     {
         IsAvailable = false;
         yield return new WaitForSeconds(attackSpeed);
         IsAvailable = true;
+    }
+    public IEnumerator StartRestCooldown()
+    {
+        print("INSIDE BEFORE START REST STARTED");
+        yield return new WaitForSeconds(restTimer);
+        print("INSIDE AFTER START REST STARTED");
+        lastRestTimerEnd = 0;   
+        switchedToAttack = true; 
     }
 }
