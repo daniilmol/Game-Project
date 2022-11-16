@@ -11,11 +11,16 @@ public class EnemyHealth : MonoBehaviour
     public Image healthBar;
     public Animator anim;
 
+    private int roomId;
+    //private FamilyTree tree;
+
     // Start is called before the first frame update
     void Start()
     {
         healthMax = enemy.GetComponent<EnemyStatContainer>().GetMaxHealth();
+        roomId = enemy.GetComponent<EnemyStatContainer>().GetRoomId();
         health = healthMax;
+        //tree = GetComponent<PlayerController>().GetTheTree();
     }
 
     public float getHealth()
@@ -48,8 +53,11 @@ public class EnemyHealth : MonoBehaviour
                 Powerup powerUp = Instantiate(enemy.GetPowerUp(), gameObject.transform.position, powerUpRotation).GetComponent<Powerup>();
                 powerUp.Initialize(Random.Range(0, 4));
             }
+            
             Destroy(this.gameObject);
-            SpawnEnemies.numberOfEnimies--;
+            //tree.GetExp(10);
+            var ms = GameObject.Find("Generater").GetComponent<MapSystem>();
+            ms.mapData.roomDataDic[roomId].monsters.Remove(enemy.gameObject);
         }
     }
 

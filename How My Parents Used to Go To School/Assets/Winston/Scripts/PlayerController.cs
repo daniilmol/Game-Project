@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public MajorSkill skill1;
     public MajorSkill skill2;
     public MajorSkill skill3;
+    public FamilyTree tree;
     //public event Action<InputAction.CallbackContext> openPanel;
     // Start is called before the first frame update
     void Start()
@@ -115,6 +116,10 @@ public class PlayerController : MonoBehaviour
     public Vector3 getLongRangeAttackCube()
     {
         return LongRangeAttackCube.position;
+    }
+
+    public FamilyTree GetTheTree() {
+        return tree;
     }
 
 }
