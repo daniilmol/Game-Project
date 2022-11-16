@@ -314,6 +314,7 @@ public class RoomBuilder : MonoBehaviour
                 float y = Random.Range(-room.roomTran.width / 2 + cellScale, room.roomTran.width / 2 - cellScale);
 
                 GameObject item = (GameObject)Instantiate(prefab[enemyIndex], new Vector3(cp.x + x, 0, cp.y + y), Quaternion.identity, parent);
+                item.GetComponent<EnemyStatContainer>().SetRoomId(room.roomId);
                 //InsSetPos(item, new Vector3(cp.x + x, 0, cp.y + y));
                 if (item.tag == "Enemy") {
                     item.GetComponent<Enemy>().SetTarget(player, bulletPrefab);

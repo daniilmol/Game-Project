@@ -10,6 +10,7 @@ public class EnemyStatContainer : MonoBehaviour
     [SerializeField] float damage;
     [SerializeField] float speed;
     [SerializeField] float attackSpeed;
+    [SerializeField] int roomId;
     
     public EnemyHealth GetHealth(){
         return health;
@@ -35,5 +36,13 @@ public class EnemyStatContainer : MonoBehaviour
         maxHealth *= difficultyScaling;
         damage *= difficultyScaling;
         speed *= difficultyScaling;
+    }
+
+    public int GetRoomId(){
+        return roomId;
+    }
+
+    public void SetRoomId(int id){
+        roomId = id;
     }
 }
