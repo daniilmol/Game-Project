@@ -550,7 +550,7 @@ MonoBehaviour:
   mapData: {fileID: 477729195}
   roomBuilder: {fileID: 477729192}
   crossBuilder: {fileID: 477729196}
-  player: {fileID: 1344553070}
+  player: {fileID: 1344553073}
   anotherCrossProbability: 0.2
   deadCrossProbability: 0.5
   deadAwayProbability: 0.6
