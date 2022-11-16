@@ -27,12 +27,13 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        skill1.isLearned = false;
-        skill2.isLearned = false;
-        skill3.isLearned = false;
+
         Scene currentScene = SceneManager.GetActiveScene();
         Debug.Log(currentScene.name);
         if (currentScene.name == "Stage") {
+            skill1.isLearned = false;
+            skill2.isLearned = false;
+            skill3.isLearned = false;
             openPanel();
         }
         
