@@ -467,6 +467,85 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6706584dfde614a9c96794af2180d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &309366935
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7281708842366114227, guid: ea077e6406b421c4e961a21f6393b7cc,
+        type: 3}
+      propertyPath: m_Name
+      value: PassiveSkillPanelTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281708842366114227, guid: ea077e6406b421c4e961a21f6393b7cc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281708842366114237, guid: ea077e6406b421c4e961a21f6393b7cc,
+        type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 4566130691020565736}
+    - target: {fileID: 7281708842366114238, guid: ea077e6406b421c4e961a21f6393b7cc,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281708842366114238, guid: ea077e6406b421c4e961a21f6393b7cc,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -19.835606
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281708842366114238, guid: ea077e6406b421c4e961a21f6393b7cc,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.23473638
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281708842366114238, guid: ea077e6406b421c4e961a21f6393b7cc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281708842366114238, guid: ea077e6406b421c4e961a21f6393b7cc,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281708842366114238, guid: ea077e6406b421c4e961a21f6393b7cc,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281708842366114238, guid: ea077e6406b421c4e961a21f6393b7cc,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281708842366114238, guid: ea077e6406b421c4e961a21f6393b7cc,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281708842366114238, guid: ea077e6406b421c4e961a21f6393b7cc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281708842366114238, guid: ea077e6406b421c4e961a21f6393b7cc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7281708842366114238, guid: ea077e6406b421c4e961a21f6393b7cc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ea077e6406b421c4e961a21f6393b7cc, type: 3}
 --- !u!1 &355577510 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7672704724671117774, guid: 7e16ffff8ead77943b3a3a95919d2f68,
@@ -5081,6 +5160,12 @@ PrefabInstance:
       objectReference: {fileID: 2144902793}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad8092053a142d54cb4e251fa925aa08, type: 3}
+--- !u!223 &4566130691020565736 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 6199064922165461996, guid: eb15f0cc4fe99c84485ec76e061d98ec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7591282369186492164}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6079529327162019991
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5157,11 +5242,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6199064922165461996, guid: eb15f0cc4fe99c84485ec76e061d98ec,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6199064922165461999, guid: eb15f0cc4fe99c84485ec76e061d98ec,
         type: 3}
       propertyPath: m_Pivot.x
@@ -5271,11 +5351,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PassiveSkillPanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 6199064922165462000, guid: eb15f0cc4fe99c84485ec76e061d98ec,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb15f0cc4fe99c84485ec76e061d98ec, type: 3}

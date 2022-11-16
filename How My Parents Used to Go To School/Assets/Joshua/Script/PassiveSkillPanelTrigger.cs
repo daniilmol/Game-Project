@@ -1,14 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PassiveSkillPanelTrigger : MonoBehaviour
 {
-    public Canvas canvas;
+    private GameObject gObj;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        Debug.Log("run");
+        Debug.Log("position: " + transform.position);
+        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+        Debug.Log("position: " + transform.position);
     }
 
     // Update is called once per frame
@@ -19,9 +24,10 @@ public class PassiveSkillPanelTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        gObj = GameObject.Find("PassiveSkillPanel");
         if (other.transform.tag == "Player")
         {
-            canvas.gameObject.SetActive(true);
+            gObj.GetComponent<Canvas>().enabled = true;
             Destroy(gameObject);
         }
     }

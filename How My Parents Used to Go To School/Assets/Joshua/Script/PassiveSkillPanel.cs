@@ -6,7 +6,7 @@ using UnityEngine;
 public class PassiveSkillPanel : MonoBehaviour
 {
     public TextMeshProUGUI[] textList;
-    public GameObject player;
+    private GameObject player;
 
     private PlayerAbilityManager playerAbilityManager;
     private List<Ability> abilityList =  new List<Ability>();
@@ -14,7 +14,10 @@ public class PassiveSkillPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
         playerAbilityManager = player.GetComponent<PlayerAbilityManager>();
+
+        this.gameObject.GetComponent<Canvas>().enabled = false;
 
         SetSkill();
         SetSKillName();
@@ -76,7 +79,8 @@ public class PassiveSkillPanel : MonoBehaviour
             abilityList[0].DisplayName();
             abilityList[0].Active();
         }
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
+        this.gameObject.GetComponent<Canvas>().enabled = false;
     }
 
     // call passive skill and hide passiveSkillPanel canvus when press button
@@ -87,7 +91,8 @@ public class PassiveSkillPanel : MonoBehaviour
             abilityList[1].DisplayName();
             abilityList[1].Active();
         }
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
+        this.gameObject.GetComponent<Canvas>().enabled = false;
     }
 
     // call passive skill and hide passiveSkillPanel canvus when press button
@@ -98,6 +103,7 @@ public class PassiveSkillPanel : MonoBehaviour
             abilityList[2].DisplayName();
             abilityList[2].Active();
         }
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
+        this.gameObject.GetComponent<Canvas>().enabled = false;
     }
 }
