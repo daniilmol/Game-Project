@@ -11,7 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Production/Beta/Stage.unity
     guid: 19689596a4fbd4542a24114cec1f327e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Production/FinalRoom.unity
     guid: 8b4817509d9cba042be5fe5930834209
+  - enabled: 1
+    path: Assets/Scenes/Production/Beta/BossScene.unity
+    guid: 7ba6f89b10f56b9418943c584dd036cb
   m_configObjects: {}
