@@ -9,7 +9,7 @@ public class LockDoorTrigger : MonoBehaviour
 
     void Update()
     {
-        if (room.monsters.Count == 0)
+        if (room.monstersCount == 0)
         {
             mapSystem.roomBuilder.DestroyAllDoors(room);
             if (room.roomType == RoomData.RoomType.FinalRoom)

@@ -24,6 +24,9 @@ public class RoomData
      * The list of monsters inside
      */
     public List<GameObject> monsters;
+    // just store the count
+    public int monstersCount = 0;
+
     /**
      * If this is an end room
      */

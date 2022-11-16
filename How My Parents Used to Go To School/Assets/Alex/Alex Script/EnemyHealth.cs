@@ -58,6 +58,7 @@ public class EnemyHealth : MonoBehaviour
             //tree.GetExp(10);
             var ms = GameObject.Find("Generater").GetComponent<MapSystem>();
             ms.mapData.roomDataDic[roomId].monsters.Remove(enemy.gameObject);
+            ms.mapData.roomDataDic[roomId].monstersCount--;
         }
     }
 

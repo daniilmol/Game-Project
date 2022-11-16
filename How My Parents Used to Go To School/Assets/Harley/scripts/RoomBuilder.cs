@@ -24,7 +24,7 @@ public class RoomBuilder : MonoBehaviour
     [SerializeField] GameObject[] enemies;
     [SerializeField] int enemyCount;
     [SerializeField] GameObject bulletPrefab;
-    [SerializeField] GameObject[] bosses;
+    [SerializeField] GameObject telepoter;
 
     /**
      * The scale of cell object
@@ -276,15 +276,33 @@ public class RoomBuilder : MonoBehaviour
         var parent = GameObject.Find(roomTag + room.roomId).transform;
         if (room.roomType != RoomData.RoomType.StartRoom)
         {
+            if (room.roomType == RoomData.RoomType.FinalRoom)
+            {
+                var cp = room.roomTran.centerPos;
+                InsSetPos(telepoter, new Vector3(cp.x, 0, cp.y), false, parent);
+            }
             foreach (GameObject item in items)
             {
                 for (int i = 0; i < Random.Range(0, 3); i++)
                 {
-                    var cp = room.roomTran.centerPos;
-                    int x = Random.Range(-room.roomTran.length / cellScale / 2 + 2, room.roomTran.length / cellScale / 2- 1) * cellScale;
-                    int y = Random.Range(-room.roomTran.width / cellScale / 2 + 2, room.roomTran.width / cellScale / 2 - 1) * cellScale;
-                    InsSetPos(item, new Vector3(cp.x + x, 0, cp.y + y), false, parent);
+                    var pos = FindEmptyPlace(room.roomTran);
+                    InsSetPos(item, pos, false, parent);
                 }
+            }
+        }
+    }
+
+    Vector3 FindEmptyPlace(RoomTran rt)
+    {
+        var cp = rt.centerPos;
+        while (true)
+        {
+            int x = Random.Range(-rt.length / 2 + cellScale, rt.length / 2 - cellScale);
+            int y = Random.Range(-rt.width  / 2 + cellScale, rt.width / 2 - cellScale);
+            Vector3 pos = new Vector3(cp.x + x, 0, cp.y + y);
+            if (Physics.OverlapSphere(pos, cellScale, 1 << 11).Length == 0)
+            {
+                return pos;
             }
         }
     }
@@ -309,11 +327,9 @@ public class RoomBuilder : MonoBehaviour
             for (int i = 0; i < enemyCount; i++)
             {
                 int enemyIndex = Random.Range(0, prefab.Length);
-                var cp = room.roomTran.centerPos;
-                float x = Random.Range(-room.roomTran.length / 2 + cellScale, room.roomTran.length / 2 - cellScale);
-                float y = Random.Range(-room.roomTran.width / 2 + cellScale, room.roomTran.width / 2 - cellScale);
+                var pos = FindEmptyPlace(room.roomTran);
 
-                GameObject item = (GameObject)Instantiate(prefab[enemyIndex], new Vector3(cp.x + x, 0, cp.y + y), Quaternion.identity, parent);
+                GameObject item = (GameObject)Instantiate(prefab[enemyIndex], pos, Quaternion.identity, parent);
                 item.GetComponent<EnemyStatContainer>().SetRoomId(room.roomId);
                 //InsSetPos(item, new Vector3(cp.x + x, 0, cp.y + y));
                 if (item.tag == "Enemy") {
@@ -348,18 +364,19 @@ public class RoomBuilder : MonoBehaviour
                 }
 
                 room.monsters.Add(item);
+                room.monstersCount++;
             }
         }
         if (room.roomType == RoomData.RoomType.FinalRoom)
         {
-            if (bosses.Length != 0)
-            {
-                Vector3 pos = new Vector3(room.roomTran.centerPos.x, 0, room.roomTran.centerPos.y);
-                GameObject boss = InsSetPos(bosses[Random.Range(0, bosses.Length)], pos, false, parent);
-                boss.GetComponent<Enemy>().SetTarget(player, bulletPrefab);
-                boss.GetComponent<EnemyStatContainer>().IncreaseStats(PlayerPrefs.GetFloat("Scale"));
-                room.monsters.Add(boss);
-            }
+            // if (bosses.Length != 0)
+            // {
+            //     Vector3 pos = new Vector3(room.roomTran.centerPos.x, 0, room.roomTran.centerPos.y);
+            //     GameObject boss = InsSetPos(bosses[Random.Range(0, bosses.Length)], pos, false, parent);
+            //     boss.GetComponent<Enemy>().SetTarget(player, bulletPrefab);
+            //     boss.GetComponent<EnemyStatContainer>().IncreaseStats(PlayerPrefs.GetFloat("Scale"));
+            //     room.monsters.Add(boss);
+            // }
         }
     }
 
