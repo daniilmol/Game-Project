@@ -24,9 +24,6 @@ public class LockDoorTrigger : MonoBehaviour
         if (other.tag == "Player")
         {
             mapSystem.roomBuilder.LockRoom(room);
-            if(room.roomType == RoomData.RoomType.FinalRoom){
-                print("in boss room");
-            }
         }
     }
 }
