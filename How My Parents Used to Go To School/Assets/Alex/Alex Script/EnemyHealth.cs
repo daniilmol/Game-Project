@@ -61,13 +61,13 @@ public class EnemyHealth : MonoBehaviour
                 Quaternion powerUpRotation = enemy.GetPowerUp().transform.rotation;
                 Powerup powerUp = Instantiate(enemy.GetPowerUp(), gameObject.transform.position, powerUpRotation).GetComponent<Powerup>();
                 powerUp.Initialize(Random.Range(0, 4));
+                var ms = GameObject.Find("Generater").GetComponent<MapSystem>();
+                ms.mapData.roomDataDic[roomId].monsters.Remove(enemy.gameObject);
+                ms.mapData.roomDataDic[roomId].monstersCount--;
             }
             
             Destroy(this.gameObject);
             //tree.GetExp(10);
-            var ms = GameObject.Find("Generater").GetComponent<MapSystem>();
-            ms.mapData.roomDataDic[roomId].monsters.Remove(enemy.gameObject);
-            ms.mapData.roomDataDic[roomId].monstersCount--;
         }
     }
 

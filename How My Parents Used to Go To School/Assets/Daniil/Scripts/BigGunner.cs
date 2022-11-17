@@ -57,7 +57,7 @@ public class BigGunner : Enemy
             angleScale = 0;
         }
         for(int i = 0; i < 10; i++){
-            GameObject particle = Instantiate(bullet, new Vector3(transform.position.x, 0f, transform.position.z), Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z));
+            GameObject particle = Instantiate(bullet, new Vector3(transform.position.x, -9f, transform.position.z), Quaternion.Euler(transform.rotation.x, transform.rotation.y, transform.rotation.z));
             particle.GetComponent<Bullet>().SetShooter(gameObject);
             particle.GetComponent<Rigidbody>().AddForce(Quaternion.Euler(angleScale, angleScale, 0) * transform.forward * particle.GetComponent<Bullet>().GetSpeed(), ForceMode.Impulse);
             angleScale += 36;
@@ -87,6 +87,32 @@ public class BigGunner : Enemy
         }
     }
 
+    private void OnTriggerEnter(Collider collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            if(allowed){
+                collision.gameObject.GetComponent<PlayerHealth>().takeDamage(2);
+                //c.GetComponent<NavMeshAgent>().isStopped = true;
+                float force = 50f;
+                collision.gameObject.GetComponent<Rigidbody>().AddForce(force * collision.gameObject.transform.forward, ForceMode.Impulse);                    //  Need a on hit decrese health function here, example: decreaseHealth(Gameobject enemy);
+                StartCoroutine(StartChargeCooldown());
+            }
+        }
+        if (collision.gameObject.tag == "Bullet")
+        {
+            //takeDamage(collision.gameObject.GetComponent<Bullet>().GetShooter().GetComponent<EnemyStatContainer>().GetDamage());
+            //print("Player took " + collision.gameObject.GetComponent<Bullet>().GetShooter().GetComponent<EnemyStatContainer>().GetDamage());
+        }
+    }
+bool allowed = true;
+    
+
+    public IEnumerator StartChargeCooldown(){
+        allowed = false;
+        yield return new WaitForSeconds(2);
+        allowed = true;
+    }
     public IEnumerator StartAbilityCooldown(){
         finishedAbility = true;
         yield return new WaitForSeconds(abilityTimer);
