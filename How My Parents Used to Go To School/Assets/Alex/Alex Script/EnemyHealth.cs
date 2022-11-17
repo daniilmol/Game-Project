@@ -50,8 +50,10 @@ public class EnemyHealth : MonoBehaviour
             bool bossFlag = gameObject.GetComponent<Enemy>().isBoss();
             if (bossFlag)
             {
+                Vector3 pos = gameObject.transform.position;
+                pos -= new Vector3(0, transform.lossyScale.y, 0);
                 Quaternion powerUpRotation = enemy.GetPowerUp().transform.rotation;
-                Instantiate(enemy.GetPowerUp(), gameObject.transform.position, powerUpRotation);
+                Instantiate(enemy.GetPowerUp(), pos, powerUpRotation);
                 Destroy(this.gameObject);
             }
             else if (Random.Range(0, 100) < enemy.GetDropChance())
