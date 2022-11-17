@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         Debug.Log(currentScene.name);
         if (currentScene.name == "Stage") {
-           // skill1.isLearned = false;
+            skill1.isLearned = false;
             skill2.isLearned = false;
             skill3.isLearned = false;
             openPanel();

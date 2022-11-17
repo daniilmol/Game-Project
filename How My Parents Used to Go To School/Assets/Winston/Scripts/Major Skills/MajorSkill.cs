@@ -10,6 +10,7 @@ public class MajorSkill : ScriptableObject
     public bool isLearned = false;
     protected float basicDamage;
     protected StatContainer StatContainer;
+    protected PlayerHealth stats;
     public int order;
     public virtual void Activate(GameObject player)
     {

@@ -84,7 +84,7 @@ public class SkillHolder : MonoBehaviour
                     }
                     else {
                         v3.x = MaleC.transform.position.x;
-                        v3.y = MaleC.transform.position.y;
+                        v3.y = MaleC.transform.position.y + 2;
                         v3.z = MaleC.transform.position.z;
                         generatedVfx = Instantiate(hit, v3, Quaternion.Euler(0, 0, 0) * MaleC.transform.rotation);
                     }

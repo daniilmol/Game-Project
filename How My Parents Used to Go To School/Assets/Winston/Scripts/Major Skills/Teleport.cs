@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//[CreateAssetMenu]
-public class FuryDualWielding : MajorSkill
+[CreateAssetMenu]
+public class Teleport: MajorSkill
 {
 
     [SerializeField]
@@ -29,7 +29,11 @@ public class FuryDualWielding : MajorSkill
             //get the sword collider
             //Debug.Log(input.getCube());
             //Debug.Log(input.LongRangeAttackCube);
-            Heal();
+            Debug.Log("PlayerP" + player.transform.position.x);
+            Debug.Log("Cube" + input.LongRangeAttackCube.position.x);
+            Vector3 newPos = new Vector3(input.LongRangeAttackCube.position.x, player.transform.position.y,input.LongRangeAttackCube.position.z);
+            player.transform.position = newPos;
+            Debug.Log("Tele!!" + player.transform.position);
             //launchAttack(input.LongRangeAttackCube.GetComponent<Collider>());
             //Instantiate(input.LongRangeAttackCube, input.LongRangeAttackCube.position, Quaternion.LookRotation);
             //hitList.Clear();
@@ -48,7 +52,8 @@ public class FuryDualWielding : MajorSkill
         Debug.Log("Learned");
     }
 
-    public void Heal() {
+    public void Heal()
+    {
         Debug.Log("Heal" + StatContainer.GetDamage());
         StatContainer.SetPlayerHealth(StatContainer.GetDamage());
     }
@@ -56,7 +61,7 @@ public class FuryDualWielding : MajorSkill
 
     public void launchAttack(Collider collider)
     {
-        
+
         int layerMask = 1 << 7;
         Collider[] cal = Physics.OverlapBox(collider.transform.position, collider.transform.localScale / 2, collider.transform.rotation, layerMask);
         //AttackCube.position = collider.bounds.center;
@@ -82,7 +87,7 @@ public class FuryDualWielding : MajorSkill
 
                     float force = 6;
                     //Vector3 vectorForce = Vector3.Normalize(globalPlayer.transform.position - c.transform.position);
-                    
+
                     c.GetComponent<Rigidbody>().AddForce(force * -c.transform.forward, ForceMode.Impulse);
 
                     count++;
@@ -96,8 +101,8 @@ public class FuryDualWielding : MajorSkill
     }
 
 
-    
 
 
-    
+
+
 }
