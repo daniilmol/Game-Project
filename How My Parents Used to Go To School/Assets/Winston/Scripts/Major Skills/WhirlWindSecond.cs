@@ -4,8 +4,8 @@ using UnityEngine;
 //using UnityEngine.Physics;
 using UnityEngine.AI;
 
-//[CreateAssetMenu]
-public class WhirlwindSkill : MajorSkill
+[CreateAssetMenu]
+public class WhirlWindSecond : MajorSkill
 {
 
     [SerializeField]
@@ -13,7 +13,7 @@ public class WhirlwindSkill : MajorSkill
     //public float basicDamage;
     private Hashtable hitList = new Hashtable();
     GameObject globalPlayer;
-    
+    //public int order = 2;
 
     //public void Update() { 
     //    basicDamage =  playerStats.GetDamage() * 2;
@@ -24,7 +24,7 @@ public class WhirlwindSkill : MajorSkill
     //public WhirlwindOnhit whirl;
     public override void Activate(GameObject player)
     {
-        SetOrder(1);
+        SetOrder(2);
         globalPlayer = player;
         Transform skill = player.transform.GetChild(0);
         PlayerController input = player.GetComponent<PlayerController>();
@@ -35,14 +35,16 @@ public class WhirlwindSkill : MajorSkill
             launchAttack(skill.GetComponent<Collider>());
             hitList.Clear();
         }
-        else {
+        else
+        {
             Debug.Log("Not Learned");
         }
-        
+
     }
 
 
-    public void IsLearned() {
+    public void IsLearned()
+    {
         isLearned = !isLearned;
         Debug.Log("Learned");
     }
@@ -50,16 +52,16 @@ public class WhirlwindSkill : MajorSkill
     public void launchAttack(Collider collider)
     {
         int layerMask = 1 << 7;
-        Collider[] cal = Physics.OverlapSphere(collider.bounds.center, collider.transform.localScale.x*4, layerMask);
+        Collider[] cal = Physics.OverlapSphere(collider.bounds.center, collider.transform.localScale.x * 4, layerMask);
         Debug.Log(collider.transform.localScale.x * 4);
         //bool isHit = false;
         int count = 0;
         foreach (Collider c in cal)
         {
-            
+
             if (!hitList.ContainsKey(c.GetInstanceID()))
             {
-               
+
                 hitList.Add(c.GetInstanceID(), true);
                 if (c != collider)
                 {
@@ -68,7 +70,7 @@ public class WhirlwindSkill : MajorSkill
                     Debug.Log("PUSHING ENEMY BACK");
                     Debug.Log(c.name);
                     c.GetComponent<EnemyHealth>().takeDamage(StatContainer.GetDamage());
-                                        //  Need a on hit decrese health function here, example: decreaseHealth(Gameobject enemy);
+                    //  Need a on hit decrese health function here, example: decreaseHealth(Gameobject enemy);
                     float force = 6;
                     Vector3 vectorForce = Vector3.Normalize(globalPlayer.transform.position - c.transform.position);
                     //c.GetComponent<NavMeshAgent>().isStopped = true;
@@ -82,15 +84,12 @@ public class WhirlwindSkill : MajorSkill
             //Debug.Log(hitList);
         }
     }
-    void OnCollisionEnter() { 
-    
-    }
-    public void clearTable() {
-        hitList.Clear();
-    }
+    void OnCollisionEnter()
+    {
 
-    public int getOrder() {
-        order = 1;
-        return order;
+    }
+    public void clearTable()
+    {
+        hitList.Clear();
     }
 }
