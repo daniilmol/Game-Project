@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.056357797, g: 0.009486724, b: 0.0009414677, a: 1}
+  m_IndirectSpecularColor: {r: 0.056336965, g: 0.009480024, b: 0.0009113174, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -510,8 +510,7 @@ MonoBehaviour:
   enemyCount: 5
   bulletPrefab: {fileID: 640899133263499273, guid: 12e5a5b78f70f4f46a6625e175756f36,
     type: 3}
-  bosses:
-  - {fileID: 171526967958850859, guid: 5efb8389b43f9be448d37261d9781c70, type: 3}
+  telepoter: {fileID: 0}
   cellScale: 4
   wallHeight: 4
   roomTransRange: {x: 50, y: 50}
@@ -1678,6 +1677,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Audio
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079529326252346910, guid: ce0871d30347c51459edcb2bace05608,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079529326770488868, guid: ce0871d30347c51459edcb2bace05608,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079529327275134354, guid: ce0871d30347c51459edcb2bace05608,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce0871d30347c51459edcb2bace05608, type: 3}
