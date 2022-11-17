@@ -253,7 +253,7 @@ PrefabInstance:
     - target: {fileID: 1306312948562845118, guid: df599aae85cdf6c4f9341a656b6a9778,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1306312949346911820, guid: df599aae85cdf6c4f9341a656b6a9778,
         type: 3}
@@ -928,7 +928,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33cd101962d7cc04891ddf0e1de38f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Stage
+  sceneName: Stage 1
   spawnEnemies: {fileID: 0}
 --- !u!82 &238972267 stripped
 AudioSource:
@@ -1006,7 +1006,7 @@ PrefabInstance:
     - target: {fileID: 6079529326144059718, guid: ce0871d30347c51459edcb2bace05608,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6079529326252346910, guid: ce0871d30347c51459edcb2bace05608,
         type: 3}
@@ -1610,7 +1610,7 @@ PrefabInstance:
     - target: {fileID: 3412379148497975997, guid: ad8092053a142d54cb4e251fa925aa08,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3412379148497975998, guid: ad8092053a142d54cb4e251fa925aa08,
         type: 3}
@@ -1671,7 +1671,7 @@ PrefabInstance:
         type: 3}
       propertyPath: panel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1036931905}
     - target: {fileID: 3412379148497975999, guid: ad8092053a142d54cb4e251fa925aa08,
         type: 3}
       propertyPath: player
@@ -1799,6 +1799,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad8092053a142d54cb4e251fa925aa08, type: 3}
+--- !u!1 &1036931905 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1306312948562845118, guid: df599aae85cdf6c4f9341a656b6a9778,
+    type: 3}
+  m_PrefabInstance: {fileID: 52487103}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1152271820 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1751820831746431901, guid: 5a81d702e310ba64b99235d96a7c2096,

@@ -5471,7 +5471,7 @@ MonoBehaviour:
   AttackCube: {fileID: 856458419}
   LongRangeAttackCube: {fileID: 4396144619907310519}
   player: {fileID: 5314801260943135515}
-  skill1: {fileID: 11400000, guid: 5119b703262896740916482af38d8bb0, type: 2}
+  skill1: {fileID: 11400000, guid: 8cce41b605361a1498fcf739d1c093af, type: 2}
   skill2: {fileID: 11400000, guid: 077ce73202193a047a7e349ed6711362, type: 2}
   skill3: {fileID: 11400000, guid: 0ce3195ee4366a34a8b863779a045fca, type: 2}
   tree: {fileID: 0}
@@ -5843,7 +5843,7 @@ Transform:
   m_GameObject: {fileID: 4396144619907310504}
   m_LocalRotation: {x: 0, y: 0, z: -0.028445026, w: 0.99959534}
   m_LocalPosition: {x: -6.62, y: 0.11, z: 0}
-  m_LocalScale: {x: 10.6, y: 2.26, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5317188042802342621}
@@ -8075,7 +8075,7 @@ GameObject:
   - component: {fileID: 1253088776951328}
   - component: {fileID: 1253088776951329}
   - component: {fileID: 1344553083}
-  - component: {fileID: 1344553095}
+  - component: {fileID: 242030489}
   m_Layer: 9
   m_Name: Male C
   m_TagString: Player
@@ -8201,10 +8201,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59a903795e3e257408f4b8d31c6bac10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill: {fileID: 11400000, guid: 5119b703262896740916482af38d8bb0, type: 2}
+  skill: {fileID: 11400000, guid: 8cce41b605361a1498fcf739d1c093af, type: 2}
   CharacterHitbox: {fileID: 5210903785437269670}
   vfx: {fileID: 0}
-  hit: {fileID: 1872147318604286, guid: 5bea49531fc500c408823a2e2863106f, type: 3}
+  hit: {fileID: 2708598583397607911, guid: 6398d43fe79ea0140913dc5530c646af, type: 3}
   Cube: {fileID: 856458419}
   playerGameObject: {fileID: 3412379148497975997}
   longrange: {fileID: 4396144619907310504}
@@ -8226,7 +8226,7 @@ MonoBehaviour:
   skill: {fileID: 11400000, guid: 077ce73202193a047a7e349ed6711362, type: 2}
   CharacterHitbox: {fileID: 5210903785437269670}
   vfx: {fileID: 0}
-  hit: {fileID: 1644958980890870, guid: 5e841c48be9318145af9204a7658cc2e, type: 3}
+  hit: {fileID: 3280519133390621005, guid: a71be3e7990efb040a07565c43cbb198, type: 3}
   Cube: {fileID: 856458419}
   playerGameObject: {fileID: 3412379148497975997}
   longrange: {fileID: 4396144619907310504}
@@ -8340,7 +8340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 1253088776951329}
   fillImage: {fileID: 0}
---- !u!114 &1344553095
+--- !u!114 &242030489
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8349,19 +8349,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 5314801260943135515}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59a903795e3e257408f4b8d31c6bac10, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a6493f82a5c3a14fa07b7a28bda6342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill: {fileID: 11400000, guid: 264489af8b8d00b44bfd503f699417bf, type: 2}
+  skill1: {fileID: 11400000, guid: 5119b703262896740916482af38d8bb0, type: 2}
+  skill2: {fileID: 11400000, guid: 264489af8b8d00b44bfd503f699417bf, type: 2}
+  skill3: {fileID: 11400000, guid: 5119b703262896740916482af38d8bb0, type: 2}
   CharacterHitbox: {fileID: 5210903785437269670}
-  vfx: {fileID: 0}
-  hit: {fileID: 1294101409476956, guid: 231e3be01ac50c047bb16d07fd8d2ba5, type: 3}
-  Cube: {fileID: 856458419}
+  hit1: {fileID: 1872147318604286, guid: 5bea49531fc500c408823a2e2863106f, type: 3}
+  hit2: {fileID: 1294101409476956, guid: 231e3be01ac50c047bb16d07fd8d2ba5, type: 3}
+  hit3: {fileID: 1919708242137258, guid: e60d36cff17a1ce4db49ef54f9e72f61, type: 3}
   playerGameObject: {fileID: 3412379148497975997}
-  longrange: {fileID: 4396144619907310504}
   MaleC: {fileID: 5314801260943135515}
   skillAudio: {fileID: 0}
-  key: 323
 --- !u!1 &5314954124729539197
 GameObject:
   m_ObjectHideFlags: 0
@@ -9749,7 +9749,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 1023
+    m_Bits: 3071
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
