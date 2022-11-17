@@ -44,12 +44,8 @@ public class SkillHolder : MonoBehaviour
     void Update() {
         skill.SetSC(StatContainer);
         if (skill.GetIsLearned()) {
-            key = KeyCode.Mouse0;
+            key = KeyCode.Mouse1;
         }
-
-
-
-
         switch (state) {
             case SkillState.ready:
                 if (Input.GetKeyDown(key) && skill.GetIsLearned())
@@ -97,6 +93,7 @@ public class SkillHolder : MonoBehaviour
                     //Quaternion.Euler(MaleC.transform.rotation.x, MaleC.transform.rotation.y + 90f, MaleC.transform.rotation.z)
                     //clearTable();
                 }
+
                 break;
             case SkillState.active:
                 if (activeTime > 0)
@@ -105,7 +102,7 @@ public class SkillHolder : MonoBehaviour
                     activeTime -= Time.deltaTime;
                     //skill.whirlwindSpin(gameObject);
                     //skill.MortalStrikeSpin(gameObject);
-                   //WhirlOnhit.launchAttack(CharacterHitbox);
+                    //WhirlOnhit.launchAttack(CharacterHitbox);
                     //OnDrawGizmos(hitBox);
 
                     //Debug.Log(activeTime);
@@ -132,6 +129,25 @@ public class SkillHolder : MonoBehaviour
                 }
                 break; 
         }
+
+
+
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 
