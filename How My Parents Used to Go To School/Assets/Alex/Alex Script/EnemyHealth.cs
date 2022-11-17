@@ -47,7 +47,14 @@ public class EnemyHealth : MonoBehaviour
         healthBar.fillAmount = health / healthMax;
         if (health <= 0)
         {
-            if (Random.Range(0, 100) < enemy.GetDropChance())
+            bool bossFlag = gameObject.GetComponent<Enemy>().isBoss();
+            if (bossFlag)
+            {
+                Quaternion powerUpRotation = enemy.GetPowerUp().transform.rotation;
+                Instantiate(enemy.GetPowerUp(), gameObject.transform.position, powerUpRotation);
+                Destroy(this.gameObject);
+            }
+            else if (Random.Range(0, 100) < enemy.GetDropChance())
             {
                 Quaternion powerUpRotation = enemy.GetPowerUp().transform.rotation;
                 Powerup powerUp = Instantiate(enemy.GetPowerUp(), gameObject.transform.position, powerUpRotation).GetComponent<Powerup>();
