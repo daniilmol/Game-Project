@@ -20,7 +20,7 @@ public class Tank : Enemy
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        dropChance = 10f;
+        dropChance = 20f;
         restTimer = 0.3f;
         switchedToAttack = false;
     }

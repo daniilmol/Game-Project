@@ -15,7 +15,7 @@ public class Gunner : Enemy
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        dropChance = 5f;
+        dropChance = 10f;
     }
 
     void Update()

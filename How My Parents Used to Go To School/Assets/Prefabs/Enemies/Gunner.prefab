@@ -153,7 +153,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 17e2ba978178f704597b179d71eaa406, type: 2}
+  - {fileID: 2100000, guid: e9444f3f577490e4094acb5b37541be8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -251,7 +251,7 @@ MonoBehaviour:
   sightRange: 20
   powerUpDrop: {fileID: 109661819918598396, guid: 0829e679566932643b7a51374fe01813,
     type: 3}
-  originalColor: {fileID: 2100000, guid: 17e2ba978178f704597b179d71eaa406, type: 2}
+  originalColor: {fileID: 2100000, guid: e9444f3f577490e4094acb5b37541be8, type: 2}
   flashColor: {fileID: 2100000, guid: 2f3f6b45693e03d4dac03ea894a0dd78, type: 2}
   range: 7
   attackSpeed: 1
