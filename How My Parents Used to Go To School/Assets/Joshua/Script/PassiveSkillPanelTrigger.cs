@@ -8,13 +8,7 @@ public class PassiveSkillPanelTrigger : MonoBehaviour
     private GameObject gObj;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        Debug.Log("run");
-        Debug.Log("position: " + transform.position);
-        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
-        Debug.Log("position: " + transform.position);
-    }
+ 
 
     // Update is called once per frame
     void Update()
