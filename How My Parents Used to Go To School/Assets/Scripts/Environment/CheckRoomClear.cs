@@ -4,26 +4,18 @@ using UnityEngine;
 
 public class CheckRoomClear : MonoBehaviour
 {
+    [SerializeField] GameObject boss;
     [SerializeField] GameObject[] disableObjects;
     [SerializeField] GameObject[] playAnimations;
     [SerializeField] GameObject[] enableObjects;
-    private bool isCleared;
-
-    void Start() {
-        isCleared = false;
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isCleared) {
-            if (SpawnEnemies.numberOfEnimies == 0)
-            {
-                DisableObjects();
-                PlayAnimations();
-                EnableObjects();
-                isCleared = true;
-            }
+        if (boss == null) {
+            DisableObjects();
+            PlayAnimations();
+            EnableObjects();
         }
     }
 
