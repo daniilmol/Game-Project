@@ -121,7 +121,7 @@ public class RoomBuilder : MonoBehaviour
         temp.tag = roomTag;
         GenOneRoom(roomCenter, roomTran.length, roomTran.width, temp.transform);
         var box = temp.AddComponent<BoxCollider>();
-        box.size = new Vector3(roomTran.length, 1, roomTran.width);
+        box.size = new Vector3(roomTran.length - cellScale, 1, roomTran.width - cellScale);
         box.isTrigger = true;
         mapManager.genRooms.Add(roomTran);
         mapManager.unCrossRooms.Add(roomTran);
@@ -143,7 +143,7 @@ public class RoomBuilder : MonoBehaviour
 
             GenOneRoom(roomCenter, roomTran.length, roomTran.width, temp.transform);
             var box = temp.AddComponent<BoxCollider>();
-            box.size = new Vector3(roomTran.length, 1, roomTran.width);
+            box.size = new Vector3(roomTran.length - cellScale, 1, roomTran.width - cellScale);
             box.isTrigger = true;
 
             mapManager.genRooms.Add(roomTran);
