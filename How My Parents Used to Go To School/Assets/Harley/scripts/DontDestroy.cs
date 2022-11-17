@@ -5,12 +5,21 @@ using UnityEngine;
 public class DontDestroy : MonoBehaviour
 {
     public GameObject[] objectList;
-
+    public static GameObject Player;
     void Awake()
     {
-        foreach (var obj in objectList)
+        Player = GameObject.Find("Player");
+        if (Player == null)
         {
-            DontDestroyOnLoad(obj);
+            DontDestroyOnLoad(Player);
+        } 
+        else {
+            Debug.Log("Do nothing");
         }
+        //foreach (var obj in objectList)
+        //{
+            
+        //    DontDestroyOnLoad(obj);
+        //}
     }
 }
