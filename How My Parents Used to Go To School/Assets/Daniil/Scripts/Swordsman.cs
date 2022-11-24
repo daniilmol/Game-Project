@@ -50,7 +50,7 @@ public class Swordsman : Enemy
         Vector3 velocity = agent.velocity;
         Vector3 localVelocity = transform.InverseTransformDirection(velocity);
         float speed = localVelocity.z;
-        animator.SetFloat("forwardSpeed", speed);
+        animator.SetFloat("fowardSpeed", speed);
     }
 
     private void FaceTarget(Vector3 destination)
@@ -135,6 +135,7 @@ public class Swordsman : Enemy
             //   Debug.Log(collider.name);
             //Debug.Log(hitList);
         }
+        animator.ResetTrigger("attack");
     }
     public IEnumerator StartCooldown()
     {
