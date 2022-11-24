@@ -54,6 +54,7 @@ public class CharacterLoco : MonoBehaviour
     public KeyCode key;
     float cooldownTime;
     float activeTime;
+
     void Rolll()
     {
         switch (state)
@@ -79,7 +80,8 @@ public class CharacterLoco : MonoBehaviour
                     activeTime -= Time.deltaTime;
                     animator.applyRootMotion = true;
                     isRoll = true;
-                    animator.SetBool("isRoll", isRoll);
+                    //animator.SetBool("isRoll", isRoll);
+                    Rolling(input);
                     movement.Disable();
                     //skill.whirlwindSpin(gameObject);
                     //skill.MortalStrikeSpin(gameObject);
@@ -172,8 +174,52 @@ public class CharacterLoco : MonoBehaviour
     }
 
 
+    [SerializeField] private Camera mainCamera;
 
+    private void Rolling(Vector2 vec)
+    {
+        float x = vec.x;
+        float y = vec.y;
 
-
+        switch (x, y)
+        {
+            case (0, > 0): // W
+                transform.eulerAngles = new Vector3(0, mainCamera.transform.eulerAngles.y, 0);
+                Debug.Log("js mainCamera.transform.eulerAngles.y: " + mainCamera.transform.eulerAngles.y);
+                animator.SetBool("isRoll", true);
+                break;
+            case (0, < 0): // S
+                transform.eulerAngles = new Vector3(0, mainCamera.transform.eulerAngles.y - 180, 0);
+                animator.SetBool("isRoll", true);
+                break;
+            case ( < 0, 0): // A
+                transform.eulerAngles = new Vector3(0, mainCamera.transform.eulerAngles.y - 90, 0);
+                animator.SetBool("isRoll", true);
+                break;
+            case ( > 0, 0): // D
+                transform.eulerAngles = new Vector3(0, mainCamera.transform.eulerAngles.y + 90, 0);
+                animator.SetBool("isRoll", true);
+                break;
+            case ( < 0, > 0): // WA
+                transform.eulerAngles = new Vector3(0, mainCamera.transform.eulerAngles.y - 45, 0);
+                animator.SetBool("isRoll", true);
+                break;
+            case ( > 0, > 0): // WD
+                transform.eulerAngles = new Vector3(0, mainCamera.transform.eulerAngles.y + 45, 0);
+                animator.SetBool("isRoll", true);
+                break;
+            case ( < 0, < 0): // SA
+                transform.eulerAngles = new Vector3(0, mainCamera.transform.eulerAngles.y - 135, 0);
+                animator.SetBool("isRoll", true);
+                break;
+            case ( > 0, < 0): // SD
+                transform.eulerAngles = new Vector3(0, mainCamera.transform.eulerAngles.y + 135, 0);
+                animator.SetBool("isRoll", true);
+                break;
+            default:
+                Debug.Log("Switch Error");
+                break;
+        }
+    }
 
 }

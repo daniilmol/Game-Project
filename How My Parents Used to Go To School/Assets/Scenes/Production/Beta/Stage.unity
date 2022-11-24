@@ -1995,6 +1995,11 @@ PrefabInstance:
       propertyPath: panel
       value: 
       objectReference: {fileID: 1181382443}
+    - target: {fileID: 5210903785437269693, guid: ad8092053a142d54cb4e251fa925aa08,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 411617502}
     - target: {fileID: 5315800326064200076, guid: ad8092053a142d54cb4e251fa925aa08,
         type: 3}
       propertyPath: skillAudio
@@ -2010,6 +2015,26 @@ PrefabInstance:
       propertyPath: skillAudio
       value: 
       objectReference: {fileID: 2062426144}
+    - target: {fileID: 5320332488079762675, guid: ad8092053a142d54cb4e251fa925aa08,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5320332488079762675, guid: ad8092053a142d54cb4e251fa925aa08,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5320332488079762675, guid: ad8092053a142d54cb4e251fa925aa08,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5320332488079762675, guid: ad8092053a142d54cb4e251fa925aa08,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad8092053a142d54cb4e251fa925aa08, type: 3}
 --- !u!1 &1344553073 stripped
