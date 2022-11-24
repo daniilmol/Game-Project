@@ -75,7 +75,7 @@ public class CharacterLoco : MonoBehaviour
                 if (activeTime > 0)
                 {
 
-                    //playerCollider.enabled = false;
+                    playerCollider.enabled = false;
                     activeTime -= Time.deltaTime;
                     animator.applyRootMotion = true;
                     isRoll = true;
