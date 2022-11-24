@@ -9,6 +9,7 @@ public class Swordsman : Enemy
     [SerializeField] float attackSpeed = 1f;
     [SerializeField] Transform cube;
     [SerializeField] bool debug;
+    private Animator animator;
     private float restTimer;
     private float lastRestTimerEnd;
     private float lastShotTime;
@@ -19,6 +20,7 @@ public class Swordsman : Enemy
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         dropChance = 10f;
         restTimer = 0.3f;
@@ -26,6 +28,7 @@ public class Swordsman : Enemy
     }
     void Update()
     {
+        UpdateAnimator();
         agent.updateRotation = false;
         FaceTarget(player.transform.position);
         if (Vector3.Distance(gameObject.transform.position, player.transform.position) - 1 > range  && CheckForPlayerRange())
@@ -41,6 +44,13 @@ public class Swordsman : Enemy
             following = false;
         }
         SwordsmanBehaviour();
+    }
+
+    private void UpdateAnimator(){
+        Vector3 velocity = agent.velocity;
+        Vector3 localVelocity = transform.InverseTransformDirection(velocity);
+        float speed = localVelocity.z;
+        animator.SetFloat("fowardSpeed", speed);
     }
 
     private void FaceTarget(Vector3 destination)
@@ -86,11 +96,13 @@ public class Swordsman : Enemy
         if(debug){
             print("TANK IS ATTACKING THE PLAYER");
         }
+        animator.SetTrigger("attack");
+    }
+    void Hit(){
         int layerMask = 1 << 9;
         Collider collider = cube.GetComponent<Collider>();
         Collider[] cal = Physics.OverlapBox(collider.bounds.center, collider.bounds.extents * 2, Quaternion.identity, layerMask);
         Hashtable hitList = new Hashtable();
-
         //Debug.Log("youyou");
         bool isHit = false;
         int count = 0;
@@ -123,6 +135,7 @@ public class Swordsman : Enemy
             //   Debug.Log(collider.name);
             //Debug.Log(hitList);
         }
+        animator.ResetTrigger("attack");
     }
     public IEnumerator StartCooldown()
     {

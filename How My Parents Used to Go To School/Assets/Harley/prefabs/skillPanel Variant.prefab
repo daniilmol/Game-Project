@@ -341,7 +341,7 @@ PrefabInstance:
     - target: {fileID: 2160839469338073785, guid: cbf16e074e792df4da0f462882823e01,
         type: 3}
       propertyPath: m_Name
-      value: skillPanel
+      value: skillPanel Variant
       objectReference: {fileID: 0}
     - target: {fileID: 2160839469338073785, guid: cbf16e074e792df4da0f462882823e01,
         type: 3}

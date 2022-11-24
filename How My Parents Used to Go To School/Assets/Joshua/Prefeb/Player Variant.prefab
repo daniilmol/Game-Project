@@ -104,6 +104,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 856458419, guid: ad8092053a142d54cb4e251fa925aa08, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1692962274, guid: ad8092053a142d54cb4e251fa925aa08, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
+    - target: {fileID: 1139960067294448499, guid: ad8092053a142d54cb4e251fa925aa08,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2191168302281781777, guid: ad8092053a142d54cb4e251fa925aa08,
         type: 3}
       propertyPath: m_Enabled
@@ -117,7 +130,7 @@ PrefabInstance:
     - target: {fileID: 3412379148497975997, guid: ad8092053a142d54cb4e251fa925aa08,
         type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Player Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3412379148497975998, guid: ad8092053a142d54cb4e251fa925aa08,
         type: 3}
@@ -184,6 +197,11 @@ PrefabInstance:
       propertyPath: AttackCube
       value: 
       objectReference: {fileID: 856458419}
+    - target: {fileID: 4396144619907310519, guid: ad8092053a142d54cb4e251fa925aa08,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5210903785437269670, guid: ad8092053a142d54cb4e251fa925aa08,
         type: 3}
       propertyPath: m_Radius
